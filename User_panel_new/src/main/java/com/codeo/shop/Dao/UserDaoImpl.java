@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.codeo.shop.dbutil.ConnectionProvider;
 import com.codeo.shop.entity.User;
 
@@ -192,8 +195,27 @@ public class UserDaoImpl implements UserDAO {
 		
             return rs;
 	
+	}
+	
+	public  static Map<String, Long> total_user() throws SQLException{
+		Connection con = null;
+		con = ConnectionProvider.getconnection();
 		
+		String count_query= "select Count(*) from user_registration";
+		 PreparedStatement ps;
 		
+			ps = con.prepareStatement(count_query);
+		
+		 ResultSet rs = ps.executeQuery();
+		 Long usercount = null;
+		 while(rs.next()) {
+			  usercount=rs.getLong(1);
+		 }
+		Map<String, Long>  map=new HashMap<String, Long>();
+		map.put("Total_User", usercount);
+		
+		return map;
+				
 	}
 	
 	

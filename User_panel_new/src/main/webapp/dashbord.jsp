@@ -2,7 +2,11 @@
 	pageEncoding="ISO-8859-1"%>
 	
 <%@page import = "com.codeo.shop.entity.User" %>
-<%@page import = "com.codeo.shop.Dao.UserDAO" %>	
+<%@page import = "com.codeo.shop.Dao.UserDaoImpl" %>
+
+<%@page import = "java.util.Map" %>
+
+<%@page import = "com.codeo.shop.controller.CountData" %>	
 	<%
 	 HttpSession session1=request.getSession();
 	
@@ -19,7 +23,12 @@
 		response.sendRedirect("loginfrom.jsp");
 		return;
 	}
-		
+	
+	
+	
+	Map<String, Long> m=UserDaoImpl.total_user();
+	String UserCount=String.valueOf(m.get("Total_User"));
+	System.out.print("==================================="+UserCount+"===========================================");
 	%>
 	
 	
@@ -95,7 +104,7 @@
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0">$2156</h3>
+												<h3 class="font-large-1 mb-0"><%=UserCount %></h3>
 												<span>Total Users</span>
 											</div>
 											<div class="media-right white text-right">
