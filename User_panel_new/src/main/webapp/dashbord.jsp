@@ -5,15 +5,15 @@
 	<%
 	 HttpSession session1=request.getSession();
 	
-	String user=(String)session1.getAttribute("usertype");
+	String user2=(String)session1.getAttribute("usertype");
 	
-	if(user==null){
+	if(user2==null){
 		
 		session.setAttribute("message", "You are not logged in, Logged in first as a admin");
 		response.sendRedirect("loginfrom.jsp");
 		return;
 	}
-	else if(user.equals("Normal User")){
+	else if(user2.equals("Normal User")){
 		session.setAttribute("message", "You are not Admin, Logged in first as a admin");
 		response.sendRedirect("loginfrom.jsp");
 		return;

@@ -1,3 +1,9 @@
+ <%
+ HttpSession session3=request.getSession();
+String admin_name=(String)session3.getAttribute("UserName");
+	
+ %>
+
 <html>
 
 <body data-col="2-columns" class=" 2-columns ">
@@ -6,8 +12,11 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-faded">
 		<div class="container-fluid">
 			<div class="navbar-header">
+			
+			<h3 style="color:red;"  class="font-weight-bold">Welcome Admin : <%=admin_name %> </h3>
 				<button type="button" data-toggle="collapse"
 					class="navbar-toggle d-lg-none float-left">
+					
 					<span class="sr-only">Toggle navigation</span><span
 						class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
