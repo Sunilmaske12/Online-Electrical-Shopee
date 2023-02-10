@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
-<%@page import = "com.codeo.shop.entity.User" %>	
+<%@page import = "com.codeo.shop.entity.User" %>
+<%@page import = "com.codeo.shop.Dao.UserDAO" %>	
 	<%
 	 HttpSession session1=request.getSession();
 	
@@ -18,8 +19,7 @@
 		response.sendRedirect("loginfrom.jsp");
 		return;
 	}
-	
-	
+		
 	%>
 	
 	

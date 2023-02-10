@@ -85,8 +85,7 @@
 									<div class="card-body">
 										<div class="px-3">
 											<!-- form start -->
-											<form class="form" action="Productoperation" method="post"
-												enctype="multipart/form-data">
+											<form class="form" action="Productoperation" method="post" enctype="multipart/form-data">
 												<div class="form-body">
 													<div class="form-group">
 														<label for="eventRegInput1">Enter Product Name </label> <input
@@ -96,9 +95,9 @@
 													</div>
 
 													<%
-					    CategoryDao cdao = new CategoryDao();
-								List<Category> list = cdao.getCategoryList();
-						%>
+					                           CategoryDao cdao = new CategoryDao();
+						                       		List<Category> list = cdao.getCategoryList();
+						                       %>
 
 													<div class="form-group">
 														<label for="eventRegInput1">Enter Product
@@ -142,10 +141,10 @@
 													</div>
 
 													<div class="form-group">
-														<label> Product Image </label> <input type="file"
-															class="form-control" name="p_image"
-															value='<c:out value="${product.prod_imageName}"></c:out>' />
+														<label> Product Image </label>
+														 <input type="file"	class="form-control" name="p_image" value='<c:out value="${product.prod_imageName}"></c:out>' />
 													</div>
+													<input type="hidden" name="action" value="insert" />
 														
 												</div>
 

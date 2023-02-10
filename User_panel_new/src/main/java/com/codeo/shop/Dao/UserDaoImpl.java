@@ -4,10 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.codeo.shop.dbutil.ConnectionProvider;
 import com.codeo.shop.entity.User;
 
@@ -20,11 +18,13 @@ public class UserDaoImpl implements UserDAO {
     private static  final String UPDATE_USERS_SQL = "update user_registration set user_name = ?,user_mobno= ?, user_adderess =?,user_emailid =?,user_pass =? where user_id =?";
 	
 	Connection con = null;
+	PreparedStatement preparedstatement = null ;
+	
 	
 	public List<User> selectAllUsers() {
 		List<User> users = new ArrayList<>();
 		
-		PreparedStatement preparedstatement = null ;
+		
 	 	try {
 				preparedstatement= con.prepareStatement(SELECT_ALL_USERS);
 	            ResultSet resultset = preparedstatement.executeQuery();
@@ -45,6 +45,8 @@ public class UserDaoImpl implements UserDAO {
 			} 
 			return users;
 	}
+	
+	
 	
 	@Override
 	public boolean insertUser(User user) {
@@ -189,7 +191,14 @@ public class UserDaoImpl implements UserDAO {
             ResultSet rs = ps.executeQuery();
 		
             return rs;
+	
+		
+		
 	}
+	
+	
+	
+	
 	}
 
 

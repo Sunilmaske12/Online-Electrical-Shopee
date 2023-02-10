@@ -4,11 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,32 +51,37 @@ public class ProductOperationServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		cid = Integer.parseInt(request.getParameter("cid"));
 		pw = response.getWriter();
-		
-		//*****  image related coding ************* 
-		
 		Part file = request.getPart("p_image");
-		prod_imageName = file.getSubmittedFileName(); 
+		String prod_imageName=file.getSubmittedFileName();
+		//*****  image related coding ************* 
+	
 		//String uploadFile ="C:/Users/cw/git/FirstProject/MegaProject/src/main/webapp/app-assets/img"+prod_imageName;
-		String uploadFile = "C:/Users/cw/git/FirstProject/User_panel_new/src/main/webapp/img/latest-product/"+prod_imageName;
+	//	String uploadFile = "C:/Users/cw/git/FirstProject/User_panel_new/src/main/webapp/img/latest-product/"+prod_imageName;
 		//String uploadFile  ="D:/java program/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/User_panel_new/img/latest-product/"+prod_imageName;   
 		
+		
+  String path = request.getServletContext().getRealPath("img")+File.separator+"latest-product"+File.separator+file.getSubmittedFileName(); 
+
+  System.out.println("path is:"+ path);
+  
+  
+  		//upload pic in folder
 		//for writing into file 
-		FileOutputStream fos = new FileOutputStream(uploadFile);
+		FileOutputStream fos = new FileOutputStream(path);
+		
+		InputStream is = file.getInputStream(); 
+		
 		//for reading
-		InputStream is = file.getInputStream();
-        System.out.println("image name is:"+ prod_imageName);
-		 String path = request.getRealPath("img")+File.separator+"latest-product"+File.separator+file.getSubmittedFileName(); 
-         System.out.println("this is path :"+path);
-        
          byte[] data = new byte[is.available()] ;
-	     is.read();
+	     is.read(data);
 		fos.write(data);
 		fos.close();
-		System.out.println("this is uploadfile :"+uploadFile);
+		is.close();
+		//System.out.println("this is uploadfile :"+uploadFile);
 		
 		// *********** end ******************
 		
-		product = new Product(prod_name ,prod_description, prod_price, prod_discount, prod_quantity, prod_imageName,cid);
+		Product product = new Product(prod_name ,prod_description, prod_price, prod_discount, prod_quantity, prod_imageName,cid);
 		
 		  if(id.isEmpty() || id == null)
 		 {
@@ -183,6 +184,7 @@ public class ProductOperationServlet extends HttpServlet {
 		dispatcher = request.getRequestDispatcher("View_product.jsp");
 	    dispatcher.forward(request, response);
         }
+	
 	
 	
      }
