@@ -28,7 +28,6 @@
 	
 	Map<String, Long> m=UserDaoImpl.total_user();
 	String UserCount=String.valueOf(m.get("Total_User"));
-	System.out.print("==================================="+UserCount+"===========================================");
 	%>
 	
 	
@@ -253,6 +252,12 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class="card-title mb-0">User List</h4>
+									
+									
+									
+									
+									
+									
 								</div>
 								<div class="card-body">
 									<div class="card-block">

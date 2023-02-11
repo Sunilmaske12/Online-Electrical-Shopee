@@ -17,8 +17,13 @@
 
 <!-- Main css -->
 <link rel="stylesheet" href="AdminPanel/css/style.css">
+
+<style>
+
+</style>
+
 </head>
-<body>
+<body >
 
 	<div>
 		<div class="main">
