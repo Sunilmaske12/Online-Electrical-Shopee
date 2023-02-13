@@ -237,6 +237,7 @@ public class ProductDaoImp implements ProductDao {
 				product.setProd_price(resultset.getString("prod_price"));
 				product.setProd_discount(resultset.getString("prod_discount"));
 				product.setProd_imageName(resultset.getString("prod_imageName"));
+				product.setCid(resultset.getInt("cid"));
 			
 				list.add(product);
 			}

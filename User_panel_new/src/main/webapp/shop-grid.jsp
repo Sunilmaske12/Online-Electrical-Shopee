@@ -115,6 +115,7 @@
 	<%  //working here start
         
       String cat = request.getParameter("category");
+	
             List<Product> prodlist = null;
                             
                        if(cat==null||cat.trim().equals("all"))
@@ -345,7 +346,8 @@
 		</div>
 	</section>
 	<!-- Product Section End -->
-
+	
+	
 	<jsp:include page="footer.html" />
 	<!-- Js Plugins -->
 	<script src="js/jquery-3.3.1.min.js"></script>

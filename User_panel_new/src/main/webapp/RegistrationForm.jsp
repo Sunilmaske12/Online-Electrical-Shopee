@@ -38,7 +38,7 @@
 
 								<div class="form-group">
 									<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-									<input type="hidden" name="id" id="re_pass" />
+									<input type="hidden" name="id" id="re_pass"/>
 								</div>
 								
 								<input type="hidden" name="user_type" value="Normal User" />
@@ -47,31 +47,31 @@
 								<div class="form-group">
 									<label for="name"> <i
 										class="zmdi zmdi-account material-icons-name"></i></label> <input
-										type="text" name="name" id="name" placeholder="Your Name" />
+										type="text" name="name" id="name" placeholder="Your Name"  required/>
 									<span id="uname"> </span>
 								</div>
 								<div class="form-group">
 									<label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
 									<input type="text" name="contact" id="contact"
-										placeholder="Mobile No" />
+										placeholder="Mobile No"  required/>
 								</div>
 								<div class="form-group">
 									<label for="Address"><i class="zmdi zmdi-lock-outline"></i></label>
 									<input type="text" name="Address" id="Address"
-										placeholder="Address" />
+										placeholder="Address"  required/>
 								</div>
 								<div class="form-group">
 									<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-										type="email" name="email" id="email" placeholder="Your Email" />
+										type="email" name="email" id="email" placeholder="Your Email"  required/>
 								</div>
 								<div class="form-group">
 									<label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
-										type="password" name="pass" id="pass" placeholder="Password" />
+										type="password" name="pass" id="pass" placeholder="Password"  required/>
 								</div>
 								<div class="form-group">
 									<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 									<input type="password" name="re_pass" id="re_pass"
-										placeholder="Confirm password" />
+										placeholder="Confirm password"  required/>
 								</div>
 
 								<div class="form-group">

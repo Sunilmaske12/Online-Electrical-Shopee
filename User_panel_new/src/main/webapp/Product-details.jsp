@@ -95,7 +95,7 @@
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
 					<div class="breadcrumb__option">
-							<a href="./index.jsp">Home</a> <a href="#">Electrical</a> <span>Vegetable’s
+							<a href="./index.jsp">Home</a> <a href="#">Electrical</a> <span>Vegetableâs
 								Package</span>
 						</div>
 					</div>
@@ -113,6 +113,7 @@
                                 String prod = request.getParameter("product");
 
                                 List<Product> prodlist = null;
+                                List<Product> prodlistbycat = null;
                                  
                             if(prod==null||prod.trim().equals("all"))
                              {
@@ -121,7 +122,9 @@
                            else {
                             	  
                                int id =Integer.parseInt(prod.trim());
+                               
                                prodlist = productdao.getAllProductsForDetails(id);
+                               
                          } 
          %>
 
@@ -258,98 +261,87 @@
                             </div>    -->
 						</div>
 					</div>
+					
+					<%   } 
+					%>
+		
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Product Details Section End -->
 
-	<!-- Related Product Section Begin 
-	<section class="related-product">
+	<!-- Related Product Section Begin  -->
+		
+		
+	<section class="featured spad">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="section-title related__product__title">
+					<div class="section-title">
 						<h2>Related Product</h2>
 					</div>
+					
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-1.jpg">
-							<ul class="product__item__pic__hover">
+
+			<div class="row featured__filter">
+				<%   
+                    // List<Product> list = productdao.getAllProducts();
+                     for(Product product:prodlist)
+                    { 
+                    	 int cid=product.getCid();
+                    	
+                              List<Product> catprodlist = null;
+                               catprodlist = productdao.getAllProductsById(cid);
+                               for(Product catproduct:catprodlist)
+                               {
+                                       
+                           
+                    	%>
+                    	
+				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+					<div class="featured__item">
+						<div class="featured__item__pic set-bg"
+							data-setbg="img/latest-product/<%=catproduct.getProd_imageName() %>"
+							style="background-image: url(&quot;img/latest-product/<%=catproduct.getProd_imageName() %>&quot;);">
+
+							<ul class="featured__item__pic__hover">
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
 							</ul>
 						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Crab Pool Security</a>
-							</h6>
-							<h5>$30.00</h5>
+
+						<div class="featured__item__text">
+							<h5>
+								<a href="Product-details.jsp?product=<%=catproduct.getId() %>"
+									style="color: black"><%=catproduct.getProd_name() %></a>
+							</h5>
+							<!--   <h6><%=catproduct.getProd_description() %></h6> -->
+							<!--  <h5> <span>&#8377; </span><%=catproduct.getProd_price() %> </h5> <br> -->
+							<button type="button" class="btn btn-light">
+								<h5>
+									&#8377;<%=catproduct.getPriceAfterDiscount() %>/- <span
+										style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
+										<%=product.getProd_price() %> ,<%=catproduct.getProd_discount() %>
+										off
+									</span>
+								</h5>
+							</button>
+							
+							<a href="addToCart?id=<%=catproduct.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
+								onMouseOut="this.style.backgroundColor='#87CEEB'">
+								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-2.jpg">
-							<ul class="product__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Crab Pool Security</a>
-							</h6>
-							<h5>$30.00</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-3.jpg">
-							<ul class="product__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Crab Pool Security</a>
-							</h6>
-							<h5>$30.00</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<div class="product__item">
-						<div class="product__item__pic set-bg"
-							data-setbg="img/product/product-7.jpg">
-							<ul class="product__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-							</ul>
-						</div>
-						<div class="product__item__text">
-							<h6>
-								<a href="#">Crab Pool Security</a>
-							</h6>
-							<h5>$30.00</h5>
-						</div>
-					</div>
-				</div>
+
+				<%}} %>
+
 			</div>
-		</div>  -->
-		<% } %>
+
+		</div>
+	</section>
 	 <!--  </section>  -->
 	<!-- Related Product Section End -->
 
