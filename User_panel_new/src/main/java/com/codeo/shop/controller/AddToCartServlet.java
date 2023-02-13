@@ -1,14 +1,13 @@
 package com.codeo.shop.controller;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.codeo.shop.Dao.ProductDao;
-import com.codeo.shop.Dao.ProductDaoImp;
 import com.codeo.shop.entity.Cart;
 import com.codeo.shop.entity.Product;
 
@@ -19,29 +18,51 @@ public class AddToCartServlet extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int prod_id = Integer.parseInt(request.getParameter("prod_id"));
-        String prod_name=request.getParameter("prod_name");
-        String prod_price= request.getParameter("prod_price");
-        String prod_imageName= request.getParameter("prod_imageName");
+      PrintWriter out = response.getWriter();
+      
+    	ArrayList<Cart> cartlist = new ArrayList<>();
+    	
+    	int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println(id);
+        //String prod_name=request.getParameter("prod_name");
+        //System.out.println(prod_name);
+        //String prod_price= request.getParameter("prod_price");
+        //System.out.println(prod_price);
+        //String prod_imageName= request.getParameter("prod_imageName");
+        //System.out.println(prod_imageName);
         
-        HttpSession session = request.getSession();
-        
-        System.out.println(prod_id);
-        
-        Cart cart = (Cart) session.getAttribute("cart");
-        
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
-        }
-        
-       // int id = Integer.parseInt(request.getParameter("productId"));
-        String prod_quantity =request.getParameter("prod_quantity");
-
-        ProductDao productDao = new ProductDaoImp();
-        
-        Product product = productDao.getProduct(prod_id);
-        cart.addProduct(product, prod_quantity);
-         response.sendRedirect("AddToCart.jsp");
+     Cart cart = new Cart();
+     cart.setId(id);
+      cart.setQuantity(1);
+      
+     HttpSession session = request.getSession();
+     ArrayList<Cart>cart_list=(ArrayList<Cart>)session.getAttribute("cart-list");
+     
+     if(cart_list ==null)
+     {
+    	 cartlist.add(cart);
+    	 session.setAttribute("cart-list", cartlist);
+    	 response.sendRedirect("index.jsp");
+    	  }
+     else
+     {
+    	 cartlist=cart_list;
+    	 boolean exist=false;
+    	
+    	 for(Cart c :cart_list)
+    	 {
+    		 if(c.getId()==id) {
+    			 exist =true;
+    			 //out.println("<h3 style='color:crimson;text-align:center'>Item already exist in Cart.<a href='shoping-cart.jsp'>Go to Cart Page</a></h3>");
+    			 response.sendRedirect("shoping-cart.jsp");
+    		 } 
+    		 }
+    	 
+    	  if(!exist) {
+    		  cartlist.add(cart);
+    		  response.sendRedirect("index.jsp");
+    	  }
+    	  }
+     
     }
-}
+    }

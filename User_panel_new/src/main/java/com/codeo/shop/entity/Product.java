@@ -41,6 +41,13 @@ public class Product {
 		Category category = new Category();
 	}
 
+	public Product(int prod_id, String prod_name, String prod_price, String prod_imageName) {
+		this.id=prod_id;
+		this.prod_name = prod_name;
+		this.prod_price = prod_price;
+		this.prod_imageName =prod_imageName;
+	}
+
 	public String getProd_name() {
 		return prod_name;
 	}

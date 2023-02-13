@@ -1,14 +1,7 @@
 package com.codeo.shop.Dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import java.sql.*;
+import java.util.*;
 import com.codeo.shop.dbutil.ConnectionProvider;
 import com.codeo.shop.entity.User;
 
@@ -213,13 +206,9 @@ public class UserDaoImpl implements UserDAO {
 		 }
 		Map<String, Long>  map=new HashMap<String, Long>();
 		map.put("Total_User", usercount);
-		
 		return map;
 				
 	}
-	
-	
-	
 	
 	}
 

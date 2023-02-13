@@ -1,9 +1,7 @@
 package com.codeo.shop.Dao;
 
-import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
-
 import com.codeo.shop.entity.User;
 
 public interface UserDAO {

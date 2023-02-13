@@ -189,7 +189,6 @@ String user_email=(String)session1.getAttribute("UserEmail");
                           int id =Integer.parseInt(cat.trim());
                           prodlist = productdao.getAllProductsById(id);
                     }   //working here end 
-
      %>
 
 	<!--   Featured Section Begin -->
@@ -248,8 +247,8 @@ String user_email=(String)session1.getAttribute("UserEmail");
 									</span>
 								</h5>
 							</button>
-
-							<a href="#" class="primary-btn" style="background-color: #87CEEB" onclick="add_to_cart(<%=product.getId()%>,<%=product.getProd_name() %>,<%=product.getPriceAfterDiscount()%>,<%=product.getProd_imageName() %>)" onMouseOver="this.style.backgroundColor='#808080'"
+							
+							<a href="addToCart?id=<%=product.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
 								onMouseOut="this.style.backgroundColor='#87CEEB'">
 								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
 						</div>

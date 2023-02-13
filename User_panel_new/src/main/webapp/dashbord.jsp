@@ -80,8 +80,17 @@
 	href="app-assets/vendors/css/chartist.min.css">
 <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
 
-</head>
 
+<style type="text/css">
+	.adminprofile{
+		
+	
+	}
+	
+
+</style>
+
+</head>
 
 <body data-col="2-columns" class=" 2-columns ">
 
@@ -91,6 +100,7 @@
 
 		<%@include file="Navbar.jsp"%>
 
+         
          
 		<div class="main-panel">
 			<div class="main-content">
@@ -251,12 +261,7 @@
 						<div class="col-xl-4 col-lg-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title mb-0">User List</h4>
-									
-									
-									
-									
-									
+									<h4 class="card-title mb-0">Developers & Admins</h4>
 									
 								</div>
 								<div class="card-body">
@@ -267,8 +272,8 @@
 												src="app-assets/img/portrait/small/avatar-s-12.png">
 											</a>
 											<div class="media-body">
-												<h4 class="font-medium-1 mt-1 mb-0">Jessica Rice</h4>
-												<p class="text-muted font-small-3">UX Designer</p>
+												<h4 class="font-medium-1 mt-1 mb-0">Payal </h4>
+												<p class="text-muted font-small-3">Team Leader</p>
 											</div>
 											<div class="mt-1">
 												<div
@@ -283,10 +288,10 @@
 										<div class="media mb-1">
 											<a> <img alt="96x96"
 												class="media-object d-flex mr-3 bg-danger height-50 rounded-circle"
-												src="app-assets/img/portrait/small/avatar-s-11.png">
+												src="app-assets/img/portrait/small/avatar-s-6.png">
 											</a>
 											<div class="media-body">
-												<h4 class="font-medium-1 mt-1 mb-0">Jacob Rios</h4>
+												<h4 class="font-medium-1 mt-1 mb-0">Pallavi  </h4>
 												<p class="text-muted font-small-3">HTML Developer</p>
 											</div>
 											<div class="mt-1">
@@ -302,11 +307,11 @@
 										<div class="media mb-1">
 											<a> <img alt="96x96"
 												class="media-object d-flex mr-3 bg-success height-50 rounded-circle"
-												src="app-assets/img/portrait/small/avatar-s-3.png">
+												src="app-assets/img/portrait/small/avatar-s-18.png">
 											</a>
 											<div class="media-body">
-												<h4 class="font-medium-1 mt-1 mb-0">Russell Delgado</h4>
-												<p class="text-muted font-small-3">Database Designer</p>
+												<h4 class="font-medium-1 mt-1 mb-0">Rashmi</h4>
+												<p class="text-muted font-small-3">Designer</p>
 											</div>
 											<div class="mt-1">
 												<div
@@ -321,11 +326,11 @@
 										<div class="media mb-1">
 											<a> <img alt="96x96"
 												class="media-object d-flex mr-3 bg-warning height-50 rounded-circle"
-												src="app-assets/img/portrait/small/avatar-s-6.png">
+												src="app-assets/img/portrait/small/avatar-s-11.png">
 											</a>
 											<div class="media-body">
-												<h4 class="font-medium-1 mt-1 mb-0">Sara McDonald</h4>
-												<p class="text-muted font-small-3">Team Leader</p>
+												<h4 class="font-medium-1 mt-1 mb-0">Sunil</h4>
+												<p class="text-muted font-small-3">Database Devloper</p>
 											</div>
 											<div class="mt-1">
 												<div
@@ -340,11 +345,11 @@
 										<div class="media mb-1">
 											<a> <img alt="96x96"
 												class="media-object d-flex mr-3 bg-info height-50 rounded-circle"
-												src="app-assets/img/portrait/small/avatar-s-18.png">
+												src="app-assets/img/portrait/small/avatar-s-3.png">
 											</a>
 											<div class="media-body">
-												<h4 class="font-medium-1 mt-1 mb-0">Janet Lucas</h4>
-												<p class="text-muted font-small-3">Project Manger</p>
+												<h4 class="font-medium-1 mt-1 mb-0">Sanjay</h4>
+												<p class="text-muted font-small-3">Shop Owner</p>
 											</div>
 											<div class="mt-1">
 												<div
@@ -356,11 +361,8 @@
 
 											</div>
 										</div>
-										<div class="action-buttons mt-2 text-center">
-											<a
-												class="btn btn-raised gradient-blackberry py-2 px-4 white mr-2">Add
-												New</a>
-										</div>
+										
+										
 									</div>
 								</div>
 							</div>
@@ -463,8 +465,7 @@
 							class="gradient-king-yna d-block rounded-circle"></span>
 					</div>
 					<div class="col">
-						<span style="width: 20px; height: 20px;"
-							data-bg-color="ibiza-sunset"
+						<span style="width: 20px; height: 20px;" data-bg-color="ibiza-sunset"
 							class="gradient-ibiza-sunset d-block rounded-circle"></span>
 					</div>
 					<div class="col">
@@ -624,7 +625,11 @@
  
 
 <!--  modal end  -->
-  
+
+
+
+
+
 
 		</div>
 	</div>

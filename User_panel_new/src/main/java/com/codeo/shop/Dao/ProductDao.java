@@ -1,9 +1,8 @@
 package com.codeo.shop.Dao;
-
+import java.util.ArrayList;
 import java.util.List;
-
+import com.codeo.shop.entity.Cart;
 import com.codeo.shop.entity.Product;
-
 public interface ProductDao {
 
 	public boolean addProduct(Product product);
@@ -26,7 +25,7 @@ public interface ProductDao {
 
 	public Product getProductById(int id);
 
+	public List<Cart> getCartProducts(ArrayList<Cart> cartlist);
 	
-	
-	
+	public int getTotalCartPrice(ArrayList<Cart> cartlist);
 }

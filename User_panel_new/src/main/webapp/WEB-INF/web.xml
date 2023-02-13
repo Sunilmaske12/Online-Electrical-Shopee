@@ -23,22 +23,10 @@
 		<servlet-class>com.codeo.shop.entity.Cart</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>UserDao_N</servlet-name>
-		<display-name>UserDao_N</display-name>
+		<servlet-name>QuantityIncDecServlet</servlet-name>
+		<display-name>QuantityIncDecServlet</display-name>
 		<description></description>
-		<servlet-class>com.codeo.shop.Dao.UserDao_N</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>Count</servlet-name>
-		<display-name>Count</display-name>
-		<description></description>
-		<servlet-class>com.codeo.shop.controller.Count</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>Count_Data</servlet-name>
-		<display-name>Count_Data</display-name>
-		<description></description>
-		<servlet-class>com.codeo.shop.controller.Count_Data</servlet-class>
+		<servlet-class>com.codeo.shop.controller.QuantityIncDecServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
@@ -53,15 +41,7 @@
 		<url-pattern>/Cart</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>UserDao_N</servlet-name>
-		<url-pattern>/UserDao_N</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Count</servlet-name>
-		<url-pattern>/Count</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Count_Data</servlet-name>
-		<url-pattern>/Count_Data</url-pattern>
+		<servlet-name>QuantityIncDecServlet</servlet-name>
+		<url-pattern>/QuantityIncDecServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
