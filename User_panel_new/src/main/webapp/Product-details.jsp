@@ -184,7 +184,8 @@
 								</div>
 							</div>
 						</div>
-						<a href="#" class="primary-btn">ADD TO CARD</a> <a href="#"
+						<a href="#" class="primary-btn">ADD TO CARD</a>	  <a href="shoping-cart.jsp" style="height:50px; width:70px;" class="btn btn-warning btn-sm mt-1">  View CART </a>
+								 <a href="#"
 							class="heart-icon"><span class="icon_heart_alt"></span></a>
 						<ul>
 							<li><b>Availability</b> <span>In Stock</span></li>
@@ -329,9 +330,11 @@
 								</h5>
 							</button>
 							
-							<a href="addToCart?id=<%=catproduct.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
+							<a href="#?id=<%=catproduct.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
 								onMouseOut="this.style.backgroundColor='#87CEEB'">
 								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
+								 	 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
+								
 						</div>
 					</div>
 				</div>

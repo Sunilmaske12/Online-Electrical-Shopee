@@ -5,14 +5,16 @@ String admin_name=(String)session3.getAttribute("UserName");
  %>
 
 <html>
-
 <body data-col="2-columns" class=" 2-columns ">
-
+	<jsp:include page="CommonModal.jsp" />
+	
+	
 	<!-- Navbar (Header) Starts-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-faded">
 		<div class="container-fluid">
 			<div class="navbar-header">
 			
+		
 			<h3 style="color:red;"  class="font-weight-bold">Welcome : <%=admin_name %> </h3>
 				<button type="button" data-toggle="collapse"
 					class="navbar-toggle d-lg-none float-left">
@@ -82,6 +84,7 @@ String admin_name=(String)session3.getAttribute("UserName");
 									class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read
 									All Notifications</a>
 							</div></li>
+							
 						<li class="dropdown nav-item"><a id="dropdownBasic3" href="#"
 							data-toggle="dropdown"
 							class="nav-link position-relative dropdown-toggle"><i
@@ -92,11 +95,11 @@ String admin_name=(String)session3.getAttribute("UserName");
 								<a href="javascript:;" class="dropdown-item py-1"><i
 									class="ft-settings mr-2"></i><span>Settings</span></a><a
 									href="javascript:;" class="dropdown-item py-1"><i
-									class="ft-edit mr-2"></i><span>Edit Profile</span></a><a
+									class="ft-edit mr-2"></i><span data-toggle="modal" data-target="#MyProfile">Edit Profile</span></a><a
 									href="javascript:;" class="dropdown-item py-1"><i
 									class="ft-mail mr-2"></i><span>My Inbox</span></a>
 								<div class="dropdown-divider"></div>
-								<a href="javascript:;" class="dropdown-item"><i
+								<a href="loginfrom.jsp;" class="dropdown-item"><i
 									class="ft-power mr-2"></i><span>Logout</span></a>
 							</div></li>
 						<li class="nav-item"><a href="javascript:;"
@@ -111,6 +114,5 @@ String admin_name=(String)session3.getAttribute("UserName");
 
 
 </body>
-
 
 </html>

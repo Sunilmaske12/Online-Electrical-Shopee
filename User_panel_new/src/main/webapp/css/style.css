@@ -25,6 +25,7 @@
 9.  Contact
 10.  Footer Style
 11. button
+12. My profile Modal
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -832,6 +833,7 @@ transparent;
 	overflow: hidden;
 	background-position: center center;
 }
+
 
 .featured__item__pic__hover {
 	position: absolute;
@@ -3421,4 +3423,11 @@ transparent;
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+}
+
+
+
+// My profile Modal 
+.my_profile{
+	
 }

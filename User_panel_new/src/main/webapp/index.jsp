@@ -5,9 +5,10 @@
 	 HttpSession session1=request.getSession();
 String user_name=(String)session1.getAttribute("UserName");
 String user_email=(String)session1.getAttribute("UserEmail");
+
 	//String user=(String)session1.getAttribute("usertype");
 	//String user_email=(String)session1.getAttribute("email");
-	//System.out.println("======================"+user_name+"===================="+ user_email +"==============================");
+	//System.out.println("======================"+user_id+"===================="+ user_email +"==============================");
 	//String user_name=(String)session1.getAttribute("UserName");
 	//if(user==null){
 	//	
@@ -53,6 +54,10 @@ String user_email=(String)session1.getAttribute("UserEmail");
 <link
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
+	
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+ 
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -106,6 +111,7 @@ String user_email=(String)session1.getAttribute("UserEmail");
 		<div class="loader"></div>
 	</div>
 	<jsp:include page="header.jsp" />
+	<jsp:include page="CommonModal.jsp" />
 	<!--  for product and category  -->
 
 	<!-- Hero Section Begin -->
@@ -116,7 +122,7 @@ String user_email=(String)session1.getAttribute("UserEmail");
 					<div class="hero__categories">
 						<div class="hero__categories__all"
 							style="background-color: #87CEEB">
-							<i class="fa fa-bars"></i> <span><a
+							<i class="fa fa-bars" ></i> <span><a
 								href="index.jsp?category=all" style="color: white">All
 									Categories </a> </span>
 						</div>
@@ -147,8 +153,8 @@ String user_email=(String)session1.getAttribute("UserEmail");
 							</form>
 						</div>
 						<div class="hero__search__phone">
-							<div class="hero__search__phone__icon">
-								<img  alt="icon" src="img/hero/icon.png"> 
+							<div class="hero__search__phone__icon"  >
+								<a href="#" data-toggle="modal" data-target="#MyProfile"><img  alt="icon" src="img/hero/icon.png" > </a>
 							</div>
 							<div class="hero__search__phone__text">
 								<h5>WELCOME <%if(user_name!=null){%>  </h5>
@@ -189,7 +195,8 @@ String user_email=(String)session1.getAttribute("UserEmail");
                           int id =Integer.parseInt(cat.trim());
                           prodlist = productdao.getAllProductsById(id);
                     }   //working here end 
-     %>
+     
+                      %>
 
 	<!--   Featured Section Begin -->
 	<section class="featured spad">
@@ -219,10 +226,11 @@ String user_email=(String)session1.getAttribute("UserEmail");
                     // List<Product> list = productdao.getAllProducts();
                      for(Product product:prodlist)
                     {   //System.out.println(product.getProd_description()); %>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-					<div class="featured__item">
-						<div class="featured__item__pic set-bg"
-							data-setbg="img/latest-product/<%=product.getProd_imageName() %>"
+				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ">
+				<div style="border: 1px solid grey; " class="mt-5">
+					<div  class="featured__item m-4 " >
+						<div   class="featured__item__pic set-bg "
+							Style="background-size:200px auto; " data-setbg="img/latest-product/<%=product.getProd_imageName() %>"
 							style="background-image: url(&quot;img/latest-product/<%=product.getProd_imageName() %>&quot;);">
 
 							<ul class="featured__item__pic__hover">
@@ -232,10 +240,10 @@ String user_email=(String)session1.getAttribute("UserEmail");
 						</div>
 
 						<div class="featured__item__text">
-							<h5>
+							<h6>
 								<a href="Product-details.jsp?product=<%=product.getId() %>"
 									style="color: black"><%=product.getProd_name() %></a>
-							</h5>
+							</h6>
 							<!--   <h6><%=product.getProd_description() %></h6> -->
 							<!--  <h5> <span>&#8377; </span><%=product.getProd_price() %> </h5> <br> -->
 							<button type="button" class="btn btn-light">
@@ -248,10 +256,15 @@ String user_email=(String)session1.getAttribute("UserEmail");
 								</h5>
 							</button>
 							
-							<a href="addToCart?id=<%=product.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
-								onMouseOut="this.style.backgroundColor='#87CEEB'">
+							<a href="#?id=<%=product.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
+								onMouseOut="this.style.backgroundColor='#87CEEB'" >>
 								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
+								 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
+								 
+								
+								 
 						</div>
+					</div>
 					</div>
 				</div>
 
@@ -399,6 +412,9 @@ String user_email=(String)session1.getAttribute("UserEmail");
 		</div>
 	</section>
 	<!-- Blog Section End -->
+	
+	
+	
 	<jsp:include page="footer.html" />
 
 	<!-- Js Plugins -->

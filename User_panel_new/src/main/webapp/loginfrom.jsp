@@ -64,7 +64,7 @@ padding: 0px 10px;
 									Create an account</b></a>
 						
 				
-				</div>
+				</div><div >
 					<div class="signin-form">
 						<h2 class="form-title">Online Eletrical Shopee</h2>
 						
@@ -111,10 +111,6 @@ padding: 0px 10px;
 								<input type="submit" name="signin" id="signin" class="form-submit" value="Log in"
 								 style="font-size:20px;  padding: 14px 25px;"/> 
 								
-	
-								                                                                        
-								
-								
 							</div>
 						</form>
 						<div class="social-login">
@@ -127,6 +123,7 @@ padding: 0px 10px;
 					             <li><a href="#" class="social-login-icon fab fa-twitter"></a></li>
 							</ul>
 						
+					</div>
 					</div>
 				</div>
 			</div>

@@ -54,9 +54,11 @@ public class LoginServlet extends HttpServlet {
 		                String role = rs.getString("user_type");
 		                String username = rs.getString("user_name");
 		                String useremail = rs.getString("user_emailid");
+		                int userId= rs.getInt("user_id");
 		                session1.setAttribute("UserName", username);
 		                session1.setAttribute("UserEmail", useremail);
 		                session1.setAttribute("usertype", role);
+		                session1.setAttribute("userid", userId);
 		                if (role.equals("Admin")) {
 		                    request.setAttribute("username", user_emailid);
 		                    request.getRequestDispatcher("dashbord.jsp").forward(request, response);

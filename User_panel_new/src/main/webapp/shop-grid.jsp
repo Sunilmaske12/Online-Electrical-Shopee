@@ -328,7 +328,8 @@
 											onMouseOver="this.style.backgroundColor='#808080'"
 											onMouseOut="this.style.backgroundColor='#87CEEB'"> <i
 											class="fa fa-shopping-cart"></i>ADD TO CARD
-										</a>
+										</a>	 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
+								
 
 									</div>
 								</div>
