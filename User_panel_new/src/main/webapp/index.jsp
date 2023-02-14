@@ -230,9 +230,9 @@ String user_email=(String)session1.getAttribute("UserEmail");
 				<div style="border: 1px solid grey; " class="mt-5">
 					<div  class="featured__item m-4 " >
 						<div   class="featured__item__pic set-bg "
-							Style="background-size:200px auto; " data-setbg="img/latest-product/<%=product.getProd_imageName() %>"
+							
 							style="background-image: url(&quot;img/latest-product/<%=product.getProd_imageName() %>&quot;);">
-
+							<img style="max-height: 200px; height:auto; " class="center" src="img/latest-product/<%=product.getProd_imageName() %>">
 							<ul class="featured__item__pic__hover">
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 								<li><a href="#"><i class="fa fa-retweet"></i></a></li>

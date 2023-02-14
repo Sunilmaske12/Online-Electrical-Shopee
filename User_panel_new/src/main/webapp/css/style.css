@@ -832,6 +832,15 @@ transparent;
 	position: relative;
 	overflow: hidden;
 	background-position: center center;
+
+}
+
+	.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:auto;
+  
 }
 
 

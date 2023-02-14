@@ -302,11 +302,11 @@
                     	%>
                     	
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-					<div class="featured__item">
-						<div class="featured__item__pic set-bg"
-							data-setbg="img/latest-product/<%=catproduct.getProd_imageName() %>"
-							style="background-image: url(&quot;img/latest-product/<%=catproduct.getProd_imageName() %>&quot;);">
-
+				<div style="border: 1px solid grey; " class="mt-5">
+					<div class="featured__item m-4">
+						<div  class="featured__item__pic set-bg"
+							 style="background-image: url(&quot;img/latest-product/<%=catproduct.getProd_imageName() %>&quot;);">
+								<img style="max-height: 200px; height:auto; " class="center" src="img/latest-product/<%=catproduct.getProd_imageName() %>">
 							<ul class="featured__item__pic__hover">
 								<li><a href="#"><i class="fa fa-heart"></i></a></li>
 								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -336,6 +336,7 @@
 								 	 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
 								
 						</div>
+					</div>
 					</div>
 				</div>
 
