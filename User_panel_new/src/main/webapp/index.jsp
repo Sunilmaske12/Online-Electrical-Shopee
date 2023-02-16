@@ -67,7 +67,7 @@ String user_email=(String)session1.getAttribute("UserEmail");
 <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/style.css?v=2" type="text/css">
 </head>
 
 <body>
@@ -121,10 +121,10 @@ String user_email=(String)session1.getAttribute("UserEmail");
 				<div class="col-lg-3">
 					<div class="hero__categories">
 						<div class="hero__categories__all"
-							style="background-color: #87CEEB">
-							<i class="fa fa-bars" ></i> <span><a
-								href="index.jsp?category=all" style="color: white">All
-									Categories </a> </span>
+							>
+							 <span><a
+								 style="color: white">AVAILABLE
+									CATEGORIES </a> </span><br>
 						</div>
 						<ul>
 							<%    
@@ -137,7 +137,7 @@ String user_email=(String)session1.getAttribute("UserEmail");
 							<%  for(Category c : clist) {  %>
 							<li><a href="index.jsp?category=<%= c.getId() %>"
 								onMouseOver="this.style.color='red'"
-								onMouseOut="this.style.color='black'"> <%= c.getCat_title() %>
+								onMouseOut="this.style.color='black'"> <%= c.getCat_title().toUpperCase() %>
 							</a></li>
 							<%  }  %>
 						</ul>
@@ -149,7 +149,7 @@ String user_email=(String)session1.getAttribute("UserEmail");
 							<form action="#">
 								<input type="text" placeholder="What do yo u need?">
 								<button type="submit" class="site-btn"
-									style="background-color: #87CEEB">SEARCH</button>
+									>SEARCH</button>
 							</form>
 						</div>
 						<div class="hero__search__phone">
@@ -157,9 +157,9 @@ String user_email=(String)session1.getAttribute("UserEmail");
 								<a href="#" data-toggle="modal" data-target="#MyProfile"><img  alt="icon" src="img/hero/icon.png" > </a>
 							</div>
 							<div class="hero__search__phone__text">
-								<h5>WELCOME <%if(user_name!=null){%>  </h5>
-								<h4 class=" font-weight-bold" style="color: green"> <%=user_name.toUpperCase() %> </h4>
-								<%} %>
+								<h5 >WELCOME  </h5>
+								<h4 class=" font-weight-bold" style="color: green">  <%if(user_name!=null){%><%=user_name.toUpperCase() %><%} else{ %> USER<%} %> </h4>
+								
 							</div>
 						</div>
 					</div>
@@ -169,8 +169,8 @@ String user_email=(String)session1.getAttribute("UserEmail");
 							<h2>
 								Online <br />Electrical Shopee
 							</h2>
-							<p>Free Pickup and Delivery Available</p>
-							<a href="#" class="primary-btn" style="background-color: #87CEEB">SHOP
+							<p>FREE PICKUP & DELIVERY AVAILABLE</p>
+							<a href="shop-grid.jsp" class="primary-btn">SHOP
 								NOW</a>
 						</div>
 					</div>
@@ -197,92 +197,18 @@ String user_email=(String)session1.getAttribute("UserEmail");
                     }   //working here end 
      
                       %>
-
-	<!--   Featured Section Begin -->
-	<section class="featured spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title">
-						<h2>Featured Product</h2>
-					</div>
-					<div class="featured__controls">
-						<ul>
-							<%  for(Category c : clist) { %>
-
-							<li><a href="index.jsp?category=<%=c.getId() %>"
-								onMouseOver="this.style.color='red'"
-								onMouseOut="this.style.color='black'"><%= c.getCat_title() %>
-							</a></li>
-
-							<%  }  %>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="row featured__filter">
-				<%   
-                    // List<Product> list = productdao.getAllProducts();
-                     for(Product product:prodlist)
-                    {   //System.out.println(product.getProd_description()); %>
-				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ">
-				<div style="border: 1px solid grey; " class="mt-5">
-					<div  class="featured__item m-4 " >
-						<div   class="featured__item__pic set-bg "
-							
-							style="background-image: url(&quot;img/latest-product/<%=product.getProd_imageName() %>&quot;);">
-							<img style="max-height: 200px; height:auto; " class="center" src="img/latest-product/<%=product.getProd_imageName() %>">
-							<ul class="featured__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-							</ul>
-						</div>
-
-						<div class="featured__item__text">
-							<h6>
-								<a href="Product-details.jsp?product=<%=product.getId() %>"
-									style="color: black"><%=product.getProd_name() %></a>
-							</h6>
-							<!--   <h6><%=product.getProd_description() %></h6> -->
-							<!--  <h5> <span>&#8377; </span><%=product.getProd_price() %> </h5> <br> -->
-							<button type="button" class="btn btn-light">
-								<h5>
-									&#8377;<%=product.getPriceAfterDiscount() %>/- <span
-										style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
-										<%=product.getProd_price() %> ,<%=product.getProd_discount() %>
-										off
-									</span>
-								</h5>
-							</button>
-							
-							<a href="#?id=<%=product.getId() %>" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"
-								onMouseOut="this.style.backgroundColor='#87CEEB'" >>
-								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
-								 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
-								 
-								
-								 
-						</div>
-					</div>
-					</div>
-				</div>
-
-				<%  } %>
-
-			</div>
-
-		</div>
-	</section>
-	<!-- Featured Section End -->
-
-	<!-- Categories Section Begin -->
+                      
+                      
+                      
+                      
+                      
+                      <!-- Categories Section Begin -->
 	<section class="categories">
 		<div class="container">
 			<div class="row">
 				<div class="categories__slider owl-carousel">
-					<div class="col-lg-3">
-						<div class="categories__item set-bg"
+					<div  class="col-lg-3">
+						<div  class="categories__item set-bg"
 							data-setbg="img/categories/cat.1.jpg">
 							<h5>
 								<a href="#">Mixer Grinder</a>
@@ -326,6 +252,124 @@ String user_email=(String)session1.getAttribute("UserEmail");
 		</div>
 	</section>
 	<!-- Categories Section End -->
+	
+	
+	<section style=" padding-bottom: 50px;
+    padding-top: 80px;" class="banner">
+        <div  class="row text-center">
+            <div style="border-radius: 25px; background:red;   " class="col-md-6 offset-md-3 offset-lg-3">
+                <a style="font-family:Arial; font-weight: 700;
+    color: white; font-size: 24px;" href="shop-grid.jsp" class="btn btn-solid d-block font-medium-1">ALL PRODUCTS</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- -----service section------- -->
+    <section class="">
+            <div class="row ">
+                <div class="col-lg-3 col-sm-6 service-block1 ">
+                    <div>
+                        <img src="img/service/truck.png" alt="">
+                        <h5>Shipping</h5>
+                        <p> Happiness to your home.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 service-block1">
+                    <div>
+                        <img src="img/service/24-hours.png" alt="">
+                        <h5>24 X 7 service</h5>
+                        <p>Because it is our passion.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 service-block1">
+                    <div>
+                        <img src="img/service/iwallet.png" alt="">
+                        <h5>Online Payment</h5>
+                        <p>Ease to own what you like.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 service-block1">
+                    <div>
+                        <img src="img/service/megaphone.png" alt="">
+                        <h5>Always Listening</h5>
+                        <p>Always learning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- -----service section end------- -->
+         
+         
+	<!--   Featured Section Begin -->
+	<section class="featured spad">
+	<div style=" display: flex; align-items: center; justify-content: center; background:red; height:50px; " >
+         <div style="text-align: center; width:200px; height:49px; background: black; ">
+                                    <h4 style="color:white;  padding: 10px;">TOP RATED</h4>
+                </div>
+            </div>
+		<div class="container">
+			
+
+			<div class="row featured__filter">
+				<%   
+                    // List<Product> list = productdao.getAllProducts();
+				
+                     for(Product product:prodlist)
+                    { 
+                   	 
+                    	 
+                    	 %>
+				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ">
+				<div style="border: 1px solid grey; " class="mt-5">
+					<div  class="featured__item m-4 " >
+						<div   class="featured__item__pic set-bg "
+							
+							style="background-image: url(&quot;img/latest-product/<%=product.getProd_imageName() %>&quot;);">
+							<a href="Product-details.jsp?product=<%=product.getId() %>"> <img style="max-height: 200px; height:auto; " class="center" src="img/latest-product/<%=product.getProd_imageName() %>"></a>
+							<ul class="featured__item__pic__hover">
+								<li><a href="#"><i class="fa fa-heart"></i></a></li>
+								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
+							</ul>
+						</div>
+
+						<div class="featured__item__text">
+							<h6>
+								<a href="Product-details.jsp?product=<%=product.getId() %>"
+									style="color: black"><%=product.getProd_name() %></a>
+							</h6>
+							<!--   <h6><%=product.getProd_description() %></h6> -->
+							<!--  <h5> <span>&#8377; </span><%=product.getProd_price() %> </h5> <br> -->
+							<button type="button" class="btn btn-light">
+								<h5>
+									&#8377;<%=product.getPriceAfterDiscount() %>/- <span
+										style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
+										<%=product.getProd_price() %> ,<%=product.getProd_discount() %>
+										off
+									</span>
+								</h5>
+							</button>
+							
+							<a href="addToCart?id=<%=product.getId() %>" class="primary-btn"  onMouseOver="this.style.backgroundColor='#808080'"
+								onMouseOut="this.style.backgroundColor='red'" >>
+								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
+								 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
+								 
+								
+								 
+						</div>
+					</div>
+					</div>
+				</div>
+
+				<%  } %>
+
+			</div>
+
+		</div>
+	</section>
+	<!-- Featured Section End -->
+
+	
 	<br>
 	<br>
 	<br>
@@ -349,69 +393,7 @@ String user_email=(String)session1.getAttribute("UserEmail");
 	</div>
 	<!-- Banner End -->
 
-	<!-- Blog Section Begin -->
-	<section class="from-blog spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title from-blog__title">
-						<h2>From The Blog</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="blog__item">
-						<div class="blog__item__pic">
-							<img src="img/banner/beaty.jpg" alt="">
-						</div>
-						<div class="blog__item__text">
-							<ul>
-								<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-								<li><i class="fa fa-comment-o"></i> 5</li>
-							</ul>
-							<h5>
-								<a href="#"> Beautify your place, with its grace </a>
-							</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="blog__item">
-						<div class="blog__item__pic">
-							<img src="img/banner/livingroom.jpg" alt="">
-						</div>
-						<div class="blog__item__text">
-							<ul>
-								<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-								<li><i class="fa fa-comment-o"></i> 5</li>
-							</ul>
-							<h5>
-								<a href="#">Beautify your place, with its grace </a>
-							</h5>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6">
-					<div class="blog__item">
-						<div class="blog__item__pic">
-							<img src="img/banner/lighthome.jpg" alt="">
-						</div>
-						<div class="blog__item__text">
-							<ul>
-								<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-								<li><i class="fa fa-comment-o"></i> 5</li>
-							</ul>
-							<h5>
-								<a href="#"> Beautify your place, with its grace </a>
-							</h5>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Blog Section End -->
+	
 	
 	
 	

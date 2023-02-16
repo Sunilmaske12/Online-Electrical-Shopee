@@ -45,55 +45,7 @@
                           //  List<Product> prodlist= productdao.getAllProducts();
         %>
 
-	<!-- Hero Section Begin -->
-	<section class="hero hero-normal">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="hero__categories">
-						<div class="hero__categories__all"
-							style="background-color: #87CEEB">
-							<i class="fa fa-bars"></i> <span><a
-								href="shop-grid.jsp?category=all" style="color: white">All
-									Categories </a> </span>
-						</div>
-						<ul>
-
-							<%  for(Category c : clist) {  %>
-							<li><a href="shop-grid.jsp?category=<%= c.getId() %>"
-								onMouseOver="this.style.color='red'"
-								onMouseOut="this.style.color='black'"> <%= c.getCat_title() %>
-							</a></li>
-							<%  }  %>
-
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-9">
-					<div class="hero__search">
-						<div class="hero__search__form">
-							<form action="#">
-
-								<input type="text" placeholder="What do yo u need?">
-								<button type="submit" class="site-btn"
-									style="background-color: #87CEEB">SEARCH</button>
-							</form>
-						</div>
-						<div class="hero__search__phone">
-							<div class="hero__search__phone__icon">
-								<i class="fa fa-phone"></i>
-							</div>
-							<div class="hero__search__phone__text">
-								<h5>+65 11.188.888</h5>
-								<span>support 24/7 time</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Hero Section End -->
+	
 
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section set-bg" data-setbg="img/Name-bg.jpg">
@@ -132,16 +84,29 @@
 	<section class="product spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-5">
-					<div class="sidebar">
-						<div class="sidebar__item">
-							<h4>All Category</h4>
+				<div class="col-lg-3">
+					<div class="hero__categories">
+						<div class="hero__categories__all"
+							>
+							 <span><a
+								 style="color: white">ALL
+									CATEGORIES </a> </span><br>
+						</div>
 							<ul>
+
+								
+								<li><a href="shop-grid.jsp"
+									onMouseOver="this.style.color='red'"
+									onMouseOut="this.style.color='green'">All CATEGORIES 
+								</a></li>
+								
+
+							
 
 								<%  for(Category c : clist) {  %>
 								<li><a href="shop-grid.jsp?category=<%= c.getId() %>"
 									onMouseOver="this.style.color='red'"
-									onMouseOut="this.style.color='green'"> <%= c.getCat_title() %>
+									onMouseOut="this.style.color='green'"> <%= c.getCat_title().toUpperCase() %>
 								</a></li>
 								<%  }  %>
 
@@ -224,7 +189,7 @@
 							</div>
 						</div> 
 					</div>
-				</div>
+				
 
       
 
@@ -263,10 +228,10 @@
 										</button>
 
 
-										<a href="#" class="primary-btn"
-											style="background-color: #87CEEB"
+										<a href="addToCart?id=<%=product.getId() %>" class="primary-btn"
+											
 											onMouseOver="this.style.backgroundColor='#808080'"
-											onMouseOut="this.style.backgroundColor='#87CEEB'"> <i
+											onMouseOut="this.style.backgroundColor='red'"> <i
 											class="fa fa-shopping-cart"></i>ADD TO CARD
 										</a>	 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
 								

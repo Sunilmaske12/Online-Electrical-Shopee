@@ -147,7 +147,7 @@ if(user_name==null){ %>
 									<button id='closeModal' type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 								</div>
 								
-								<a	href="Productoperation?action=DELETE&id=<%=rs.getString("prod_id")%>">
+								
 							</div>
 						</section>
 					</div>

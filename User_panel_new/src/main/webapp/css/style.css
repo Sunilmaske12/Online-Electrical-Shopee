@@ -118,7 +118,7 @@ ul, ol {
 	right: 0;
 	height: 4px;
 	width: 80px;
-	background: #7fad39;
+	background: red;
 	content: "";
 	margin: 0 auto;
 }
@@ -148,7 +148,7 @@ ul, ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	background: #7fad39;
+	background: red;
 	letter-spacing: 2px;
 }
 
@@ -159,7 +159,7 @@ ul, ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
-	background: #7fad39;
+	background: red;
 	border: none;
 }
 
@@ -559,7 +559,7 @@ transparent;
 }
 
 .hero__categories__all {
-	background: #7fad39;
+	background: red;
 	position: relative;
 	padding: 10px 25px 10px 40px;
 	cursor: pointer;
@@ -685,6 +685,7 @@ transparent;
 
 .hero__search__phone__text {
 	overflow: hidden;
+	
 }
 
 .hero__search__phone__text h5 {
@@ -731,6 +732,7 @@ transparent;
 .categories__item {
 	height: 270px;
 	position: relative;
+	
 }
 
 .categories__item h5 {
@@ -922,6 +924,41 @@ transparent;
 	color: #252525;
 	font-weight: 700;
 }
+
+/*---------------------
+  All Product btn
+-----------------------*/
+ 
+   
+   
+   .service-block1 h5 {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    color: #555555;
+}
+
+.service-block1 {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+}
+
 
 /*---------------------
   Latest Product

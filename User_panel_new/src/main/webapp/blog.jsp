@@ -7,7 +7,7 @@
 <meta name="keywords" content="Ogani, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Ogani | Template</title>
+<title>Online Electrical Shopee</title>
 
 <!-- Google Font -->
 <link
@@ -307,6 +307,72 @@
 	</section>
 	<!-- Blog Section End -->
 
+
+<!-- Blog Section Begin -->
+	<section class="from-blog spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title from-blog__title">
+						<h2>From The Blog</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<div class="blog__item">
+						<div class="blog__item__pic">
+							<img src="img/banner/beaty.jpg" alt="">
+						</div>
+						<div class="blog__item__text">
+							<ul>
+								<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+								<li><i class="fa fa-comment-o"></i> 5</li>
+							</ul>
+							<h5>
+								<a href="#"> Beautify your place, with its grace </a>
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<div class="blog__item">
+						<div class="blog__item__pic">
+							<img src="img/banner/livingroom.jpg" alt="">
+						</div>
+						<div class="blog__item__text">
+							<ul>
+								<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+								<li><i class="fa fa-comment-o"></i> 5</li>
+							</ul>
+							<h5>
+								<a href="#">Beautify your place, with its grace </a>
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<div class="blog__item">
+						<div class="blog__item__pic">
+							<img src="img/banner/lighthome.jpg" alt="">
+						</div>
+						<div class="blog__item__text">
+							<ul>
+								<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+								<li><i class="fa fa-comment-o"></i> 5</li>
+							</ul>
+							<h5>
+								<a href="#"> Beautify your place, with its grace </a>
+							</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Blog Section End -->
+	
+	
 	<jsp:include page="footer.html" />
 
 	<!-- Js Plugins -->
