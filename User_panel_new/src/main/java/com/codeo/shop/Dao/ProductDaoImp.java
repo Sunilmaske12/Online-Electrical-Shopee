@@ -10,11 +10,13 @@ import java.util.List;
 import com.codeo.shop.dbutil.ConnectionProvider;
 import com.codeo.shop.entity.Cart;
 import com.codeo.shop.entity.Product;
+import com.codeo.shop.entity.Blog;
 
 public class ProductDaoImp implements ProductDao {
 	
 	private static final String insert_Product ="insert into product_operation(prod_name, prod_description, prod_price, prod_discount, prod_quantity,prod_imageName,cid) values(?,?,?,?,?,?,?)";
 	private static final String selct_product ="SELECT * FROM product_operation ";
+	private static final String select_blog ="SELECT * FROM myblogs ";
     private static final String Edit_product ="select * from product_operation where prod_id=?";
     //private static final String Update_product = "UPDATE product_operation SET name = '"+product.getProd_name()+"', "+ "description = '"+product.getProd_description()+"',  price = '"+product.getProd_price()+"', discount = '"+product.getProd_discount()+"',quantity = '"+product.getProd_quantity()+"',image = '"+product.getProd_imageName()+"' where id="+product.getId();
 	
@@ -333,7 +335,7 @@ public class ProductDaoImp implements ProductDao {
 		            product.setProd_imageName(rs.getString("prod_imageName"));
 		            product.setCid(rs.getInt("cid"));
 		            listProduct.add(product);
-		            System.out.println(product.getProd_name());
+		           
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -414,5 +416,67 @@ public class ProductDaoImp implements ProductDao {
 		}
 		return sum;
 		}
+	
+	
+	 //get all blogs ----------------
+	
+	
+	public List<Blog> getAllBlogs()
+		{
+			List<Blog> bloglist = new ArrayList<Blog>();
+			
+	Connection con = ConnectionProvider.getconnection();
+	try {
+		Statement statement = con.createStatement();
+		ResultSet resultset =null;
+		resultset =statement.executeQuery(select_blog);
+		//prod_id, prod_name, prod_description, prod_price, prod_discount, prod_quantity, prod_imageName
+		while(resultset.next())
+		{
+			Blog blog = new Blog();
+			blog.setB_id(resultset.getInt("B_id"));
+			blog.setBlog_description(resultset.getString("Blog_description"));
+			blog.setBlog_name(resultset.getString("BlogPhoto_Name"));
+			blog.setBlog_title(resultset.getString("Blog_Title"));
+			bloglist.add(blog);
+		}
+	} 
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+		return bloglist;
+		}
+	
+	
+	
+	 public List <Blog> getBlogsDetails(int id)
+		{
+			List<Blog> list = new ArrayList<Blog>();
+				        Connection con = ConnectionProvider.getconnection();
+	       
+	try {
+		Statement statement = con.createStatement();
+		ResultSet resultset =null;
+		String detail_blog ="SELECT * FROM myblogs where B_id= "+id;
+		resultset =statement.executeQuery(detail_blog);
+		//prod_id, prod_name, prod_description, prod_price, prod_discount, prod_quantity, prod_imageName
+		while(resultset.next())
+		{
+			Blog b = new Blog();
+			b.setB_id(resultset.getInt("B_id"));
+			b.setBlog_description(resultset.getString("Blog_description"));
+			b.setBlog_name(resultset.getString("BlogPhoto_Name"));
+			b.setBlog_title(resultset.getString("Blog_Title"));
+			list.add(b);
+		
+		}
+	} 
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+		return list;
+			
+	}
+
 	
   }

@@ -196,48 +196,136 @@ keyframes loader { 0% {
 }
 
 50
+
+
 %
 {
 -webkit-transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 180deg
-);
+
+
+)
+;
+
+
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 180deg
-);
+
+
+)
+;
+
+
 border
+
+
 :
+
+
 4px
+
+
 solid
-#673ab7;
+
+
+#673ab7
+;
+
+
 border-left-color
+
+
 :
-transparent;
+
+
+transparent
+;
+
+
 }
 100
+
+
 %
 {
 -webkit-transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 border
+
+
 :
+
+
 4px
+
+
 solid
-#f44336;
+
+
+#f44336
+;
+
+
 border-left-color
+
+
 :
-transparent;
+
+
+transparent
+;
+
+
 }
 }
 @
@@ -248,38 +336,102 @@ transparent;
 }
 
 50
+
+
 %
 {
 -webkit-transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 180deg
-);
+
+
+)
+;
+
+
 border
+
+
 :
+
+
 4px
+
+
 solid
-#673ab7;
+
+
+#673ab7
+;
+
+
 border-left-color
+
+
 :
-transparent;
+
+
+transparent
+;
+
+
 }
 100
+
+
 %
 {
 -webkit-transform
+
+
 :
-rotate(
+
+
+rotate
+(
+
+
 360deg
-);
+
+
+)
+;
+
+
 border
+
+
 :
+
+
 4px
+
+
 solid
-#f44336;
+
+
+#f44336
+;
+
+
 border-left-color
+
+
 :
-transparent;
+
+
+transparent
+;
+
+
 }
 }
 
@@ -685,7 +837,6 @@ transparent;
 
 .hero__search__phone__text {
 	overflow: hidden;
-	
 }
 
 .hero__search__phone__text h5 {
@@ -732,7 +883,6 @@ transparent;
 .categories__item {
 	height: 270px;
 	position: relative;
-	
 }
 
 .categories__item h5 {
@@ -834,17 +984,14 @@ transparent;
 	position: relative;
 	overflow: hidden;
 	background-position: center center;
-
 }
 
-	.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top:auto;
-  
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
 }
-
 
 .featured__item__pic__hover {
 	position: absolute;
@@ -928,37 +1075,33 @@ transparent;
 /*---------------------
   All Product btn
 -----------------------*/
- 
-   
-   
-   .service-block1 h5 {
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 5px;
+.service-block1 h5 {
+	font-weight: 900;
+	text-transform: uppercase;
+	margin-bottom: 5px;
 }
 
 h5 {
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    line-height: 1.2;
-    color: #555555;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.03em;
+	line-height: 1.2;
+	color: #555555;
 }
 
 .service-block1 {
-    text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    height: 100%;
+	text-align: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	height: 100%;
 }
-
 
 /*---------------------
   Latest Product
@@ -2477,20 +2620,27 @@ h5 {
   Blog Details Hero
 -----------------------*/
 .blog-details-hero {
-	height: 350px;
+	height: 500px;
 	display: flex;
 	align-items: center;
 }
 
 .blog__details__hero__text {
 	text-align: center;
+	max-width:700px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	
 }
 
 .blog__details__hero__text h2 {
-	font-size: 46px;
-	color: #ffffff;
+	font-size: 85px;
+	color: black;
 	font-weight: 700;
-	margin-bottom: 10px;
+	margin-bottom: 100px;
+	font-family: Arial;
 }
 
 .blog__details__hero__text ul li {
@@ -3471,9 +3621,8 @@ h5 {
 	}
 }
 
-
-
-// My profile Modal 
-.my_profile{
+//
+My profile Modal 
+.my_profile {
 	
 }
