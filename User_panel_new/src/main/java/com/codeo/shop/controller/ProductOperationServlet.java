@@ -65,7 +65,7 @@ public class ProductOperationServlet extends HttpServlet {
 		
   String path = request.getServletContext().getRealPath("img")+File.separator+"latest-product"+File.separator+file.getSubmittedFileName(); 
 
-  System.out.println("path is:"+ path);
+  
   
   
   		//upload pic in folder

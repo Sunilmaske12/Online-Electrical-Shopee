@@ -35,9 +35,9 @@
 							class="ft-package"></i><span data-i18n="" class="menu-title">Website
 								Master</span></a>
 						<ul class="menu-content">
-							<li><a href="Add_Banner.jsp" class="menu-item"> Add
+							<li><a href="Banner.jsp" class="menu-item">
 									Banner </a></li>
-							<li><a href=" " class="menu-item"> View Banner </a></li>
+							
 							<li><a href="loginfrom.jsp" class="menu-item">Login form</a>
 							</li>
 

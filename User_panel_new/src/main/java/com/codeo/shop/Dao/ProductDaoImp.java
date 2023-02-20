@@ -27,7 +27,7 @@ public class ProductDaoImp implements ProductDao {
     public ProductDaoImp(Connection con)
     {
     	this.con=con;
-    	System.out.println("this is cunstructor con:"+this.con);
+    	
     }
     
     public ProductDaoImp()
@@ -55,9 +55,9 @@ public class ProductDaoImp implements ProductDao {
 					psmt.setString(6, product.getProd_imageName());
 					psmt.setInt(7, product.getCid());
 						}
-				System.out.println(psmt);
+				
 			    int result = psmt.executeUpdate(); 
-				System.out.println("result is "+result);
+				
 				flag = true;
 			} 
              catch (SQLException e) {
@@ -141,46 +141,7 @@ public class ProductDaoImp implements ProductDao {
 		}
 	    return true;
 	}
-	/*
-	@Override
-	public Product editProd(int id) {
-		
-		Product product = null;
-		ResultSet resultset= null;
-		 PreparedStatement stmt = null;
-		   
-		 con= ConnectionProvider.getconnection();
-		try {
-			  
-			 stmt = con.prepareStatement(Edit_product);
-		    // stmt.setInt(1, id);
-			if(resultset.next())
-			{
-				//product.setId(resultset.getInt("prod_id"));
-				//product.setProd_name(resultset.getString("prod_name"));
-				//product.setProd_description(resultset.getString("prod_description"));
-				//product.setProd_price(resultset.getString("prod_price"));
-				//product.setProd_discount(resultset.getString("prod_discount"));
-				//product.setProd_quantity(resultset.getString("prod_quantity"));
-				//product.setProd_imageName(resultset.getString("prod_imageName"));
-				//int id = resultset.getInt("prod_id");
-				String prod_name = resultset.getString("prod_name");
-				String prod_description= resultset.getString("prod_description");
-				String prod_price= resultset.getString("prod_price");
-				String prod_discount= resultset.getString("prod_discount");
-				String prod_quantity= resultset.getString("prod_quantity");
-				String prod_imageName= resultset.getString("prod_imageName");
-				int cid = resultset.getInt("cid");
-				product = new Product(prod_name,prod_description,prod_price,prod_discount,prod_quantity,prod_imageName,cid);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return product;
-	   }
-	   
-	   */
+	
 	
 	//for sorting of categories 
 	  public List <Product> getAllProductsById(int id)

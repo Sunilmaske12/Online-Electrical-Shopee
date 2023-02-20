@@ -14,8 +14,8 @@ String admin_name=(String)session3.getAttribute("UserName");
 		<div class="container-fluid">
 			<div class="navbar-header">
 			
-		
-			<h3 style="color:red;"  class="font-weight-bold">Welcome : <%=admin_name %> </h3>
+		<%if(admin_name!=null){ %>
+			<h3 style="color:red;"  class="font-weight-bold">Welcome : <%=admin_name %> </h3><%} %>
 				<button type="button" data-toggle="collapse"
 					class="navbar-toggle d-lg-none float-left">
 					

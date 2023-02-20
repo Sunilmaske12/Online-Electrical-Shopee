@@ -15,6 +15,7 @@
 	1.2	Mixins
 	1.3	Flexbox
 	1.4	Reset
+	
 2.  Helper Css
 3.  Header Section
 4.  Hero Section
@@ -26,6 +27,7 @@
 10.  Footer Style
 11. button
 12. My profile Modal
+13. banner arrow
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -3621,8 +3623,21 @@ h5 {
 	}
 }
 
-//
-My profile Modal 
+/*--------------------------------- My profile Modal -----------------------------*/
 .my_profile {
 	
 }
+
+
+/*--------------------------------- Banner Arrow -----------------------------*/
+
+ .carousel-control-next-icon, .carousel-control-prev-icon{
+height: 60px;
+    width: 60px;
+    outline: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    
+    }
+

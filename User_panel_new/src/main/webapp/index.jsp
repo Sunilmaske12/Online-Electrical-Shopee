@@ -37,9 +37,11 @@ String user_email = (String) session1.getAttribute("UserEmail");
 <html lang="zxx">
 <%@page import="java.util.*"%>
 <%@page import="com.codeo.shop.entity.Product"%>
+<%@page import="com.codeo.shop.entity.Banner"%>
 <%@page import="com.codeo.shop.entity.Category"%>
 <%@page import="com.codeo.shop.Dao.CategoryDao"%>
 <%@page import="com.codeo.shop.Dao.ProductDaoImp"%>
+<%@page import="com.codeo.shop.Dao.BannerDao"%>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ogani Template">
@@ -145,20 +147,82 @@ String user_email = (String) session1.getAttribute("UserEmail");
 
 							</div>
 						</div>
+
+
 					</div>
-					<div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
-						<div class="hero__text">
-							<span>Electrical Appliances</span>
-							<h2>
-								Online <br />Electrical Shopee
-							</h2>
-							<p>FREE PICKUP & DELIVERY AVAILABLE</p>
-							<a href="shop-grid.jsp" class="primary-btn">SHOP NOW</a>
+
+
+
+					<!-- -Banner working started -->
+
+
+
+					<%
+					BannerDao bannerdao = new BannerDao();
+					List<Banner> banner = bannerdao.getAllBanner(); 
+					int size=banner.size();
+					%>
+					<div id="carouselExampleIndicators" class="carousel slide"
+						data-bs-ride="carousel">
+						<div class="carousel-indicators">
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+								data-bs-slide-to="0" class="active" aria-current="true"
+								aria-label="Slide 1"></button>
+								<%for(int i=1; i<=size; i++){ %>
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+								data-bs-slide-to="<%=i %>" aria-label=" Slide <%=i+1%>"></button>
+								<%
+								
+								} %>
+								
+							
 						</div>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+									<div class="hero__text">
+										<span>Electrical Appliances</span>
+										<h2>
+											Online <br />Electrical Shopee
+										</h2>
+										<p>FREE PICKUP & DELIVERY AVAILABLE</p>
+										<a href="shop-grid.jsp" class="primary-btn">SHOP NOW</a>
+									</div>
+								</div>
+
+							</div>
+							<%
+							for (Banner b : banner) {
+								
+								
+							%>
+							<div class="carousel-item">
+								<img src="img/banner/<%=b.getBanner_image()%>"
+									class="d-block w-100" alt="...">
+							</div>
+							<%
+							}
+							%>
+
+						</div>
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
 					</div>
+
+
 				</div>
-			</div>
+
+</div>
 		</div>
+
 	</section>
 	<!-- Hero Section End -->
 
@@ -187,7 +251,8 @@ String user_email = (String) session1.getAttribute("UserEmail");
 		<div class="container">
 			<div class="row">
 				<div class="categories__slider owl-carousel">
-					<div class="col-lg-3">
+					<div class="
+">
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.1.jpg">
 							<h5>
