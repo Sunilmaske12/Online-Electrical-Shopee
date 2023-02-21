@@ -79,7 +79,7 @@
 							class="ft-calendar"></i><span data-i18n="" class="menu-title">Calendar</span></a>
 					</li>
 
-					<li class=" nav-item"><a href="https://pixinvent.ticksy.com/"><i
+					<li class=" nav-item"><a href=""><i
 							class="ft-life-buoy"></i><span data-i18n="" class="menu-title">Support</span></a>
 					</li>
 				</ul>

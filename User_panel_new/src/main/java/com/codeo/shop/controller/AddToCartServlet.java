@@ -23,7 +23,7 @@ public class AddToCartServlet extends HttpServlet {
     	ArrayList<Cart> cartlist = new ArrayList<>();
     	
     	int id = Integer.parseInt(request.getParameter("id"));
-        System.out.println(id);
+       // System.out.println(id);
         //String prod_name=request.getParameter("prod_name");
         //System.out.println(prod_name);
         //String prod_price= request.getParameter("prod_price");
@@ -36,7 +36,7 @@ public class AddToCartServlet extends HttpServlet {
       cart.setQuantity(1);
       
      HttpSession session = request.getSession();
-     ArrayList<Cart>cart_list=(ArrayList<Cart>)session.getAttribute("cart-list");
+     ArrayList<Cart> cart_list=(ArrayList<Cart>)session.getAttribute("cart-list");
      
      if(cart_list ==null)
      {

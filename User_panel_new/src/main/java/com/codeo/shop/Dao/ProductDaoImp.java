@@ -75,7 +75,7 @@ public class ProductDaoImp implements ProductDao {
 			//preparedStatement.executeUpdate();
 			Connection con = ConnectionProvider.getconnection();
 			String update_query="update product_operation set prod_name=?,prod_description=?,prod_price=?,prod_discount=?,prod_quantity=?,prod_imageName=?,cid=? where  prod_id=?";
-			 System.out.println(update_query);
+			 
 			
 			 try (PreparedStatement stmt = con.prepareStatement(update_query)) {
 
@@ -226,7 +226,7 @@ public class ProductDaoImp implements ProductDao {
 		
 		Connection con = ConnectionProvider.getconnection();
 		String update_query="update product_operation set prod_name=?,prod_description=?,prod_price=?,prod_discount=?,prod_quantity=?,prod_imageName=?,cid=? where  prod_id=?";
-		 System.out.println(update_query);
+		 
 		 
 		 try (PreparedStatement stmt = con.prepareStatement(update_query)) {
 
@@ -323,14 +323,13 @@ public class ProductDaoImp implements ProductDao {
 						Product product =new Product();
 						product.setProd_price(rs.getString("prod_price"));
 						product.setProd_discount(rs.getString("prod_discount"));
-						System.out.println();
+						
 						Cart row = new Cart();
 						row.setId(rs.getInt("prod_id"));
 						row.setProd_name(rs.getString("prod_name"));
 						row.setProd_imageName(rs.getString("prod_imageName"));
 						int calculated_price = product.getPriceAfterDiscount();
-						System.out.println(calculated_price);
-						System.out.println(item.getQuantity());
+						
 						row.setcalculated_price(calculated_price * item.getQuantity());
 						products.add(row);
 					}

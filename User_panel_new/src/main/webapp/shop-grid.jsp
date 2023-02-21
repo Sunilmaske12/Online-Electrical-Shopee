@@ -104,7 +104,7 @@
 							
 
 								<%  for(Category c : clist) {  %>
-								<li><a href="shop-grid.jsp?category=<%= c.getId() %>"
+								<li><a href="shop-grid.jsp?category=<%=c.getId()%>"
 									onMouseOver="this.style.color='red'"
 									onMouseOut="this.style.color='green'"> <%= c.getCat_title().toUpperCase() %>
 								</a></li>

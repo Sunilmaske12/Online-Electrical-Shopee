@@ -75,8 +75,8 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 							<li><a href="shop-grid.jsp">Shop</a></li>
 							<li><a href="blog.jsp">Blog</a></li>
 							<li><a href="./contact.jsp">Contact</a></li>
-							<li><a href="#">Shop Details</a>
-								</li>
+							
+								
 						</ul>
 					</nav>
 				</div>

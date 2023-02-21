@@ -4,34 +4,7 @@
 HttpSession session1 = request.getSession();
 String user_name = (String) session1.getAttribute("UserName");
 String user_email = (String) session1.getAttribute("UserEmail");
-
-//String user=(String)session1.getAttribute("usertype");
-//String user_email=(String)session1.getAttribute("email");
-//System.out.println("======================"+user_id+"===================="+ user_email +"==============================");
-//String user_name=(String)session1.getAttribute("UserName");
-//if(user==null){
-//	
-//	session.setAttribute("message", "You are not logged in, Logged in first as a admin");
-//	response.sendRedirect("loginfrom.jsp");
-//	return;
-//}
-//else if(user.equals("Admin")){
-//	session.setAttribute("message", "You are not Normal User, Logged in first as a User");
-//	response.sendRedirect("loginfrom.jsp");
-//	return;
-//}
-
-//else if(user.equals("Normal User")){
-
-//}
-
-//else{
-//	session.setAttribute("message", "Invalid User");
-//	response.sendRedirect("loginfrom.jsp");
-//	return;
-//}
 %>
-
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -108,7 +81,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 							<%
 							for (Category c : clist) {
 							%>
-							<li><a href="index.jsp?category=<%=c.getId()%>"
+							<li><a href="shop-grid.jsp?category=<%=c.getId()%>"
 								onMouseOver="this.style.color='red'"
 								onMouseOut="this.style.color='black'"> <%=c.getCat_title().toUpperCase()%>
 							</a></li>
@@ -256,7 +229,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.1.jpg">
 							<h5>
-								<a href="#">Mixer Grinder</a>
+								<a href="shop-grid.jsp?category=15">Mixer Grinder</a>
 							</h5>
 						</div>
 					</div>
@@ -264,7 +237,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.2.jpg">
 							<h5>
-								<a href="#">Switches</a>
+								<a href="shop-grid.jsp?category=14">Switches</a>
 							</h5>
 						</div>
 					</div>
@@ -272,7 +245,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.3.jpg">
 							<h5>
-								<a href="#">Fan</a>
+								<a href="shop-grid.jsp?category=10">Fan</a>
 							</h5>
 						</div>
 					</div>
@@ -280,7 +253,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.4.jpg">
 							<h5>
-								<a href="#">Light</a>
+								<a href="shop-grid.jsp?category=11">Light</a>
 							</h5>
 						</div>
 					</div>
@@ -288,7 +261,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.5.jpg">
 							<h5>
-								<a href="#">Press</a>
+								<a href="shop-grid.jsp?category=12">Press</a>
 							</h5>
 						</div>
 					</div>
