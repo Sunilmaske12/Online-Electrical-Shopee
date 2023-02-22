@@ -78,6 +78,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 							CategoryDao categorydao = new CategoryDao();
 							List<Category> clist = categorydao.getCategoryList();
 							ProductDaoImp productdao = new ProductDaoImp();
+							
 							//  List<Product> prodlist= productdao.getAllProducts();
 							%>
 							<%
@@ -219,6 +220,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 		int id = Integer.parseInt(cat.trim());
 		prodlist = productdao.getAllProductsById(id);
 	} //working here end
+	
 	%>
 
 
@@ -332,8 +334,8 @@ String user_email = (String) session1.getAttribute("UserEmail");
 		<div
 			style="display: flex; align-items: center; justify-content: center; background: red; height: 50px;">
 			<div
-				style="text-align: center; width: 200px; height: 49px; background: black;">
-				<h4 style="color: white; padding: 10px;">TOP RATED</h4>
+				style="text-align: center; width: 230px; height: 49px; background: black;">
+				<h4 style="color: white; padding: 12px;">Latest Products</h4>
 			</div>
 		</div>
 		<div class="container">
@@ -342,8 +344,10 @@ String user_email = (String) session1.getAttribute("UserEmail");
 			<div class="row featured__filter">
 				<%
 				// List<Product> list = productdao.getAllProducts();
-
+				int c=0;
 				for (Product product : prodlist) {
+					 c=c+1; if(c>(prodlist.size()-4)){
+					
 				%>
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ">
 					<div style="border: 1px solid grey;" class="mt-5">
@@ -372,7 +376,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 										&#8377;<%=product.getPriceAfterDiscount()%>/- <span
 											style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
 											<%=product.getProd_price()%> ,<%=product.getProd_discount()%>
-											off
+											%off
 										</span>
 									</h5>
 								</button>
@@ -395,6 +399,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 				</div>
 
 				<%
+				}
 				}
 				%>
 

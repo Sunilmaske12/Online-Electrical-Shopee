@@ -222,7 +222,7 @@
 												&#8377;<%=product.getPriceAfterDiscount() %>/- <span
 													style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
 													<%=product.getProd_price() %> , <%=product.getProd_discount() %>
-													off
+													%off
 												</span>
 											</h5>
 										</button>
