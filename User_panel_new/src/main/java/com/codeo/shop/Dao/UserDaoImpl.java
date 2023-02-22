@@ -209,6 +209,33 @@ public class UserDaoImpl implements UserDAO {
 		return map;
 				
 	}
+
+
+
+	public void UpdateUserInfo(int id, String name, String moNO, String email, String address) {
+		
+		Connection con = ConnectionProvider.getconnection();
+		String update_query="update user_registration set user_name=?, user_mobno=?,user_adderess=?, user_emailid=? where  user_id=?";
+		 
+		 
+		 try (PreparedStatement psmt = con.prepareStatement(update_query)) {
+
+			 psmt.setString(1, name);
+			 psmt.setString(2, moNO);
+			 psmt.setString(3, address);
+			 psmt.setString(4, email);
+			 psmt.setInt(5, id);
+			 psmt.executeUpdate();
+         }
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+		
+		
+		
+		
+	}
 	
 	}
 

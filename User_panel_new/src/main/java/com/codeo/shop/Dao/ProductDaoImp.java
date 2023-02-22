@@ -239,7 +239,7 @@ public class ProductDaoImp implements ProductDao {
             stmt.setInt(7, cid);
             stmt.setInt(8, id);
 
-            int rowsUpdated= stmt.executeUpdate();
+             stmt.executeUpdate();
          }
 	catch(Exception e)
 	{

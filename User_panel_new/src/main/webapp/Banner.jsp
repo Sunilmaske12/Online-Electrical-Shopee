@@ -19,8 +19,7 @@
 <meta name="keywords"
 	content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="PIXINVENT">
-<title>Basic DataTables - Apex responsive bootstrap 4 admin
-	template</title>
+<title>Admin | Banner</title>
 <link rel="apple-touch-icon" sizes="60x60"
 	href="app-assets/img/ico/apple-icon-60.html">
 <link rel="apple-touch-icon" sizes="76x76"

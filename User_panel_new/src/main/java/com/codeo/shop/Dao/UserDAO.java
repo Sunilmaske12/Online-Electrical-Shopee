@@ -22,6 +22,7 @@ public interface UserDAO {
 	//User edituser(int id);
 
 	User loginDetails(String user_emailid,String user_pass);
-   
+
+      
 	
 }

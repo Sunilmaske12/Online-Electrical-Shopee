@@ -27,6 +27,8 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
 	rel="stylesheet">
 
+
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -101,9 +103,13 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						</div>
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
-								<a href="#" data-toggle="modal" data-target="#MyProfile"><img
-									alt="icon" src="img/hero/icon.png"> </a>
+								<button data-bs-toggle="modal" data-bs-target="#MyProfile"><img
+									alt="icon" src="img/hero/icon.png"> </button>>
+									
 							</div>
+							
+							
+											
 							<div class="hero__search__phone__text">
 								<h5>WELCOME</h5>
 								<h4 class=" font-weight-bold" style="color: green">
@@ -166,7 +172,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 							</div>
 							<%
 							for (Banner b : banner) {
-								
+							if(b.getAction().equals("Active")){	
 								
 							%>
 							<div class="carousel-item">
@@ -174,9 +180,9 @@ String user_email = (String) session1.getAttribute("UserEmail");
 									class="d-block w-100" alt="...">
 							</div>
 							<%
-							}
+							}}
 							%>
-
+							
 						</div>
 						<button class="carousel-control-prev" type="button"
 							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

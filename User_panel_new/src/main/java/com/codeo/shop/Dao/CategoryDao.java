@@ -30,7 +30,7 @@ private String add_category = "insert into add_category(catTitle,catDescriptor) 
 				String cat_title=rs.getString("catTitle");
 				String cat_description= rs.getString("catDescriptor");
 				list.add(new Category( Id, cat_title,  cat_description )) ;
-				System.out.println(cat_title+" "+ cat_description);
+				
 		}
 		} 
 		catch (SQLException e) {

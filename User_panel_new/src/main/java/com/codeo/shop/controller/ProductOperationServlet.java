@@ -90,7 +90,7 @@ public class ProductOperationServlet extends HttpServlet {
 		 {
 			 if(productdao.addProduct(product))
 			 {
-				System.out.println("data is inserted");
+				//System.out.println("data is inserted");
 				dispatcher = request.getRequestDispatcher("View_product.jsp");
 				dispatcher.forward(request, response);
 			 } 
