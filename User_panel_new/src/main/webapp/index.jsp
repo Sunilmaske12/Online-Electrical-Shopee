@@ -40,6 +40,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	crossorigin="anonymous"></script>
 
 
+
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -48,7 +49,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css?v=2" type="text/css">
+<link rel="stylesheet" href="css/style.css?v=1" type="text/css">
 </head>
 
 <body>

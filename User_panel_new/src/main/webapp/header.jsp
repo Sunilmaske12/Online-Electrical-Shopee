@@ -8,7 +8,9 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Header </title>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/CommonScript.js"></script>
 </head>
 <body>
 
@@ -87,11 +89,10 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 
 							<!-- here i get dynamic cart number when i add class="badge badge-danger" -->
 							<li><a href="./shoping-cart.jsp"> <i
-									class="fa fa-shopping-bag"></i> <span
-									class="badge badge-danger">${cart_list.size()}</span></a></li>
+									class="fa fa-cart-plus " style="font-size:33px;"></i> <span
+									 class="cartItem" >0</span></a></li>
 
-							<li><a href="#" style="color: black">Orders</a></li>
-
+							
 
 						</ul>
 						<div class="header__cart__price">

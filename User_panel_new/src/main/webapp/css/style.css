@@ -644,24 +644,24 @@ transparent
 }
 
 .header__cart ul li a i {
-	font-size: 18px;
+	font-size:25px;
 	color: #1c1c1c;
 }
 
 .header__cart ul li a span {
-	height: 13px;
-	width: 13px;
-	background: #7fad39;
-	font-size: 10px;
+	height: 22px;
+	width: 22px;
+	background: red;
+	font-size: 15px;
 	color: #ffffff;
-	line-height: 13px;
+	line-height: 22px;
 	text-align: center;
 	font-weight: 700;
 	display: inline-block;
 	border-radius: 50%;
-	position: absolute;
+	
 	top: 0;
-	right: -12px;
+	
 }
 
 .header__cart .header__cart__price {

@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.codeo.shop.dbutil.ConnectionProvider;
-import com.codeo.shop.entity.Cart;
 import com.codeo.shop.entity.Product;
 import com.codeo.shop.entity.Blog;
 
@@ -304,78 +303,7 @@ public class ProductDaoImp implements ProductDao {
          
 		return listProduct;
 	 }
-		@Override
-	public List<Cart> getCartProducts(ArrayList<Cart> cartlist) {
-		
-		List<Cart> products=new ArrayList<Cart>();
-		Connection con = ConnectionProvider.getconnection();
-		   
-		try {
-			if(cartlist.size()>0) {
-				for(Cart item:cartlist) {
-					String query="SELECT * FROM product_operation where prod_id=?";
-					PreparedStatement psmt=con.prepareStatement(query);
-					psmt.setInt(1, item.getId());
-					ResultSet rs = psmt.executeQuery();
-					
-					while(rs.next()) {
-						
-						Product product =new Product();
-						product.setProd_price(rs.getString("prod_price"));
-						product.setProd_discount(rs.getString("prod_discount"));
-						
-						Cart row = new Cart();
-						row.setId(rs.getInt("prod_id"));
-						row.setProd_name(rs.getString("prod_name"));
-						row.setProd_imageName(rs.getString("prod_imageName"));
-						int calculated_price = product.getPriceAfterDiscount();
-						
-						row.setcalculated_price(calculated_price * item.getQuantity());
-						products.add(row);
-					}
-				}
-			}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return products;
-		
-	}
 	
-	public int getTotalCartPrice(ArrayList<Cart> cartlist)
-	{
-		int sum=0;
-		String query=null;
-		PreparedStatement psmt = null;
-		ResultSet rs =null;
-		
-		try {
-			if(cartlist.size()>0) {
-				for(Cart item:cartlist)
-				{
-					 query="select prod_price,prod_discount from product_operation where prod_id=?";
-					psmt=this.con.prepareStatement(query);
-					psmt.setInt(1, item.getId());
-					rs=psmt.executeQuery();
-					
-					while(rs.next())
-					{
-						int price=Integer.parseInt(rs.getString("prod_price"));
-						int discount = Integer.parseInt(rs.getString("prod_discount"));
-						int d=(int)((discount/100.0)*price);
-						sum= sum+(price-d)*item.getQuantity();
-					}
-					}
-			}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return sum;
-		}
 	
 	
 	 //get all blogs ----------------

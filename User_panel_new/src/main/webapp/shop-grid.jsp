@@ -27,6 +27,8 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/CommonScript.js"></script>
 </head>
 
 <body>
@@ -86,11 +88,8 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="hero__categories">
-						<div class="hero__categories__all"
-							>
-							 <span><a
-								 style="color: white">ALL
-									CATEGORIES </a> </span><br>
+						<div class="hero__categories__all">
+							 <span><a style="color: white">ALLCATEGORIES </a> </span><br>
 						</div>
 							<ul>
 
@@ -228,12 +227,13 @@
 										</button>
 
 
-										<a href="addToCart?id=<%=product.getId() %>" class="primary-btn"
+										<button  class="primary-btn"
 											
 											onMouseOver="this.style.backgroundColor='#808080'"
-											onMouseOut="this.style.backgroundColor='red'"> <i
-											class="fa fa-shopping-cart"></i>ADD TO CARD
-										</a>	 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
+											onMouseOut="this.style.backgroundColor='red'" 
+											onclick="add_to_cart(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')"> <i
+											class="fa fa-shopping-cart"></i>ADD TO CARD</button>
+											 <div > <a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">  View CART </a></div>
 								
 
 									</div>

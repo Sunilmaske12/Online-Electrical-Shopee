@@ -84,12 +84,11 @@ session3.removeAttribute("usertype");
 								<div class="form-group">
 									<label for="username"><i
 										class="fa fa-regular fa-envelope"></i></label> <input type="text"
-										name="Email" id="Email" placeholder="Email" />
+										name="Email"  placeholder="Email" />
 								</div>
 								<div class="form-group">
 									<label for="password"><i class="fa fa-solid fa-lock"></i></label>
-									<input type="password" name="password" id="password"
-										placeholder="Password" />
+									<input type="password" name="password" 	placeholder="Password" />
 								</div>
 
 
