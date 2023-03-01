@@ -1,5 +1,4 @@
 
-
 <%
 HttpSession session1 = request.getSession();
 String user_name = (String) session1.getAttribute("UserName");
@@ -56,6 +55,9 @@ String user_email = (String) session1.getAttribute("UserEmail");
 
 
 
+		
+
+
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -63,8 +65,13 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	<jsp:include page="header.jsp" />
 	<jsp:include page="CommonModal.jsp" />
 	<!--  for product and category  -->
-
-	<!-- Hero Section Begin -->
+	
+	<!-- Toast msg -->
+	<div id="toast">Error in cart</div>
+	<!-- Toast msg end -->
+	
+	
+		<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="container">
 			<div class="row">
@@ -381,12 +388,12 @@ String user_email = (String) session1.getAttribute("UserEmail");
 										</span>
 									</h5>
 								</button>
-
-								<a href="addToCart?id=<%=product.getId()%>" class="primary-btn"
-									onMouseOver="this.style.backgroundColor='#808080'"
-									onMouseOut="this.style.backgroundColor='red'">> <i
-									class="fa fa-shopping-cart"></i>ADD TO CARD
-								</a>
+								
+                                       <button  class="primary-btn "
+											onMouseOver="this.style.backgroundColor='#808080'"
+											onMouseOut="this.style.backgroundColor='red'" 
+											onclick="add_to_cart(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')"> <i
+											class="fa fa-shopping-cart"></i>ADD TO CARD</button>
 								<div>
 									<a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">
 										View CART </a>

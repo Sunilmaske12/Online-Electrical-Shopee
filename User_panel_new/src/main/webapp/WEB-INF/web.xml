@@ -28,6 +28,12 @@
 		<description></description>
 		<servlet-class>com.codeo.shop.controller.QuantityIncDecServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>MyOrder</servlet-name>
+		<display-name>MyOrder</display-name>
+		<description></description>
+		<servlet-class>com.codeo.shop.controller.MyOrder</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
@@ -43,5 +49,9 @@
 	<servlet-mapping>
 		<servlet-name>QuantityIncDecServlet</servlet-name>
 		<url-pattern>/QuantityIncDecServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MyOrder</servlet-name>
+		<url-pattern>/MyOrder</url-pattern>
 	</servlet-mapping>
 </web-app>

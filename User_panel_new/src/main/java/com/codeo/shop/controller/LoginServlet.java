@@ -31,8 +31,6 @@ public class LoginServlet extends HttpServlet {
 			String user_pass = request.getParameter("password");
 			String user_type = request.getParameter("user_type");
 			
-			
-			
 			try
 			{
 				

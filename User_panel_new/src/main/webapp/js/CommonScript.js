@@ -10,7 +10,7 @@ function add_to_cart(pid, pname, pprice, pimagename)
 			let product = {productId: pid, productName: pname, productQuantity: 1, productPrice: pprice, pImageName:pimagename}
 			Product.push(product);
 			localStorage.setItem("cart", JSON.stringify(Product));	
-			console.log("product is added first time")
+			showToast("Product is added to cart")
 	}
 	
 	//already some products in cart
@@ -29,7 +29,7 @@ function add_to_cart(pid, pname, pprice, pimagename)
 				}
 			})
 			localStorage.setItem("cart", JSON.stringify(pcart));
-			console.log("product quantity is increases")
+			showToast("product quantity is increases")
 		}
 		
 		
@@ -38,8 +38,7 @@ function add_to_cart(pid, pname, pprice, pimagename)
 			let product = {productId: pid, productName: pname, productQuantity: 1, productPrice: pprice,  pImageName:pimagename}
 			pcart.push(product);
 			localStorage.setItem("cart", JSON.stringify(pcart));
-			console.log("product is added")
-			
+    		showToast("product  is added")
 		}
 	}
 	updateCart();
@@ -57,8 +56,11 @@ function updateCart(){
 		$(".totalOrder").html("00.00");
 		$(".totalPrice").html("00.00");
 		$(".charges").html("00.00");
+		$("#product").html("00.00");
+		
 		$(".shoping_cart_body").html("<h1>Cart Does Not Have Any Items</h1>");
 	}else{
+		$("#product").html(` ${cart.length}`);
 		console.log(cart.length)
 		$(".cartItem").html(` ${cart.length}`);
 		
@@ -107,19 +109,47 @@ function updateCart(){
 							})
 							
 							
-		table= table+`</table>
-			
-		`
+		table= table+`</table>	`
 		$(".shoping_cart_body").html(table);
 		if(totalPrice>999){
-			$(".charges").html("00.00");
-			$(".totalPrice").html(`${totalPrice}`);
+			$(".charges").html("Rs.00.00");
+			$(".totalPrice").html(`Rs. ${totalPrice}`);
 		}else{
-			$(".charges").html(100);
-			$(".totalPrice").html(`${totalPrice+ 100} `);
+			$(".charges").html("Rs.100");
+			$(".totalPrice").html(`Rs. ${totalPrice+ 100} `);
 		}
 		
-		$(".totalOrder").html(`${totalPrice}`);
+		$(".totalOrder").html(`Rs. ${totalPrice}`);
+		
+		
+			
+		let checkout=`
+			
+					<table>
+							<thead>
+								<tr class="checkout__order__products"><th>Products</th>
+									<th>Quantity</th>
+									<th>Price</th>
+								<tr>
+							</thead>
+						`;
+						var i=0;
+					cart.map((item)=>{ 
+						i+=1;
+				checkout+=`
+						<tbody>
+								<tr>
+									<td>${i} . ${item.productName}</td>
+									<td> ${item.productQuantity}</td>
+									<td> ${item.productPrice * item.productQuantity}</td>
+								</tr>
+						</tbody>
+						`
+						
+			})
+			checkout+=`</table>`
+		
+		$(".check").html(checkout);
 		
 	}
 	
@@ -180,23 +210,55 @@ function updateCart(){
 			localStorage.setItem("cart", JSON.stringify(cart));
 			updateCart();
 			}
-			
-
+	}
+	
+	
+	//clear cart
+	function clearCart(){
+	localStorage.clear();
+	updateCart();
 	}
 	
 	
 	
+		
 	//cart update function calling
 	$(document).ready(function(){
 		updateCart()
 	})
 	
 	//================== Cart end=============================
+	
+	
+//==================Product Added message==================
+function showToast(content){
+	$("#toast").addClass("display");
+		setTimeout( ()=>{
+			$("#toast").removeClass("display");
+			},2000)	
+			
+	$("#toast").html(content);
+}
 
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	

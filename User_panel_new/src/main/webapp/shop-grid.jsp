@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/CommonScript.js"></script>
+
 </head>
 
 <body>
@@ -38,6 +38,10 @@
 	</div>
 
 	<jsp:include page="header.jsp" />
+	
+	<!-- Toast msg -->
+	<div id="toast">Error in cart</div>
+	<!-- Toast msg end -->
 
 	<%     //out.println(cat);
     		             CategoryDao categorydao = new CategoryDao(); 
@@ -196,7 +200,7 @@
 					<div class="product__discount">
 						<div class="row">
 							<%  for(Product product :prodlist)  {  %>
-
+							
 							<div class="col-lg-4 col-md-6 col-sm-6">
 							<div style="border: 1px solid grey; " class="mt-5">
 								<div class="product__item m-4">
@@ -265,6 +269,7 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/CommonScript.js"></script>
 <script src="js/cart.js"></script>
 
 

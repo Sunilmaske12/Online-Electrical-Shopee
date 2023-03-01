@@ -22,12 +22,14 @@
 5.  Service Section
 6.  Categories Section
 7.  Featured Section
+	7.1. add to cart button
 8.  Latest Product Section
 9.  Contact
 10.  Footer Style
 11. button
 12. My profile Modal
 13. banner arrow
+14.Toast Message
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -1073,6 +1075,30 @@ transparent
 	color: #252525;
 	font-weight: 700;
 }
+
+/*---------------------
+  Add to cart btn
+-----------------------*/
+.qty-box .input-group{
+	 -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.input-group{
+	 position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+.product-box .product-info{
+	  text-align: center;
+}
+*, *::before, *::after{
+	 box-sizing: border-box;
+}
+
 
 /*---------------------
   All Product btn
@@ -3640,4 +3666,49 @@ height: 60px;
     border-radius: 50%;
     
     }
+    
+ /*--------------------------------- Toast Message-----------------------------*/
+ #toast{
+ background-color: black;
+ min-width:300px;
+ position: fixed;
+ bottom: 60px;
+ color:white;
+ left:50%;
+ margin-left:-100px;
+ padding: 4px;
+ text-align:center;
+ z-index:1;
+ font-size: 20px;
+ border-radius: 10px;
+ border: 1px solid yellow;
+ box-shadow:1px 2px 100px #000; 
+ visibility: hidden;
+ }
+ 
+ #toast.display{
+  visibility: visible;
+  animation: fadeIn 0.5s, fadeOut 2.5s 0.5s;
+ }
+ 
+ @keyframes fadeIn{
+ form{
+ bottom: 0;
+ opacity: 0;
+ }
+ to{
+  bottom: 60px;
+ opacity: 1;
+ }
+}
 
+@keyframes fadeOut{
+ form{
+ bottom: 60px;
+ opacity: 1;
+ }
+ to{
+  bottom: 0;
+ opacity: 0;
+ }
+ }

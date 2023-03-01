@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-<script type="text/javascript" src="js/CommonScript.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
 	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
 	crossorigin="anonymous"></script>
@@ -49,8 +49,8 @@
 	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/CommonScript.js"></script>
+
+
 
 </head>
 
@@ -95,10 +95,10 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="shoping__cart__btns">
-						<a href="shop-grid.jsp" class="primary-btn cart-btn">CONTINUE SHOPPING</a> <a
-							href="#" class="primary-btn cart-btn cart-btn-right"> <span
-							class="icon_loading"></span> Upadate Cart
-						</a>
+						<a href="shop-grid.jsp" class="primary-btn cart-btn">CONTINUE SHOPPING</a> <button onclick="clearCart()"
+							 class="primary-btn cart-btn cart-btn-right"> <span
+							class="icon_loading"></span> Clear Cart
+						</button>
 					</div>
 				</div>
 
@@ -143,7 +143,7 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/cart.js"></script>
+    <script type="text/javascript" src="js/CommonScript.js"></script>
 </body>
 
 </html>

@@ -12,9 +12,6 @@ session3.removeAttribute("usertype");
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Login Form</title>
 
-<!-- Font Icon -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
 
 <!-- Main css -->
 <link rel="stylesheet" href="AdminPanel/css/style.css">
@@ -40,8 +37,6 @@ session3.removeAttribute("usertype");
 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css">
 
 
 <style>
@@ -70,17 +65,22 @@ session3.removeAttribute("usertype");
 						</figure>
 						<a href="RegistrationForm.jsp" class="signup-image-link"><b>
 								Create an account</b></a>
+								
+								
 
 
 					</div>
+					
+					
 					<div>
 						<div class="signin-form">
 							<h2 class="form-title">Online Eletrical Shopee</h2>
 
 							<%@include file="message.jsp"%>
-
+							
 							<form method="post" action="Login" class="register-form"
 								id="login-form">
+								
 								<div class="form-group">
 									<label for="username"><i
 										class="fa fa-regular fa-envelope"></i></label> <input type="text"
@@ -114,22 +114,24 @@ session3.removeAttribute("usertype");
                     </select>  </td> </tr> -->
 
 								<div class="form-group">
-									<input type="checkbox" name="remember-me" id="remember-me"
-										class="agree-term" /> <label for="remember-me"
-										class="label-agree-term"><span><span></span></span>Remember
-										me</label>
-
+									<a href="forgotPassword.jsp" class="signup-image-link"><b>
+								Forgot Password</b></a>
 								</div>
+								
 								<div class="form-group form-button">
 									<input type="submit" name="signin" id="signin"
 										class="form-submit" value="Log in"
 										style="font-size: 20px; padding: 14px 25px;" />
 
 								</div>
+								
 							</form>
-							<div class="social-login">
+							
+							
+							<div>
 								<h3>
 									<span>Or login with</span>
+									
 								</h3>
 								<ul class="socials">
 

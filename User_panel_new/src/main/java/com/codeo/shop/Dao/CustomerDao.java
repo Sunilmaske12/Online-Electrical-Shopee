@@ -100,7 +100,60 @@ public class CustomerDao {
 	public boolean deleteUser(int id) {
 			return false;
 	}
+
+		
+	
+
+	public boolean orderPlace(String address, String payment, String user_id) {
+		 String query = "insert into demo (A,B,C) values(?,?,?)" ;
+			System.out.print("address  "+address);
+			System.out.print("payment "+payment);
+			System.out.print("user_id    "+user_id);
+		 Connection con = ConnectionProvider.getconnection();;
+		 PreparedStatement psmt = null ;
+		boolean flag=false;
+		
+		
+			
+			int result = 0;
+			if(con != null)
+			{
+				try {
+					psmt = con.prepareStatement(query);
+					if(psmt!=null)
+					{
+						psmt.setString(1, address);
+						psmt.setString(2, payment);
+						psmt.setString(3, user_id);
+							
+					}
+					if(psmt!=null)
+					{
+						result = psmt.executeUpdate();
+						flag=true;
+					}
+					
+					if(result!=0)
+					{
+						System.out.println("data is inserted");
+					}
+					else
+					{
+						System.out.println("data is not inserted");
+					}
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				
+			}
+			
+		}
+		
+		return flag;
+	}
+
 	
 
 
-}
+} 
