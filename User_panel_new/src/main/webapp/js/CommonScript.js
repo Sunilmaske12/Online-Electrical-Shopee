@@ -63,7 +63,8 @@ function updateCart(){
 		$("#product").html(` ${cart.length}`);
 		console.log(cart.length)
 		$(".cartItem").html(` ${cart.length}`);
-		
+		 $('#cartlegth').val(`${cart.length}`);
+	
 		let table=`
 		
 		<table>
@@ -121,7 +122,7 @@ function updateCart(){
 		
 		$(".totalOrder").html(`Rs. ${totalPrice}`);
 		
-		
+		 $('#totalPrice').val(`${totalPrice}`);
 			
 		let checkout=`
 			
@@ -151,7 +152,27 @@ function updateCart(){
 		
 		$(".check").html(checkout);
 		
+		
 	}
+	
+	
+	//=============making orders=================
+							var i=0;
+								cart.map((item)=>{
+								
+								i+=1
+								 $('#productIdO'+i).val(`${item.productId}`);
+								  $('#productNameO'+i).val(`${item.productName}`);
+								   $('#productQuantityO'+i).val(`${item.productQuantity}`);
+								    $('#productPriceO'+i).val(`${item.productPrice}`);
+								 
+							
+											
+							
+							})
+							
+		
+	//===============================
 	
 	
 	}
@@ -239,7 +260,6 @@ function showToast(content){
 			
 	$("#toast").html(content);
 }
-
 
 
 

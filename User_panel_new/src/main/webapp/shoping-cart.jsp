@@ -93,6 +93,7 @@
 				</div>
 			</div>
 			<div class="row">
+			<form action="cartlength">
 				<div class="col-lg-12">
 					<div class="shoping__cart__btns">
 						<a href="shop-grid.jsp" class="primary-btn cart-btn">CONTINUE SHOPPING</a> <button onclick="clearCart()"
@@ -107,10 +108,11 @@
 					<div class="shoping__continue">
 						<div class="shoping__discount">
 							<h5>Discount Codes</h5>
-							<form action="#">
+							
 								<input type="text" placeholder="Enter your coupon code">
 								<button type="submit" class="site-btn">APPLY COUPON</button>
-							</form>
+								<input type="hidden" id="cartlegth" name="cartlegth">
+							
 						</div>
 					</div>
 				</div>
@@ -123,10 +125,11 @@
 							<li><h3 >Total Price: <span class="totalPrice"></span></h3></li>
 
 						</ul>
-						<a href="./checkout.jsp" class="primary-btn">PROCEED TO
-							CHECKOUT</a>
+						<button style="width:100%;" type="submit" class="primary-btn">PROCEED TO
+							CHECKOUT</button>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</section>

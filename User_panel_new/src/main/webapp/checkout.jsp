@@ -9,7 +9,7 @@
 <%
 HttpSession session4 = request.getSession();
 String user = (String) session4.getAttribute("usertype");
-
+int userId= (int) session4.getAttribute("userid");
 if (user == null) {
 
 	session.setAttribute("message", "You are not logged in, Logged in first");
@@ -212,19 +212,28 @@ if (user == null) {
 										<span>NET BANKING</span>
 									</div>
 								</div>
-								<input type="hidden" id="myvalue" name="mydemo">
-								<a><button type="submit" onclick="setInputValue()"
+								<input type="hidden" name="user_id" value="<%=userId%>">
+		
+								<input type="hidden" id="totalPrice" name="tprice">
+								<a><button type="submit" 
 										 class="site-btn">PLACE
 										ORDER</button></a>
 							</div>
 
-
-						</div>
-
-
-
+						
+						<%
+						
+						String cartlength=(String)session.getAttribute("cart");
+						
+						
+						for(int i=1;i<=Integer.parseInt(cartlength);  i++){ %>
+						<input type="hidden" id="productIdO<%=i %>" type="checkbox"  name="productIdO">
+						<input type="hidden" id="productNameO<%=i %>" type="checkbox"  name="productNameO">
+						<input type="hidden" id="productQuantityO<%=i %>" type="checkbox"  name="productQuantityO">
+						<input type="hidden" id="productPriceO<%=i %>" type="checkbox"  name="productPriceO">
+						<%} %>
 					</div>
-
+					</div>
 				</form>
 			</div>
 		</div>
