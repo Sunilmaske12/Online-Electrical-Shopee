@@ -4,18 +4,18 @@ HttpSession session2 = request.getSession();
 String user_name1 = (String) session2.getAttribute("UserName");
 String user_email1 = (String) session2.getAttribute("UserEmail");
 %>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html >
 <head>
 <meta charset="ISO-8859-1">
 <title>Header </title>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/CommonScript.js"></script>
 </head>
-<body>
+<body >
 
 	<!-- Header Section Begin -->
-	<header class="header">
+	<header class="header" >
 		<div class="header__top">
 			<div class="container">
 				<div class="row">
@@ -76,7 +76,8 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 							<li><a href="./index.jsp">Home</a></li>
 							<li><a href="shop-grid.jsp">Shop</a></li>
 							<li><a href="blog.jsp">Blog</a></li>
-							<li><a href="./contact.jsp">Contact</a></li>
+							<li><a href="./contact.jsp">Contact</a></li><%if(user_name1!=null){ %>
+							<li><a href="./MyOrders.jsp">My Order</a></li><%} %>
 							
 								
 						</ul>
@@ -85,7 +86,7 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 				<div class="col-lg-3">
 					<div class="header__cart">
 						<ul>
-							<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+							<li><a href="like_product.jsp"><i class=" fa fa-heart"></i> <span class="likeproduct">0</span></a></li>
 
 							<!-- here i get dynamic cart number when i add class="badge badge-danger" -->
 							<li><a href="./shoping-cart.jsp"> <i
@@ -96,7 +97,7 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 
 						</ul>
 						<div class="header__cart__price">
-							item: <span>$150.00</span>
+							item: <span class="totalOrder"></span>
 						</div>
 					</div>
 				</div>

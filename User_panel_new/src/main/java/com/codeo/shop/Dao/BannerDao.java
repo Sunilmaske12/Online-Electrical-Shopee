@@ -88,4 +88,41 @@ public class BannerDao {
 		return list;
 		}
 
+	public static boolean edit(int id, String b_name,String B_Image) throws SQLException {
+		boolean flag=false;
+		String update_query="update banner set  Status='b_Image'  where B_Id="+id;
+		if(con!=null) {
+			psmt=con.prepareStatement(update_query);
+			psmt.executeUpdate();
+			flag=true;
+			
+		}
+		return flag;
+	}
+	
+	
+	public Banner getBannerById(int B_id) {
+	    Connection con = ConnectionProvider.getconnection();
+	    PreparedStatement stmt = null;
+	    Banner banner = new Banner();
+
+	    try {
+	        stmt = con.prepareStatement("SELECT * FROM banner WHERE B_id= ?");
+	        stmt.setInt(1, B_id);
+	        ResultSet rs = stmt.executeQuery();
+
+	        if (rs.next()) {
+	           banner.setBanner_no(rs.getInt("B_Id"));
+	           banner.setBanner_name(rs.getString("B_Name"));
+	           banner.setBanner_image(rs.getString("Banner_Image"));
+	           banner.setAction(rs.getString("Status"));
+	          
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return banner;
+	}
+
 }

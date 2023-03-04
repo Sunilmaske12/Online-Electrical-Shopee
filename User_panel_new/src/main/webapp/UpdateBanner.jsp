@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
-<%@page import="java.sql.*"%>
-<%@page import="java.util.List"%>
-<%@page import="com.codeo.shop.dbutil.ConnectionProvider"%>
+	pageEncoding="ISO-8859-1"%>
 <%@page import="com.codeo.shop.entity.Banner" %>
 <%@page import="com.codeo.shop.Dao.BannerDao" %>
-<!--   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
+<!--  <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>  -->
 
-<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,7 +15,7 @@
 <meta name="keywords"
 	content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="PIXINVENT">
-<title>Admin | Banner</title>
+<title>OES Banner</title>
 <link rel="apple-touch-icon" sizes="60x60"
 	href="app-assets/img/ico/apple-icon-60.html">
 <link rel="apple-touch-icon" sizes="76x76"
@@ -38,6 +34,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900|Montserrat:300,400,500,600,700,800,900"
 	rel="stylesheet">
+<!-- BEGIN VENDOR CSS-->
+<!-- font icons-->
 <link rel="stylesheet" type="text/css"
 	href="app-assets/fonts/feather/style.min.css">
 <link rel="stylesheet" type="text/css"
@@ -53,83 +51,87 @@
 <!-- END VENDOR CSS-->
 <!-- BEGIN APEX CSS-->
 <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+
 </head>
 
 <body data-col="2-columns" class=" 2-columns ">
+<%						int B_Id=Integer.parseInt(request.getParameter("id"));
+                          BannerDao bannerdao=new BannerDao(); 
+                          Banner banner= bannerdao.getBannerById(B_Id);
+                            %>
 
 	<div class="wrapper nav-collapsed menu-collapsed">
 
 		<%@include file="Asidebar.jsp"%>
-        <%@include file="Navbar.jsp"%>
+
+		<%@include file="Navbar.jsp"%>
 
 		<div class="main-panel">
 			<div class="main-content">
 				<div class="content-wrapper">
-
-					<div class="mb-3">
-						<a href="AddBanner.jsp"
-							class="btn btn-raised gradient-crystal-clear white"><i
-							class="fa fa-plus " aria-hidden="true"></i> Create New </a>
-					</div>
-                    <section id="shopping-cart">
-						<div class="row">
-							<div class="col-sm-12">
+					<section id="basic-form-layouts">
+						<div class="row justify-content-md-center">
+							<div class="col-md-6">
 								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">Banners</h4>
+									<div style="border: 2px solid black; max-height: 70px;"
+										class="card-header">
+										<h4 class="card-title" id="basic-layout-card-center">UPDATE
+											BANNER</h4>
 									</div>
-									<div class="card-body">
-										<div class="card-block">
-											<table class="table table-responsive-md text-center">
-												<thead>
-													<tr>
-														<th>Banner<br>No
-														</th>
-														<th> Name</th>
-														<th>Created At</th>
-														<th>Status</th>
-														<th>Image</th>
-														<th>Action</th>
-                                                   </tr>
-												</thead>
-												<%
-                          BannerDao bannerdao=new BannerDao(); 
-						List<Banner> banner= bannerdao.getAllBanner();
-                         
-                           
-                          for(Banner b:banner)
-                         {              
-                        	        %><tr>
-											<td><%= b.getBanner_no() %></td>
-													<td> <%= b.getBanner_name() %></td>
-													<td><%= b.getDate() %></td>
-													<td><% if(b.getAction().equals("Active")){%><button type="button" class="btn btn-success">Active</button><%}else{ %><button type="button" class="btn btn-danger">In-Active</button><%} %></td>
-													<td><a href="img/banner/<%=b.getBanner_image() %>"><button type="button" class="btn btn-primary">View Image</button></a></td>
-                                                   
-												 <td><a	href="BannerOperation?action=DELETE&id=<%=b.getBanner_no()%>"><i
-															class="ft-trash font-medium-3 red"></i> </a>|| <a
-														href="#">
-															<i class="ft-edit orange"></i>
-													</a></td>
-													
-												</tr>
-												
-									<%
-                                                }
-                                  %>
+									<div class="card-body m-4">
+										<div class="px-3">
+											<!-- form start -->
+											<form class="form" action="BannerOperation?action=EDIT" method="post"
+												enctype="multipart/form-data">
+												<div class="form-body">
+													<div class="form-group">
+														<label for="eventRegInput1">Banner Name </label> <input
+															type="text" id="eventRegInput1" class="form-control"
+															name="b_name"
+															 value="<%=banner.getBanner_name() %>"/>
+													</div>
+													<div class="form-group">
+													<label>Action </label>
+													 <select class="form-control"
+														name="Action">
 
-											</table>
+														<option value="Active">Active</option>
+														<option value="In-Active">In-Active</option>
+
+													</select>
+												</div>
+													<div class="form-group">
+														<label>Select Banner Image </label> <input type="text"
+															class="form-control" name="b_image"
+															 value="<%=banner.getBanner_image() %>" />
+													</div>
+													
+												</div>
+
+
+												
+
+
+												<div class="form-actions center">
+
+													<button type="submit" class="btn btn-raised btn-primary">
+														UPDATE</button>
+												</div>
+
+											</form>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 					</section>
-               	</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
-
+	<!-- BEGIN VENDOR JS-->
 	<script src="app-assets/vendors/js/core/jquery-3.2.1.min.js"
 		type="text/javascript"></script>
 	<script src="app-assets/vendors/js/core/popper.min.js"
@@ -145,16 +147,14 @@
 		type="text/javascript"></script>
 	<script src="app-assets/vendors/js/pace/pace.min.js"
 		type="text/javascript"></script>
-   <script src="app-assets/vendors/js/datatable/datatables.min.js"
+	<script src="app-assets/vendors/js/datatable/datatables.min.js"
 		type="text/javascript"></script>
-   <script src="app-assets/js/app-sidebar.js" type="text/javascript"></script>
+	<script src="app-assets/js/app-sidebar.js" type="text/javascript"></script>
 	<script src="app-assets/js/notification-sidebar.js"
 		type="text/javascript"></script>
 	<script src="app-assets/js/customizer.js" type="text/javascript"></script>
-	<!-- END APEX JS-->
-	<!-- BEGIN PAGE LEVEL JS-->
 	<script src="app-assets/js/data-tables/datatable-basic.js"
 		type="text/javascript"></script>
-	<!-- END PAGE LEVEL JS-->
+
 </body>
 </html>

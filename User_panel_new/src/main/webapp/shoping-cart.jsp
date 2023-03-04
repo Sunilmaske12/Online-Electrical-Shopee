@@ -1,7 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.codeo.shop.entity.Product"%>
 <%@page import="java.sql.*"%>
@@ -82,7 +81,7 @@
 	<!-- Shoping Cart Section Begin -->
 	<section class="shoping-cart spad">
 
-		<!-- <h3>Total Price:${(total>0)?total:0}</h3> -->
+		
 
 		<div class="container">
 			<div class="row">
@@ -93,7 +92,7 @@
 				</div>
 			</div>
 			<div class="row">
-			<form action="cartlength">
+			
 				<div class="col-lg-12">
 					<div class="shoping__cart__btns">
 						<a href="shop-grid.jsp" class="primary-btn cart-btn">CONTINUE SHOPPING</a> <button onclick="clearCart()"
@@ -109,27 +108,29 @@
 						<div class="shoping__discount">
 							<h5>Discount Codes</h5>
 							
-								<input type="text" placeholder="Enter your coupon code">
+								<input style="height: 45px; "  type="text" placeholder="Enter your coupon code">
 								<button type="submit" class="site-btn">APPLY COUPON</button>
-								<input type="hidden" id="cartlegth" name="cartlegth">
+								
 							
 						</div>
 					</div>
 				</div>
+				
 				<div class="col-lg-6">
 					<div class="shoping__checkout">
+					
 						<h5>PRICE DETAILS</h5>
 						<ul>
 							<li>TOTAL ORDER <span class="totalOrder"></span></li>
 							<li>DELIVERY CHARGE <span class="charges"></span></li>
 							<li><h3 >Total Price: <span class="totalPrice"></span></h3></li>
 
-						</ul>
+						</ul><form action="cartlength"><input type="hidden" id="cartlegth" name="cartlegth">
 						<button style="width:100%;" type="submit" class="primary-btn">PROCEED TO
-							CHECKOUT</button>
+							CHECKOUT</button></form>
 					</div>
 				</div>
-				</form>
+				
 			</div>
 		</div>
 	</section>

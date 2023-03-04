@@ -30,6 +30,7 @@
 12. My profile Modal
 13. banner arrow
 14.Toast Message
+15. sr_no on myorder form
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -3712,3 +3713,13 @@ height: 60px;
  opacity: 0;
  }
  }
+ 
+ /*--------------------------------- Sr no-----------------------------*/
+ .table-bordered {
+  counter-reset: serial-number;
+}
+
+.table-bordered td:first-child:before {
+  counter-increment: serial-number;  
+  content: counter(serial-number);  
+}

@@ -66,12 +66,25 @@ public class BannerServlet extends HttpServlet {
 	}
 
 	private void editBanner(HttpServletRequest request, HttpServletResponse response) {
-		
+		try {
+			int id=Integer.parseInt(request.getParameter("banner_id"));
+			String B_Image=request.getParameter("b_image");
+			String b_name=request.getParameter("b_name");
+		if(BannerDao.edit(id,b_name, B_Image))
+		{
+			dispatcher = request.getRequestDispatcher("Banner.jsp");
+			dispatcher.forward(request, response);
+		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	private void deleteBanner(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			
 		int id=Integer.parseInt(request.getParameter("id"));
 		if(BannerDao.delete(id))
 		{

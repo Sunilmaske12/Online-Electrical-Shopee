@@ -22,9 +22,6 @@ String user_email = (String) session1.getAttribute("UserEmail");
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Online Electrical Shopee</title>
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-	rel="stylesheet">
 
 
 
@@ -39,7 +36,9 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	crossorigin="anonymous"></script>
 
 
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet">
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -48,7 +47,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css?v=1" type="text/css">
+<link rel="stylesheet" href="css/style.css?" type="text/css">
 </head>
 
 <body>
@@ -173,7 +172,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 										<h2>
 											Online <br />Electrical Shopee
 										</h2>
-										<p>FREE PICKUP & DELIVERY AVAILABLE</p>
+										<p>FREE PICKUP and DELIVERY AVAILABLE</p>
 										<a href="shop-grid.jsp" class="primary-btn">SHOP NOW</a>
 									</div>
 								</div>
@@ -240,8 +239,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 		<div class="container">
 			<div class="row">
 				<div class="categories__slider owl-carousel">
-					<div class="
-">
+					<div >
 						<div class="categories__item set-bg"
 							data-setbg="img/categories/cat.1.jpg">
 							<h5>
@@ -360,6 +358,9 @@ String user_email = (String) session1.getAttribute("UserEmail");
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ">
 					<div style="border: 1px solid grey;" class="mt-5">
 						<div class="featured__item m-4 ">
+						
+						
+						
 							<div class="featured__item__pic set-bg "
 								style="background-image: url(&quot;img/latest-product/<%=product.getProd_imageName()%>&quot;);">
 								<a href="Product-details.jsp?product=<%=product.getId()%>">
@@ -367,8 +368,8 @@ String user_email = (String) session1.getAttribute("UserEmail");
 									src="img/latest-product/<%=product.getProd_imageName()%>">
 								</a>
 								<ul class="featured__item__pic__hover">
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="#"><i class="fa fa-retweet"></i></a></li>
+									<li><a onclick="likeProducts(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')" ><i class="fa fa-heart"></i></a></li>
+									<li><a><i class="fa fa-retweet"></i></a></li>
 								</ul>
 							</div>
 
@@ -422,24 +423,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	<br>
 	<br>
 
-	<!-- Banner Begin -->
-	<div class="banner">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="img/banner/home.jpg" alt="">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6">
-					<div class="banner__pic">
-						<img src="img/banner/lighthome.jpg" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Banner End -->
+	
 
 
 
@@ -456,7 +440,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/cart.js"></script>
+	<script type="text/javascript" src="js/CommonScript.js"></script>
 
 </body>
 

@@ -51,6 +51,7 @@
 												class="form-control" type="text" required="required">
 										</div>
 									</div>
+									<p>Check your mail and enter OTP</p>
 									<div class="form-group">
 										<input name="recover-submit"
 											class="btn btn-lg btn-primary btn-block"

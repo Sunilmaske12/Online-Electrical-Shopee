@@ -4,6 +4,7 @@
 
 <%@page import="com.codeo.shop.entity.User"%>
 <%@page import="com.codeo.shop.Dao.UserDaoImpl"%>
+<%@page import="com.codeo.shop.Dao.CustomerDao"%>
 
 <%@page import="java.util.Map"%>
 
@@ -25,6 +26,11 @@ if (user2 == null) {
 
 Map<String, Long> m = UserDaoImpl.total_user();
 String UserCount = String.valueOf(m.get("Total_User"));
+
+int TotalOrderCount= CustomerDao.getTotalOrderCount();
+int TotalSales= CustomerDao.getTotalSales();
+double total_earning = TotalSales*0.2;
+int TotalEarning=(int)total_earning;
 %>
 
 
@@ -128,7 +134,7 @@ String UserCount = String.valueOf(m.get("Total_User"));
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0">$1567</h3>
+												<h3 class="font-large-1 mb-0"><%=TotalOrderCount %></h3>
 												<span>Total Order</span>
 											</div>
 											<div class="media-right white text-right">
@@ -150,7 +156,7 @@ String UserCount = String.valueOf(m.get("Total_User"));
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0">$4566</h3>
+												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"> </i><%=TotalSales %></h3>
 												<span>Total Sales</span>
 											</div>
 											<div class="media-right white text-right">
@@ -170,7 +176,7 @@ String UserCount = String.valueOf(m.get("Total_User"));
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0">$8695</h3>
+												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"></i><%=TotalEarning %></h3>
 												<span>Total Earning</span>
 											</div>
 											<div class="media-right white text-right">

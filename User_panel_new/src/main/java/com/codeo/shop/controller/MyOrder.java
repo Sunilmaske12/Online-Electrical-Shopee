@@ -1,8 +1,7 @@
 package com.codeo.shop.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.codeo.shop.Dao.CustomerDao;
-import com.codeo.shop.entity.Order;
 
 
 @WebServlet("/orderPlace")
@@ -46,10 +44,18 @@ public class MyOrder extends HttpServlet {
 		
 		CustomerDao cd=new CustomerDao();
 		if(cd.placeOrder(C_AddressId, U_id, T_Price, Payment_Mode)) {
-			if(cd.orderPlace(Pid, Pname, Pquantity, Pprice, C_AddressId)) {
+			int orderId=0;
+			try {
+				 orderId=cd.getOrderId();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(cd.orderPlace(Pid, Pname, Pquantity, Pprice, orderId)) {
 				System.out.print("detail is inserted");
-				dispatcher = request.getRequestDispatcher("index.jsp");
-				dispatcher.forward(request, response);
+				
+				//dispatcher.forward(request, response);
+				response.sendRedirect("MyOrders.jsp");
 			
 			}
 			} 

@@ -57,6 +57,8 @@ function updateCart(){
 		$(".totalPrice").html("00.00");
 		$(".charges").html("00.00");
 		$("#product").html("00.00");
+		$(".checkoutButton").html("go to shopping cart and do shopping");
+			
 		
 		$(".shoping_cart_body").html("<h1>Cart Does Not Have Any Items</h1>");
 	}else{
@@ -153,7 +155,6 @@ function updateCart(){
 		$(".check").html(checkout);
 		
 		
-	}
 	
 	
 	//=============making orders=================
@@ -174,7 +175,7 @@ function updateCart(){
 		
 	//===============================
 	
-	
+	}
 	}
 	
 	
@@ -263,16 +264,116 @@ function showToast(content){
 
 
 
+//===================Like Products=======================================
+
+function likeProducts(pid, pname, pprice, pimagename)
+{
+	let like=localStorage.getItem("like");
+	
+	//no products in like
+	if(like==null){
+			let LikeProduct =[];
+			let likeproduct = {lproductId: pid, lproductName: pname, lproductPrice: pprice, lImageName:pimagename }
+			LikeProduct.push(likeproduct);
+			localStorage.setItem("like", JSON.stringify(LikeProduct));	
+			showToast("Product is added to like")
+	}
+	
+	//already some products in like
+	else{
+		let plike=JSON.parse(like);
+		
+		let oldProductlike= plike.find((item)=> item.lproductId==pid)
+		if(oldProductlike){
+			//if like have old product then remove it
+			let newlike=plike.filter((item) => item.lproductId !=pid)
+	        localStorage.setItem('like', JSON.stringify(newlike))
+			showToast("product remove from favorite")
+		}
+		else{
+			//we get new product then add it into a like
+			let likeproduct = {lproductId: pid, lproductName: pname,  lproductPrice: pprice, lImageName:pimagename}
+			plike.push(likeproduct);
+			localStorage.setItem("like", JSON.stringify(plike));
+    		showToast("product  is added to favorite")
+		}
+	}
+	
+	
+	updateLike();
+	
+	
+}
 
 
+function updateLike(){
+	let like=JSON.parse(localStorage.getItem("like"));
+	if(like==null || like.length==0){
+		$("#like_product_body").html("No product added in wishlist");
+		console.log("like is empty")
+	}else{
+		console.log("like length "+like.length)
+		$(".likeproduct").html(` ${like.length}`);
+			
+		let allLikeProducts=`
+							
+					
+						`;
+							like.map((item)=>{
+								
+							
+							allLikeProducts+=`
+											<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+	<div style="border: 1px solid grey;" class="mt-5">
+		<div class="featured__item m-4">
+			<div class="featured__item__pic set-bg">
+				<img style="max-height: 200px; height: auto;" class="center"
+					src="img/latest-product/${item.lImageName}">
+				<ul class="featured__item__pic__hover">
+					<li><a onclick="likeProducts(${item.lproductId}, '${item.lproductName}', ${item.lproductPrice}, '${item.lImageName}')" ><i class="fa fa-heart"></i></a></li>
+					<li><a href="#"><i class="fa fa-retweet"></i></a></li>
+				</ul>
+			</div>
 
+			<div class="featured__item__text">
+				<h6>
+					<a href="Product-details.jsp?product= ${item.lproductId}"
+						style="color: black"> ${item.lproductName}</a>
+				</h6>
 
+				<button type="button" class="btn btn-light">
+					<h5>Rs. ${item.lproductPrice}/- 
+					</h5>
+				</button>
 
+				<a href="#" class="primary-btn m-1" style="background-color: red"
+					onMouseOver="this.style.backgroundColor='#808080'"
+					onMouseOut="this.style.backgroundColor='red'"> <i
+					class="fa fa-shopping-cart"></i>ADD TO CARD
+				</a>
+				<div>
+					<a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">
+						View CART </a>
+				</div>
 
+			</div>
+		</div>
+	</div>
+</div>
+							`
+							})
+	
+		$("#like_product_body").html(allLikeProducts);
+		
+	}
+	
+}
 
-
-
-
+	
+	//like update function calling
+	$(document).ready(function(){
+		updateLike()
+	})
 
 
 

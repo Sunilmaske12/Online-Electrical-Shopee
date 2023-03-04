@@ -40,6 +40,12 @@
 		<description></description>
 		<servlet-class>com.codeo.shop.controller.CartLenght</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>OrderDetailServlet</servlet-name>
+		<display-name>OrderDetailServlet</display-name>
+		<description></description>
+		<servlet-class>com.codeo.shop.controller.OrderDetailServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
@@ -63,5 +69,9 @@
 	<servlet-mapping>
 		<servlet-name>CartLenght</servlet-name>
 		<url-pattern>/CartLenght</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderDetailServlet</servlet-name>
+		<url-pattern>/OrderDetailServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

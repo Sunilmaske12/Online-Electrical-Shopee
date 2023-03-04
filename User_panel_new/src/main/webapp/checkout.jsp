@@ -9,13 +9,16 @@
 <%
 HttpSession session4 = request.getSession();
 String user = (String) session4.getAttribute("usertype");
-int userId= (int) session4.getAttribute("userid");
+
+String uId= (String) session4.getAttribute("userid");
+
 if (user == null) {
 
-	session.setAttribute("message", "You are not logged in, Logged in first");
+	session4.setAttribute("message", "You are not logged in, Logged in first");
 	response.sendRedirect("loginfrom.jsp");
 	return;
 }
+int userId=Integer.parseInt(uId);
 %>
 
 
@@ -49,7 +52,7 @@ if (user == null) {
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
 	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
 	crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Css Styles -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -199,7 +202,7 @@ if (user == null) {
 								<div class="checkout__order__total">
 									<div class="radio radio-success">
 										<input type="radio" name="payment" id="paymentMode" value="Cash On Delivery"
-											aria-invalid="false"> <label for="selectAddress0"></label>
+											aria-invalid="false" required/> <label for="selectAddress0"></label>
 
 										<span style="color: black;">CASH ON DELIVERY</span>
 									</div>
@@ -207,7 +210,7 @@ if (user == null) {
 								<div class="checkout__order__total">
 									<div class="radio radio-success">
 										<input type="radio" name="payment" id="paymentMode" value="net banking"
-											aria-invalid="false"> <label for="selectAddress0"></label>
+											aria-invalid="false" required/> <label for="selectAddress0"></label>
 
 										<span>NET BANKING</span>
 									</div>
@@ -215,9 +218,7 @@ if (user == null) {
 								<input type="hidden" name="user_id" value="<%=userId%>">
 		
 								<input type="hidden" id="totalPrice" name="tprice">
-								<a><button type="submit" 
-										 class="site-btn">PLACE
-										ORDER</button></a>
+								<a ><button type="submit"  class="site-btn">PLACE ORDER</button></a>
 							</div>
 
 						

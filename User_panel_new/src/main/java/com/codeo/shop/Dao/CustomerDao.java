@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -104,53 +106,6 @@ public class CustomerDao {
 			return false;
 	}
 
-		
-	
-
-	public boolean orderPlace(String address, String payment, String user_id) {
-		 String query = "insert into demo (A,B,C) values(?,?,?)" ;
-		 Connection con = ConnectionProvider.getconnection();;
-		 PreparedStatement psmt = null ;
-		boolean flag=false;
-		
-			
-			int result = 0;
-			if(con != null)
-			{
-				try {
-					psmt = con.prepareStatement(query);
-					if(psmt!=null)
-					{
-						psmt.setString(1, address);
-						psmt.setString(2, payment);
-						psmt.setString(3, user_id);
-							
-					}
-					if(psmt!=null)
-					{
-						result = psmt.executeUpdate();
-						flag=true;
-					}
-					
-					if(result!=0)
-					{
-						System.out.println("data is inserted");
-					}
-					else
-					{
-						System.out.println("data is not inserted");
-					}
-					
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				
-			}
-			
-		}
-		
-		return flag;
-	}
 	
 	public boolean placeOrder(String C_AddressId, String u_id, String t_Price, String payment_Mode) {
 		boolean flag=false;
@@ -170,10 +125,8 @@ public class CustomerDao {
 						psmt.setString(4, payment_Mode);
 						 psmt.executeUpdate();
 						flag=true;
-						System.out.println("order_customer is inserted");
 					}
-					
-					
+						
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -183,7 +136,25 @@ public class CustomerDao {
 		return flag;
 	}
 
-	public boolean orderPlace(String[] pid, String[] pname, String[] pquantity, String[] pprice, String c_AddressId) {
+
+	public int getOrderId() throws SQLException {
+		int result=0;
+		if(con!=null) {
+			String getId= "select Order_Id from customer_order ";
+			
+			psmt = con.prepareStatement(getId);
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				 result=rs.getInt("Order_Id");
+			}
+		}
+		
+		return result;
+	}
+	
+
+	public boolean orderPlace(String[] pid, String[] pname, String[] pquantity, String[] pprice, int orderId) {
 		boolean flag=false;
 		
 		Connection con=ConnectionProvider.getconnection();
@@ -196,7 +167,7 @@ public class CustomerDao {
 				try {
 					psmt=con.prepareStatement(insert_order);
 					if(psmt!=null) {
-						psmt.setString(1,c_AddressId);
+						psmt.setInt(1,orderId);
 						psmt.setString(2,pid[i]);
 						psmt.setString(3, pname[i]);
 						psmt.setString(4, pprice[i]);
@@ -216,10 +187,33 @@ public class CustomerDao {
 		
 		return flag;
 	}
+	 
+	public static  int getTotalOrderCount() throws SQLException{
+		String count_query= "select Count(Order_Id) from customer_order ";
+		
+		psmt = con.prepareStatement(count_query);
+		ResultSet rs = psmt.executeQuery();
+		int count=0;
+		while(rs.next()) {
+			 count=rs.getInt(1);
+		}
+		
+			
+		return count;
+				
+	}
 
-	
-
-	
+	public static  int getTotalSales() throws SQLException{
+		String count_query= "select Sum(TotalPrice) from customer_order ";
+		
+		psmt = con.prepareStatement(count_query);
+		ResultSet rs = psmt.executeQuery();
+		int count=0;
+		while(rs.next()) {
+			 count=rs.getInt(1);
+		}
+		return count;
+	}
 
 
 } 
