@@ -58,20 +58,19 @@
 					<section id="shopping-cart">
 						<div class="row">
 							<div class="col-sm-12">
-								<div class="card">
-									<div class="card-header">
+								<div  class="card">
+									<div  class="card-header">
 										<h4 class="card-title">
 											<b> List of Users </b>
 										</h4>
 							    </div>
-									<div class="card-body">
+									<div style="margin:40px;" class="card-body">
 										<div class="card-block">
 
 											<table class="table table-responsive-md text-center ">
 												<thead>
 													<tr>  <tr>
-														<th>Sr<br>No
-														</th>
+														<th>SrNo</th>
 														<th>Name</th>
 														<th>Mobile No</th>
 														<th>Address</th>
@@ -88,10 +87,11 @@
                           String select_user ="select * from user_registration ";
                           Statement stmt = con.createStatement();
                           ResultSet rs = stmt.executeQuery(select_user);
+                          int i=0;
                           while(rs.next())
-                         {                 
+                         {     i++;            
              %>	<tr>
-									            	<td><%= rs.getInt("user_id") %></td>
+									            	<td><%= i %></td>
 													<td><%= rs.getString("user_name") %></td>
 													<td><%= rs.getString("user_mobno") %></td>
 													<td><%= rs.getString("user_adderess") %></td>
@@ -105,10 +105,7 @@
 							<!--  <td><a  href="edit?id=<c:out value='${user.id}' />"><i class="ft-trash font-medium-3 red"></i></a> ||
                             <a  href="delete?id=<c:out value='${user.id}' />"><i class="ft-edit orange"></i></a> </td>    -->
 
-			                      <tr>
-							           <td><button class="btn btn-success btn-raised">Continue</button>
-							            	      </td>
-												</tr>
+			                     
                                         	</table> 
 										</div>	
 									</div>

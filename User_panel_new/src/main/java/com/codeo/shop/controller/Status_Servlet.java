@@ -1,6 +1,8 @@
 package com.codeo.shop.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -8,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.codeo.shop.Dao.BannerDao;
 import com.codeo.shop.Dao.MyOrderDao;
 
 @WebServlet("/Status_Servlet")
@@ -27,7 +31,6 @@ public class Status_Servlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -47,8 +50,24 @@ public class Status_Servlet extends HttpServlet {
 		case "reject":
 			 rejectOrder(request, response);
 			break;
-		default:
-			 approvedOrder(request, response);
+		case "active":
+			try {
+				activeBaner(request, response);
+			} catch (IOException | SQLException e) {
+				e.printStackTrace();
+			}
+			break;
+		case "inactive":
+			try {
+				inactiveBaner(request, response);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			break;	
+		
+			default: 
 			break;
 		}
 		
@@ -66,7 +85,6 @@ public class Status_Servlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -83,9 +101,24 @@ public class Status_Servlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void activeBaner(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+		String b_id=request.getParameter("B_Id");
+		BannerDao bd=new BannerDao();
+		if(bd.activeBanner(b_id)) {
+			response.sendRedirect("Banner.jsp");
+		}			
+	}
+	
+	private void inactiveBaner(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+		String b_id=request.getParameter("B_Id");
+		BannerDao bd=new BannerDao();
+		if(bd.inactiveBanner(b_id)) {
+			response.sendRedirect("Banner.jsp");
+		}			
 	}
 
 }

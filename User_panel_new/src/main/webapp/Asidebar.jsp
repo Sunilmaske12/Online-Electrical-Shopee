@@ -29,58 +29,49 @@
 				<ul id="main-menu-navigation" data-menu="menu-navigation"
 					class="navigation navigation-main">
 					<li><a href="dashbord.jsp"><i class="ft-home"></i><span
-							data-i18n="" class="menu-title">Dashboard</span></a></li>
+							data-i18n="" class="menu-title">DASHBOARD</span></a></li>
 
 					<li class="has-sub nav-item"><a href="#"><i
-							class="ft-package"></i><span data-i18n="" class="menu-title">Website
-								Master</span></a>
+							class="ft-package"></i><span data-i18n="" class="menu-title">WEBSITE
+								MASTER</span></a>
 						<ul class="menu-content">
 							<li><a href="Banner.jsp" class="menu-item">
-									Banner </a></li>
+									BANNER </a></li>
 							
-							<li><a href="loginfrom.jsp" class="menu-item">Login form</a>
+							<li><a href="loginfrom.jsp" class="menu-item">LOGIN FORM</a>
 							</li>
 
-							<li><a href="RegistrationForm.jsp" class="menu-item">Registration
-									form</a></li>
-							<li><a href="UserList.jsp" class="menu-item">Report</a></li>
+							<li><a href="RegistrationForm.jsp" class="menu-item">REGISTRATION
+									FORM</a></li>
+							<li><a href="UserList.jsp" class="menu-item">REPORT</a></li>
 						</ul></li>
 
-					<li class=" nav-item"><a href="../documentation/index.html"><i
-							class="ft-book"></i><span data-i18n="" class="menu-title">Approval
+					<li class=" nav-item"><a  href="ViewOrderAdmin.jsp" ><i
+							class="ft-book"></i><span data-i18n="" class="menu-title">APPROVAL-ORDERS
 						</span></a></li>
 
 					<li class="has-sub nav-item"><a href="#"><i
-							class="fa fa-th-list"></i><span data-i18n="" class="menu-title">Orders</span></a>
-						<ul class="menu-content">
-							<li><a href="ViewOrderAdmin.jsp" class="menu-item">View Order</a>
-							</li>
-							<li><a href="font-awesome.html" class="menu-item">Dispatch
-									details</a></li>
-						</ul></li>
-
-					<li class="has-sub nav-item"><a href="#"><i
 							class="icon-basket-loaded"></i><span data-i18n=""
-							class="menu-title">Cart</span></a>
+							class="menu-title">CART</span></a>
 						<ul class="menu-content">
-							<li><a href="View_product.jsp" class="menu-item">View
-									Product</a></li>
-							<li><a href="View_Category.jsp" class="menu-item">View
-									Category</a></li>
-							<li><a href="Add-product.jsp" class="menu-item">Add
-									Product</a></li>
+							<li><a href="View_product.jsp" class="menu-item">VIEW
+									PRODUCTS</a></li>
+							<li><a href="View_Category.jsp" class="menu-item">VIEW
+									CATEGORY</a></li>
+							<li><a href="Add-product.jsp" class="menu-item">ADD
+									PRODUCTS</a></li>
 
 						</ul></li>
 
-					<li class=" nav-item"><a href="UserList.jsp"><i class="ft-book"></i><span data-i18n="" class="menu-title">Customer</span></a>
+					<li class=" nav-item"><a href="UserList.jsp"><i class="ft-book"></i><span data-i18n="" class="menu-title">USERS</span></a>
 					</li>
 
 					<li class=" nav-item"><a href="calendar.html"><i
-							class="ft-calendar"></i><span data-i18n="" class="menu-title">Calendar</span></a>
+							class="ft-calendar"></i><span data-i18n="" class="menu-title">CALENDER</span></a>
 					</li>
 
 					<li class=" nav-item"><a href=""><i
-							class="ft-life-buoy"></i><span data-i18n="" class="menu-title">Support</span></a>
+							class="ft-life-buoy"></i><span data-i18n="" class="menu-title">SUPPORT</span></a>
 					</li>
 				</ul>
 			</div>

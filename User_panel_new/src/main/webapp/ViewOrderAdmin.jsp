@@ -55,8 +55,8 @@ List<Order> orderlist = mod.getAllOrderList();
 							<div class="col-sm-12">
 								<div class="card">
 									<div class="card-body">
-										<div class="card-block">
-											<table class="table table-responsive-md text-center ">
+										<div style="margin:40px;" class="card-block">
+											<table style="margin-top: 50px;" class="table table-responsive-md text-center ">
 												<thead>
 													<tr>
 														<th>Sr.No.</th>

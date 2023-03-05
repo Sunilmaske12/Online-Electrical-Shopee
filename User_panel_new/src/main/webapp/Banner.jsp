@@ -69,22 +69,45 @@
 												<%
                           BannerDao bannerdao=new BannerDao(); 
 						List<Banner> banner= bannerdao.getAllBanner();
-                         
+                         int i=0;
                            
                           for(Banner b:banner)
-                         {              
+                         {     i++;         
                         	        %><tr>
-											<td><%= b.getBanner_no() %></td>
+											<td><%=i %></td>
 													<td> <%= b.getBanner_name() %></td>
 													<td><%= b.getDate() %></td>
-													<td><% if(b.getAction().equals("Active")){%><button type="button" class="btn btn-success">Active</button><%}else{ %><button type="button" class="btn btn-danger">In-Active</button><%} %></td>
+													<td><% if(b.getAction().equals("Active")){%>
+													<div >
+															<button  type="button" class="btn btn-success">Active</button>
+															<button  type="button"
+																class="btn btn-success dropdown-toggle dropdown-toggle-split"
+																data-toggle="dropdown"></button>
+															<div class="dropdown-menu">
+																<a  class="dropdown-item" href="Status_Servlet?Action=inactive&B_Id=<%=b.getBanner_no()%>">In-Active</a>
+															</div>
+														</div>
+													<%}else{ %>
+													
+													
+													<div >
+															<button  type="button" class="btn btn-danger">In-Active</button>
+															<button  type="button"
+																class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+																data-toggle="dropdown"></button>
+															<div class="dropdown-menu">
+																<a  class="dropdown-item" href="Status_Servlet?Action=active&B_Id=<%=b.getBanner_no()%>">Active</a>
+															</div>
+														</div>
+													
+													
+													<%} %>
+													
+													
 													<td><a href="img/banner/<%=b.getBanner_image() %>"><button type="button" class="btn btn-primary">View Image</button></a></td>
                                                    
 												 <td><a	href="BannerOperation?action=DELETE&id=<%=b.getBanner_no()%>"><i
-															class="ft-trash font-medium-3 red"></i> </a>|| <a
-														href="#">
-															<i class="ft-edit orange"></i>
-													</a></td>
+															class="ft-trash font-medium-3 red"></i> </a></td>
 													
 												</tr>
 												

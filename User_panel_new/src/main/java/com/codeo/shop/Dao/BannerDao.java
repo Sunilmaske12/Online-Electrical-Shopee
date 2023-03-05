@@ -125,4 +125,26 @@ public class BannerDao {
 	    return banner;
 	}
 
+	public boolean activeBanner(String b_id) throws SQLException {
+		boolean flag=false;
+		String query="update banner set Status='Active' where B_Id="+b_id;
+		psmt=con.prepareStatement(query);
+		int result=psmt.executeUpdate();
+		if(result!=0) {
+			flag=true;
+		}
+		return flag;
+	}
+	
+	public boolean inactiveBanner(String b_id) throws SQLException {
+		boolean flag=false;
+		String query="update banner set Status='In-Active' where B_Id="+b_id;
+		psmt=con.prepareStatement(query);
+		int result=psmt.executeUpdate();
+		if(result!=0) {
+			flag=true;
+		}
+		return flag;
+	}
+
 }
