@@ -46,12 +46,7 @@
 		<description></description>
 		<servlet-class>com.codeo.shop.controller.OrderDetailServlet</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>StatusServlet</servlet-name>
-		<display-name>StatusServlet</display-name>
-		<description></description>
-		<servlet-class>com.codeo.shop.controller.StatusServlet</servlet-class>
-	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
@@ -80,8 +75,5 @@
 		<servlet-name>OrderDetailServlet</servlet-name>
 		<url-pattern>/OrderDetailServlet</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>StatusServlet</servlet-name>
-		<url-pattern>/StatusServlet</url-pattern>
-	</servlet-mapping>
+	
 </web-app>

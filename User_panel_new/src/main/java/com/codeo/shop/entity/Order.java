@@ -7,6 +7,7 @@ public class Order {
 	String addressId;
 	int Amount;
 	int charges;
+	String status;
 	int Total_Amount;
 	String userId;
 	int productId;
@@ -81,32 +82,33 @@ public class Order {
 		this.productQuantity = productQuantity;
 	}
 	
-	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", Date=" + Date + ", addressId=" + addressId + ", Amount=" + Amount
-				+ ", charges=" + charges + ", Total_Amount=" + Total_Amount + ", userId=" + userId + ", productId="
-				+ productId + ", productName=" + productName + ", productPrice=" + productPrice + ", productQuantity="
-				+ productQuantity + "]";
+				+ ", charges=" + charges + ", status=" + status + ", Total_Amount=" + Total_Amount + ", userId="
+				+ userId + ", productId=" + productId + ", productName=" + productName + ", productPrice="
+				+ productPrice + ", productQuantity=" + productQuantity + "]";
 	}
-	public Order(int orderId, Date date, String addressId, String userId) {
-		super();
-		this.orderId = orderId;
-		Date = date;
-		this.addressId = addressId;
-		this.userId = userId;
-	}
-	
-		
-	public Order(int orderId, java.sql.Date date, String addressId, int amount, int charges, int total_Amount,
-			String userId, int productId, String productName, int productPrice, int productQuantity) {
+	public Order(int orderId, java.sql.Date date, String addressId, int amount, int charges, String status,
+			int total_Amount, String userId, int productId, String productName, int productPrice, int productQuantity) {
 		super();
 		this.orderId = orderId;
 		Date = date;
 		this.addressId = addressId;
 		Amount = amount;
 		this.charges = charges;
+		this.status = status;
 		Total_Amount = total_Amount;
 		this.userId = userId;
 		this.productId = productId;

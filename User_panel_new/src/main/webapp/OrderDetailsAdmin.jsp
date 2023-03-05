@@ -61,7 +61,7 @@
 									<div class="card-body">
 										<div  style="text-align:center; ;" class="card-block">
 											
-										<div style="border:1px solid black; max-width: 30%; margin-left:40%; padding: 20px;" class="row">
+										<div style="border:1px solid black; max-width: 30%; margin-left:40%; padding: 20px; margin-top:50px; text-all" class="row">
 						
 								
 									<h4 >Shipping Address</h4>

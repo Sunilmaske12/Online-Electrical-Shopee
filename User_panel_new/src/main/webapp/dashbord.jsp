@@ -49,7 +49,7 @@ int TotalEarning=(int)total_earning;
 <meta name="keywords"
 	content="admin template, Apex admin template, dashboard template, flat admin template, responsive admin template, web app">
 <meta name="author" content="PIXINVENT">
-<title>Dashboard1 - Apex responsive bootstrap 4 admin template</title>
+<title>Dashboard</title>
 <link rel="apple-touch-icon" sizes="60x60"
 	href="app-assets/img/ico/apple-icon-60.html">
 <link rel="apple-touch-icon" sizes="76x76"
