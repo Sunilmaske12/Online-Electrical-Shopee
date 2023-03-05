@@ -9,16 +9,15 @@
 <%
 HttpSession session4 = request.getSession();
 String user = (String) session4.getAttribute("usertype");
-
-String uId= (String) session4.getAttribute("userid");
-
 if (user == null) {
 
 	session4.setAttribute("message", "You are not logged in, Logged in first");
 	response.sendRedirect("loginfrom.jsp");
 	return;
 }
-int userId=Integer.parseInt(uId);
+int userId= (int) session4.getAttribute("userid");
+String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
+//int userId=Integer.parseInt(uId);
 %>
 
 
@@ -66,7 +65,15 @@ int userId=Integer.parseInt(uId);
 
 </head>
 
-<body>
+<body <%if(incompleteinfo!=null){
+	if(incompleteinfo.equals("No address")){
+		%>
+		  onload="addressrErrorPopUp()"
+		<%session4.removeAttribute("incompleteinfo"); }
+	else{
+	%>
+  onload="msgErrorPopUp()"
+<%session4.removeAttribute("incompleteinfo"); }} %> >
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -107,7 +114,7 @@ int userId=Integer.parseInt(uId);
 			</div>
 			<div class="checkout__form">
 				<h4>Billing Details</h4>
-				<form method="post" action="orderPlace">
+				<form method="post" action="orderPlace" id="orderPlaceAlert">
 					<div class="row">
 						<div class=" col-md-6">
 
@@ -123,7 +130,8 @@ int userId=Integer.parseInt(uId);
 							<div class="card mb-3">
 								<div class="card-body">
 									<h4 class="text-dark">Select Your Address</h4>
-									<%
+									<%if(address.size()!=0){
+									
 									for (Customer a : address) {
 									%>
 									<div class="row checkout-address-row">
@@ -131,7 +139,7 @@ int userId=Integer.parseInt(uId);
 											<div class="radio radio-success">
 												<input type="radio" name="address_id"
 													value="<%=a.getC_id()%>" id="addressId"
-													aria-invalid="false" required /> 
+													aria-invalid="false"  /> 
 											</div>
 											<span class="badge badge-primary"></span>
 										</div>
@@ -154,6 +162,12 @@ int userId=Integer.parseInt(uId);
 									</div>
 									<hr size="8" width="100%" color="red">
 									<%
+									}
+									
+									}else{
+										%>
+										<h2 style="color:red;">PLEASE PUT YOUR ADDRESS!</h2>
+										<%
 									}
 									%>
 
@@ -202,7 +216,7 @@ int userId=Integer.parseInt(uId);
 								<div class="checkout__order__total">
 									<div class="radio radio-success">
 										<input type="radio" name="payment" id="paymentMode" value="Cash On Delivery"
-											aria-invalid="false" required/> <label for="selectAddress0"></label>
+											aria-invalid="false" /> <label for="selectAddress0"></label>
 
 										<span style="color: black;">CASH ON DELIVERY</span>
 									</div>
@@ -210,13 +224,12 @@ int userId=Integer.parseInt(uId);
 								<div class="checkout__order__total">
 									<div class="radio radio-success">
 										<input type="radio" name="payment" id="paymentMode" value="net banking"
-											aria-invalid="false" required/> <label for="selectAddress0"></label>
+											aria-invalid="false" /> <label for="selectAddress0"></label>
 
 										<span>NET BANKING</span>
 									</div>
 								</div>
 								<input type="hidden" name="user_id" value="<%=userId%>">
-		
 								<input type="hidden" id="totalPrice" name="tprice">
 								<a ><button type="submit"  class="site-btn">PLACE ORDER</button></a>
 							</div>
@@ -253,7 +266,7 @@ int userId=Integer.parseInt(uId);
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/CommonScript.js"></script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

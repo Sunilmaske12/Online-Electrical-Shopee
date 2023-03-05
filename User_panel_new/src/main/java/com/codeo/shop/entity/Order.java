@@ -5,11 +5,15 @@ public class Order {
 	int orderId;
 	Date Date;
 	String addressId;
+	int Amount;
+	int charges;
+	int Total_Amount;
 	String userId;
 	int productId;
 	String productName;
 	int productPrice;
 	int productQuantity;
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -34,8 +38,24 @@ public class Order {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	
-	
+		public int getAmount() {
+		return Amount;
+	}
+	public void setAmount(int amount) {
+		Amount = amount;
+	}
+	public int getCharges() {
+		return charges;
+	}
+	public void setCharges(int charges) {
+		this.charges = charges;
+	}
+	public int getTotal_Amount() {
+		return Total_Amount;
+	}
+	public void setTotal_Amount(int total_Amount) {
+		Total_Amount = total_Amount;
+	}
 	public int getProductId() {
 		return productId;
 	}
@@ -61,11 +81,14 @@ public class Order {
 		this.productQuantity = productQuantity;
 	}
 	
+	
+
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", Date=" + Date + ", addressId=" + addressId + ", userId=" + userId
-				+ ", productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productQuantity=" + productQuantity + "]";
+		return "Order [orderId=" + orderId + ", Date=" + Date + ", addressId=" + addressId + ", Amount=" + Amount
+				+ ", charges=" + charges + ", Total_Amount=" + Total_Amount + ", userId=" + userId + ", productId="
+				+ productId + ", productName=" + productName + ", productPrice=" + productPrice + ", productQuantity="
+				+ productQuantity + "]";
 	}
 	public Order(int orderId, Date date, String addressId, String userId) {
 		super();
@@ -75,12 +98,16 @@ public class Order {
 		this.userId = userId;
 	}
 	
-	public Order(int orderId, java.sql.Date date, String addressId, String userId, int productId, String productName,
-			int productPrice, int productQuantity) {
+		
+	public Order(int orderId, java.sql.Date date, String addressId, int amount, int charges, int total_Amount,
+			String userId, int productId, String productName, int productPrice, int productQuantity) {
 		super();
 		this.orderId = orderId;
 		Date = date;
 		this.addressId = addressId;
+		Amount = amount;
+		this.charges = charges;
+		Total_Amount = total_Amount;
 		this.userId = userId;
 		this.productId = productId;
 		this.productName = productName;

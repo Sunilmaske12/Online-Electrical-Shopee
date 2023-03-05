@@ -109,11 +109,16 @@ public class CustomerDao {
 	
 	public boolean placeOrder(String C_AddressId, String u_id, String t_Price, String payment_Mode) {
 		boolean flag=false;
+		int charges=0;
+		if(Integer.parseInt(t_Price)<999) {
+			charges=100;
+		}
+		int TotalAmount=Integer.parseInt(t_Price)+charges;
 		Connection con=ConnectionProvider.getconnection();
 		PreparedStatement psmt=null;
 		if(con!=null) {
 		
-			String insert_order="insert into customer_order (C_Address_Id, User_Id, TotalPrice,Payment_Mode) values(?,?,?,?)";
+			String insert_order="insert into customer_order (C_Address_Id, User_Id, Amount, Shipping_Charges, Total_Amount, Payment_Mode, Status) values(?,?,?,?,?,?,?)";
 			
 				
 				try {
@@ -122,7 +127,10 @@ public class CustomerDao {
 						psmt.setString(1, C_AddressId);
 						psmt.setString(2, u_id);
 						psmt.setString(3, t_Price);
-						psmt.setString(4, payment_Mode);
+						psmt.setLong(4, charges);
+						psmt.setLong(5, TotalAmount);
+						psmt.setString(6, payment_Mode);
+						psmt.setString(7, "Waiting");
 						 psmt.executeUpdate();
 						flag=true;
 					}
@@ -204,7 +212,7 @@ public class CustomerDao {
 	}
 
 	public static  int getTotalSales() throws SQLException{
-		String count_query= "select Sum(TotalPrice) from customer_order ";
+		String count_query= "select Sum(Total_Amount) from customer_order ";
 		
 		psmt = con.prepareStatement(count_query);
 		ResultSet rs = psmt.executeQuery();

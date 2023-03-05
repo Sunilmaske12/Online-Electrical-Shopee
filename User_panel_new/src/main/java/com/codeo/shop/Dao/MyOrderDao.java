@@ -41,6 +41,28 @@ public class MyOrderDao {
 		
 	}
 	
+	public List<Order> getAllOrderList(){
+		List<Order> list = new ArrayList<Order>();
+		String Select_Order = "select * from customer_order";
+		try {
+			psmt=con.prepareStatement(Select_Order);
+			rs=psmt.executeQuery();
+			Order order=null;
+			while(rs.next()) {
+				order=new Order();
+				order.setOrderId(rs.getInt("Order_Id"));
+				order.setDate(rs.getDate("Date"));
+				order.setAddressId(rs.getString("C_Address_Id"));
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+	
+	
 	public List<Customer> getAddressDetailByID(String uid){
 		List<Customer> clist = new ArrayList<Customer>();
 		String Select_Address = "select * from customer_address where Address_Id="+uid;
@@ -87,5 +109,21 @@ public class MyOrderDao {
 		}
 		return olist;
 		
+	}
+
+	public void approvedOrder(String o_Id) throws SQLException {
+		String approved="update customer_order set Status=? where Order_Id=?";
+		psmt.setString(1, "Approved");
+		psmt.setString(2, o_Id);
+		psmt=con.prepareStatement(approved);
+		psmt.executeQuery();
+	}
+	
+	public void rejectdOrder(String o_Id) throws SQLException {
+		String Reject="update customer_order set Status=? where Order_Id=?";
+		psmt.setString(1, "Reject");
+		psmt.setString(2, o_Id);
+		psmt=con.prepareStatement(Reject);
+		psmt.executeQuery();
 	}
 }

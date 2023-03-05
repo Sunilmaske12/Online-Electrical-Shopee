@@ -57,8 +57,8 @@ function updateCart(){
 		$(".totalPrice").html("00.00");
 		$(".charges").html("00.00");
 		$("#product").html("00.00");
-		$(".checkoutButton").html("go to shopping cart and do shopping");
-			
+		$("#checkoutbutton").html("go to shopping cart and do shopping");
+		
 		
 		$(".shoping_cart_body").html("<h1>Cart Does Not Have Any Items</h1>");
 	}else{
@@ -166,9 +166,7 @@ function updateCart(){
 								  $('#productNameO'+i).val(`${item.productName}`);
 								   $('#productQuantityO'+i).val(`${item.productQuantity}`);
 								    $('#productPriceO'+i).val(`${item.productPrice}`);
-								 
-							
-											
+								   						
 							
 							})
 							
@@ -237,7 +235,8 @@ function updateCart(){
 	
 	//clear cart
 	function clearCart(){
-	localStorage.clear();
+		
+	localStorage.removeItem('cart');
 	updateCart();
 	}
 	
@@ -347,12 +346,13 @@ function updateLike(){
 				</button>
 
 				<a href="#" class="primary-btn m-1" style="background-color: red"
+				onclick="add_to_cart(${item.lproductId}, '${item.lproductName}', ${item.lproductPrice}, '${item.lImageName}')"
 					onMouseOver="this.style.backgroundColor='#808080'"
 					onMouseOut="this.style.backgroundColor='red'"> <i
 					class="fa fa-shopping-cart"></i>ADD TO CARD
 				</a>
 				<div>
-					<a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">
+					<a href="shoping-cart.jsp"  class="btn btn-warning btn-sm mt-1">
 						View CART </a>
 				</div>
 
@@ -374,6 +374,39 @@ function updateLike(){
 	$(document).ready(function(){
 		updateLike()
 	})
+
+
+
+//========================Like Products end===============
+
+
+//===================Error & Success Popup================
+function orderPlacePopUp(){
+	swal("Good job!", "Your Order Place Succesfully!", "success");
+	}
+
+function addressrErrorPopUp(){
+	swal("Oops!", "Please Insert Your Address!", "error");
+	}
+	
+function msgErrorPopUp(){
+	swal("Oops!", "Please select Your Payment Mode!", "error");
+	}
+
+//==================demo============
+
+
+
+//function sweetalert(){
+	//var a = $('#addressId').val();
+//	console.log("length ",a.length);
+//	swal("Incomplete information!", "Please put your address!", "error");
+//}
+
+
+
+
+
 
 
 

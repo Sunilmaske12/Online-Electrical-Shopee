@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
-<%@page import="java.sql.*"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@page import="com.codeo.shop.Dao.MyOrderDao"%>
+<%@page import="com.codeo.shop.entity.Order"%>
+<%@page import="com.codeo.shop.entity.Customer"%>
 <%@page import="java.util.List"%>
-<%@page import="com.codeo.shop.dbutil.ConnectionProvider"%>
-<%@page import="com.codeo.shop.entity.Banner" %>
-<%@page import="com.codeo.shop.Dao.BannerDao" %>
+<%@page import="java.sql.Date"%>
 <!--   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
 
 <!DOCTYPE html>
@@ -23,10 +24,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<!-- all  CSS-->
-<%@include file="component/AllCssFIles.jsp" %>
-<!-- BEGIN APEX CSS-->
-<link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+
+
+<%@include file="component/AllCssFIles.jsp"%>
 </head>
 
 <body data-col="2-columns" class=" 2-columns ">
@@ -34,63 +34,71 @@
 	<div class="wrapper nav-collapsed menu-collapsed">
 
 		<%@include file="Asidebar.jsp"%>
-        <%@include file="Navbar.jsp"%>
+		<%@include file="Navbar.jsp"%>
 
 		<div class="main-panel">
 			<div class="main-content">
 				<div class="content-wrapper">
 
 					<div class="mb-3">
-						<a href="AddBanner.jsp"
-							class="btn btn-raised gradient-crystal-clear white"><i
-							class="fa fa-plus " aria-hidden="true"></i> Create New </a>
+						<a class="btn btn-raised gradient-crystal-clear white"><i
+							aria-hidden="true"></i> ALL ORDERS </a>
 					</div>
-                    <section id="shopping-cart">
+					
+
+<%
+MyOrderDao mod=new MyOrderDao();
+List<Order> orderlist = mod.getAllOrderList();
+%>
+					<section id="shopping-cart">
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">Banners</h4>
-									</div>
 									<div class="card-body">
 										<div class="card-block">
 											<table class="table table-responsive-md text-center ">
 												<thead>
 													<tr>
-														<th>Banner<br>No
-														</th>
-														<th> Name</th>
-														<th>Created At</th>
-														<th>Status</th>
-														<th>Image</th>
-														<th>Action</th>
-                                                   </tr>
+														<th>Sr.No.</th>
+														<th>ORDER DATE</th>
+														<th>CUSTOMER NAME</th>
+														<th>DETAILS</th>
+														<th>STATUS</th>
+													</tr>
 												</thead>
-												<%
-                          BannerDao bannerdao=new BannerDao(); 
-						List<Banner> banner= bannerdao.getAllBanner();
-                         
-                           
-                          for(Banner b:banner)
-                         {              
-                        	        %><tr>
-											<td><%= b.getBanner_no() %></td>
-													<td> <%= b.getBanner_name() %></td>
-													<td><%= b.getDate() %></td>
-													<td><% if(b.getAction().equals("Active")){%><button type="button" class="btn btn-success">Active</button><%}else{ %><button type="button" class="btn btn-danger">In-Active</button><%} %></td>
-													<td><a href="img/banner/<%=b.getBanner_image() %>"><button type="button" class="btn btn-primary">View Image</button></a></td>
-                                                   
-												 <td><a	href="BannerOperation?action=DELETE&id=<%=b.getBanner_no()%>"><i
-															class="ft-trash font-medium-3 red"></i> </a>|| <a
-														href="#">
-															<i class="ft-edit orange"></i>
-													</a></td>
-													
+												<% int i=0;
+												for(Order order:orderlist){
+					                       			Date date=order.getDate();
+														i++; %>
+												<tr>
+													<td><%=i %></td>
+													<td><%=order.getDate()%></td>
+													<%List<Customer> C_Address_details = mod.getAddressDetailByID(order.getAddressId());
+						if(C_Address_details.size()==0){%>
+						<td> Null </td>
+						<%}
+						for(Customer custo:C_Address_details){
+						
+						%>
+						<td><%=custo.getC_name() %></td><%} %>
+													<td><a href="OrderDetailsAdmin.jsp?orderId=<%=order.getOrderId()%>&addressId=<%=order.getAddressId() %>" type="button" style="color:white; font-family:Serif; background: blue;" class="btn btn-primary btn-sm">DATAILS</a></td>
+												    <td><div  class="btn-group">
+															<button style="background: orange;" type="button" class="btn btn-primary">WAITING</button>
+															<button style="background: orange;" type="button"
+																class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+																data-toggle="dropdown"></button>
+															<div class="dropdown-menu">
+																<a style="background: #00FF00;" class="dropdown-item" href="StatusServlet?Action=ApproveOrder&O_Id=<%=order.getOrderId()%>">APPROVE</a>
+																 <a	style="background: red; " class="dropdown-item" href="StatusServlet?Action=RejectOrder&O_Id=<%=order.getOrderId()%>">REJECT</a>
+															</div>
+														</div>
+													</td>
+
 												</tr>
-												
-									<%
-                                                }
-                                  %>
+
+												<%
+												}
+												%>
 
 											</table>
 										</div>
@@ -99,7 +107,7 @@
 							</div>
 						</div>
 					</section>
-               	</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -119,9 +127,9 @@
 		type="text/javascript"></script>
 	<script src="app-assets/vendors/js/pace/pace.min.js"
 		type="text/javascript"></script>
-   <script src="app-assets/vendors/js/datatable/datatables.min.js"
+	<script src="app-assets/vendors/js/datatable/datatables.min.js"
 		type="text/javascript"></script>
-   <script src="app-assets/js/app-sidebar.js" type="text/javascript"></script>
+	<script src="app-assets/js/app-sidebar.js" type="text/javascript"></script>
 	<script src="app-assets/js/notification-sidebar.js"
 		type="text/javascript"></script>
 	<script src="app-assets/js/customizer.js" type="text/javascript"></script>

@@ -56,16 +56,21 @@ HttpSession session4 = request.getSession();
 int userId= (int) session4.getAttribute("userid");
 MyOrderDao mod=new MyOrderDao();
 List<Order> orderlist = mod.getAllOrderListByUID(userId);
-%>
+String orderSuccess=(String) session4.getAttribute("orderSuccess");
+System.out.println(orderSuccess);%>
 
-<body>
+
+
+
+<body <%if(orderSuccess!=null){%>
+  onload="orderPlacePopUp()"
+<%session4.removeAttribute("orderSuccess"); } %> >
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
 	<jsp:include page="header.jsp" />
 	<jsp:include page="CommonModal.jsp" />
-
 
 
 
@@ -102,14 +107,19 @@ List<Order> orderlist = mod.getAllOrderListByUID(userId);
 					</tr>
 				</thead>
 				<tbody>
-					<%for(Order order:orderlist){
+					<% for(Order order:orderlist){
 						Date date=order.getDate();
 					%>
 					<tr>
 						<td scope="row"></td>
 						<td><%=date %></td>
 						<%List<Customer> C_Address_details = mod.getAddressDetailByID(order.getAddressId());
-						for(Customer custo:C_Address_details){%>
+						if(C_Address_details.size()==0){%>
+						<td> Null </td>
+						<%}
+						for(Customer custo:C_Address_details){
+						
+						%>
 						<td><%=custo.getC_name() %></td><%} %>
 						<td><button type="button" style="background: #65fe08;" class="btn btn-warning btn-sm">APPROVED</button></td>
 						<td><a href="OrderDetails.jsp?orderId=<%=order.getOrderId()%>&addressId=<%=order.getAddressId() %>" type="button" style="color:white;" class="btn btn-primary btn-sm">DATAILS</a></td>

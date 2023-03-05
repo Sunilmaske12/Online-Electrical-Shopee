@@ -138,6 +138,7 @@
 				<tbody>
 					<%
 					int T_Price=0;
+					int charges=0;
 					for(Order order:orderDetail){%>
 					<tr>
 						<td scope="row"></td>
@@ -149,10 +150,13 @@
 						<td><%= price%></td>
 						
 					</tr>
-					<%} %>
+					<%}if(T_Price<999){
+						charges=100;
+					}
+					%>
 						<tr>
 							<td></td>
-							<td style="font-weight:bold; color: red;" colspan=4>TOTAL  : <%= T_Price %></td>
+							<td style="font-weight:bold; color:red;" colspan=4>TOTAL AMOUNT  : <%= T_Price %> + <%=charges %><span style="color:black"> (shipping charges)  =   </span>  RS. <%=T_Price+charges %></td>
 						</tr>				
 				</tbody>
 			</table>
@@ -175,5 +179,7 @@
 	<script src="js/main.js"></script>
 
 </body>
+
+
 
 </html>

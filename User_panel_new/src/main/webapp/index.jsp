@@ -147,7 +147,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 					<%
 					BannerDao bannerdao = new BannerDao();
 					List<Banner> banner = bannerdao.getAllBanner(); 
-					int size=banner.size();
+				
 					%>
 					<div id="carouselExampleIndicators" class="carousel slide"
 						data-bs-ride="carousel">
@@ -155,11 +155,15 @@ String user_email = (String) session1.getAttribute("UserEmail");
 							<button type="button" data-bs-target="#carouselExampleIndicators"
 								data-bs-slide-to="0" class="active" aria-current="true"
 								aria-label="Slide 1"></button>
-								<%for(int i=1; i<=size; i++){ %>
+								<% int i=0;
+							for (Banner b : banner) {
+							if(b.getAction().equals("Active")){	
+								i++;
+							%>
 							<button type="button" data-bs-target="#carouselExampleIndicators"
 								data-bs-slide-to="<%=i %>" aria-label=" Slide <%=i+1%>"></button>
 								<%
-								
+							}
 								} %>
 								
 							
@@ -378,11 +382,10 @@ String user_email = (String) session1.getAttribute("UserEmail");
 									<a href="Product-details.jsp?product=<%=product.getId()%>"
 										style="color: black"><%=product.getProd_name()%></a>
 								</h6>
-								<!--   <h6product.getProd_description()n() %></h6> -->
-								<!--  <h5> <span>&#8377; </spanproduct.getProd_price()e() %> </h5> <br> -->
+								
 								<button type="button" class="btn btn-light">
 									<h5>
-										&#8377;<%=product.getPriceAfterDiscount()%>/- <span
+										Rs.<%=product.getPriceAfterDiscount()%>/- <span
 											style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
 											<%=product.getProd_price()%> ,<%=product.getProd_discount()%>
 											%off
@@ -393,8 +396,8 @@ String user_email = (String) session1.getAttribute("UserEmail");
                                        <button  class="primary-btn "
 											onMouseOver="this.style.backgroundColor='#808080'"
 											onMouseOut="this.style.backgroundColor='red'" 
-											onclick="add_to_cart(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')"> <i
-											class="fa fa-shopping-cart"></i>ADD TO CARD</button>
+											onclick="add_to_cart(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')">
+											 <i	class="fa fa-shopping-cart"></i>ADD TO CARD</button>
 								<div>
 									<a href="shoping-cart.jsp" class="btn btn-warning btn-sm mt-1">
 										View CART </a>

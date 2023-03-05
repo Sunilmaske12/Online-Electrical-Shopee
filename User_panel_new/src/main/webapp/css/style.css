@@ -3715,7 +3715,7 @@ height: 60px;
  }
  
  /*--------------------------------- Sr no-----------------------------*/
- .table-bordered {
+ .table-bordered{
   counter-reset: serial-number;
 }
 

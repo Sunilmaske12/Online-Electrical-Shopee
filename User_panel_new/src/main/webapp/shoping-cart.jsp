@@ -117,7 +117,7 @@
 				</div>
 				
 				<div class="col-lg-6">
-					<div class="shoping__checkout">
+					<div class="shoping__checkout" id="checkoutbutton">
 					
 						<h5>PRICE DETAILS</h5>
 						<ul>
@@ -126,7 +126,7 @@
 							<li><h3 >Total Price: <span class="totalPrice"></span></h3></li>
 
 						</ul><form action="cartlength"><input type="hidden" id="cartlegth" name="cartlegth">
-						<button style="width:100%;" type="submit" class="primary-btn">PROCEED TO
+						<button style="width:100%;" type="submit"  class="primary-btn">PROCEED TO
 							CHECKOUT</button></form>
 					</div>
 				</div>

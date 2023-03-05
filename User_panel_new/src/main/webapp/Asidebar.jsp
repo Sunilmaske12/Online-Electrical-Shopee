@@ -53,7 +53,7 @@
 					<li class="has-sub nav-item"><a href="#"><i
 							class="fa fa-th-list"></i><span data-i18n="" class="menu-title">Orders</span></a>
 						<ul class="menu-content">
-							<li><a href="feather.html" class="menu-item">View Order</a>
+							<li><a href="ViewOrderAdmin.jsp" class="menu-item">View Order</a>
 							</li>
 							<li><a href="font-awesome.html" class="menu-item">Dispatch
 									details</a></li>

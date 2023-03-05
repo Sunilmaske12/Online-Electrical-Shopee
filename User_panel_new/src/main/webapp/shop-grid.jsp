@@ -154,7 +154,7 @@
 								
 								<button type="button" class="btn btn-light">
 									<h5>
-										&#8377;<%=product.getPriceAfterDiscount()%>/- <span
+										Rs.<%=product.getPriceAfterDiscount()%>/- <span
 											style="font-size: 15px; font-style: italic; text-decoration: line-through; color: red">
 											<%=product.getProd_price()%> ,<%=product.getProd_discount()%>
 											%off
