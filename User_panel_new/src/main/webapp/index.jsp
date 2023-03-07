@@ -24,6 +24,9 @@ String user_email = (String) session1.getAttribute("UserEmail");
 
 
 
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -47,7 +50,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css?" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>

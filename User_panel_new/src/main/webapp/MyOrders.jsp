@@ -148,7 +148,7 @@ String orderSuccess = (String) session4.getAttribute("orderSuccess");
 						
 						
 						<td><a href="OrderDetails.jsp?orderId=<%=order.getOrderId()%>&addressId=<%=order.getAddressId() %>" type="button" style="color:white;" class="btn btn-primary btn-sm">DATAILS</a></td>
-						<td><button type="button" class="btn btn-danger btn-sm">DOWNLOAD</button></td>
+						<td><a href="Invoice.jsp?orderId=<%=order.getOrderId()%>&addressId=<%=order.getAddressId() %>" type="button"  class="btn btn-danger btn-sm">DOWNLOAD</a></td>
 					<%} %>
 					
 					

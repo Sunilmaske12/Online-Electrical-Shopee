@@ -35,7 +35,7 @@
 
 </head>
 
-<body>
+<body id="tblCustomers">
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -160,7 +160,7 @@
 						</tr>				
 				</tbody>
 			</table>
-			
+			<button type="button" id="btnExport">export</button>
 
 		</div>
 	</section>
@@ -177,7 +177,8 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-
+  
+    
 </body>
 
 

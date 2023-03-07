@@ -36,14 +36,14 @@
 
 
 	</head>
-	<!--Coded With Love By Mutiullah Samim-->
+	
 	<body>
 	
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
 			
 				<div class="col-md-8 col-xl-6 chat">
-					<div class="card">
+					<div class="card card_chat">
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
