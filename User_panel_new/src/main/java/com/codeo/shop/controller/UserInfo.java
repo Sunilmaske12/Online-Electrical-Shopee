@@ -31,16 +31,11 @@ public class UserInfo extends HttpServlet {
 		 UserDaoImpl userDaoImpl = new UserDaoImpl();
 		userDaoImpl.UpdateUserInfo(id, name, MoNO, Email, Address);
 		
-		dispatcher = request.getRequestDispatcher("index.jsp");
+		dispatcher = request.getRequestDispatcher("dashbord.jsp");
 		dispatcher.forward(request, response);
-	
-	
-	
-	
-	
 	
 	
 	}
 	
-
+	
 }

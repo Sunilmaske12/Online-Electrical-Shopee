@@ -393,23 +393,6 @@ function msgErrorPopUp(){
 	swal("Oops!", "Please select Your Payment Mode!", "error");
 	}
 
-//==================demo============
-
-
-
-//function sweetalert(){
-	//var a = $('#addressId').val();
-//	console.log("length ",a.length);
-//	swal("Incomplete information!", "Please put your address!", "error");
-//}
-
-
-
-
-
-
-
-
 
 
 

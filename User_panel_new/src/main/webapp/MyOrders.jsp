@@ -53,11 +53,12 @@
 
 <%
 HttpSession session4 = request.getSession();
-int userId= (int) session4.getAttribute("userid");
-MyOrderDao mod=new MyOrderDao();
+int userId = (int) session4.getAttribute("userid");
+MyOrderDao mod = new MyOrderDao();
 List<Order> orderlist = mod.getAllOrderListByUID(userId);
-String orderSuccess=(String) session4.getAttribute("orderSuccess");
-System.out.println(orderSuccess);%>
+String orderSuccess = (String) session4.getAttribute("orderSuccess");
+
+%>
 
 
 

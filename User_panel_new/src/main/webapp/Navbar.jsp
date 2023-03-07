@@ -1,24 +1,36 @@
- <%
- HttpSession session3=request.getSession();
-String admin_name=(String)session3.getAttribute("UserName");
-	
- %>
+
+<%
+HttpSession session3 = request.getSession();
+String admin_name = (String) session3.getAttribute("UserName");
+int admin_id = (int) session3.getAttribute("userid");
+%>
 
 <html>
+<head>
+
+</head>
 <body data-col="2-columns" class=" 2-columns ">
 	<jsp:include page="CommonModal.jsp" />
-	
-	
+
+
 	<!-- Navbar (Header) Starts-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-faded">
 		<div class="container-fluid">
 			<div class="navbar-header">
-			
-		<%if(admin_name!=null){ %>
-			<h3 style="color:red;"  class="font-weight-bold">Welcome : <%=admin_name %> </h3><%} %>
+
+				<%
+				if (admin_name != null) {
+				%>
+				<h3 style="color: red;" class="font-weight-bold">
+					Welcome :
+					<%=admin_name%>
+				</h3>
+				<%
+				}
+				%>
 				<button type="button" data-toggle="collapse"
 					class="navbar-toggle d-lg-none float-left">
-					
+
 					<span class="sr-only">Toggle navigation</span><span
 						class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
@@ -32,7 +44,7 @@ String admin_name=(String)session3.getAttribute("UserName");
 						<li class="dropdown nav-item"><a id="dropdownBasic3" href="#"
 							data-toggle="dropdown"
 							class="nav-link position-relative dropdown-toggle"><i
-								class="ft-flag font-medium-3 blue-grey darken-4"></i><span
+								 class="ft-flag font-medium-3 blue-grey darken-4"></i><span
 								class="selected-language d-none"></span></a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a href="javascript:;" class="dropdown-item py-1"> <img
@@ -84,28 +96,28 @@ String admin_name=(String)session3.getAttribute("UserName");
 									class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read
 									All Notifications</a>
 							</div></li>
-							
-						<li class="dropdown nav-item"><a id="dropdownBasic3" href="#"
-							data-toggle="dropdown"
-							class="nav-link position-relative dropdown-toggle"><i
-								class="ft-user font-medium-3 blue-grey darken-4"></i>
-								<p class="d-none">User Settings</p></a>
-							<div ngbdropdownmenu="" aria-labelledby="dropdownBasic3"
+							<%	if (admin_name != null) {	%>
+				
+					
+				
+				
+						<li class="dropdown nav-item">
+						<a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle">
+						<i class="ft-user font-medium-3 blue-grey darken-4"></i> </a>
+							<div aria-labelledby="dropdownBasic3"
 								class="dropdown-menu dropdown-menu-right">
-								<a href="javascript:;" class="dropdown-item py-1"><i
-									class="ft-settings mr-2"></i><span>Settings</span></a><a
-									href="javascript:;" class="dropdown-item py-1"><i
-									class="ft-edit mr-2"></i><span data-toggle="modal" data-target="#MyProfile">Edit Profile</span></a><a
-									href="javascript:;" class="dropdown-item py-1"><i
-									class="ft-mail mr-2"></i><span>My Inbox</span></a>
+								<a href="javascript:;" class="dropdown-item py-1">
+								<span><%=admin_name%> (Admin Manager)</span></a>
+								<a href="javascript:;" class="dropdown-item py-1"><span>AID: <%=admin_id %></span></a>
 								<div class="dropdown-divider"></div>
+								<a href="javascript:;" class="dropdown-item py-1"><i
+									class="ft-edit mr-2"></i><span data-toggle="modal"
+									data-target="#UpdateProfile">Edit Profile</span></a>
 								<a href="loginfrom.jsp;" class="dropdown-item"><i
 									class="ft-power mr-2"></i><span>Logout</span></a>
-							</div></li>
-						<li class="nav-item"><a href="javascript:;"
-							class="nav-link position-relative notification-sidebar-toggle"><i
-								class="ft-align-left font-medium-3 blue-grey darken-4"></i>
-								<p class="d-none">Notifications Sidebar</p></a></li>
+							</div>
+							</li>	<%}	%>
+						
 					</ul>
 				</div>
 			</div>

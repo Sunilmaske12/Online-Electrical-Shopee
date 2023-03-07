@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.codeo.shop.Dao.BannerDao;
+import com.codeo.shop.Dao.Contact_QueryDao;
 import com.codeo.shop.Dao.MyOrderDao;
 
 @WebServlet("/Status_Servlet")
@@ -50,6 +52,13 @@ public class Status_Servlet extends HttpServlet {
 		case "reject":
 			 rejectOrder(request, response);
 			break;
+		case "closeChat":
+		 closeChat(request, response);
+		break;
+
+	case "openChat":
+		 openChat(request, response);
+		break;
 		case "active":
 			try {
 				activeBaner(request, response);
@@ -72,6 +81,7 @@ public class Status_Servlet extends HttpServlet {
 		}
 		
 	}
+
 
 	private void approvedOrder(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -103,6 +113,41 @@ public class Status_Servlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+
+	private void openChat(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String Admin_Name=(String)session.getAttribute("UserName");
+		String ticket_id = request.getParameter("T_Id");
+		Contact_QueryDao cqd = new Contact_QueryDao();
+	
+		try {
+			if (cqd.openChat(ticket_id, Admin_Name)) {
+				dispatcher = request.getRequestDispatcher("support.jsp");
+				dispatcher.forward(request, response);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private void closeChat(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String Admin_Name=(String)session.getAttribute("UserName");
+		String ticket_id = request.getParameter("T_Id");
+		Contact_QueryDao cqd = new Contact_QueryDao();
+		
+		try {
+			if (cqd.closeChat(ticket_id,Admin_Name)) {
+				dispatcher = request.getRequestDispatcher("support.jsp");
+				dispatcher.forward(request, response);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	private void activeBaner(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {

@@ -1,7 +1,21 @@
 <!DOCTYPE html>
+
+<%
+int userId=0;
+String user_name = (String) session.getAttribute("UserName");
+if(user_name!=null){
+	userId= (int) session.getAttribute("userid");
+}
+%>
+
 <html lang="zxx">
 
 <head>
+
+<%@page import="com.codeo.shop.Dao.Contact_QueryDao"%>
+<%@page import="com.codeo.shop.entity.chat"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.Date"%>
 <meta charset="UTF-8">
 <meta name="description" content="Ogani Template">
 <meta name="keywords" content="Ogani, unica, creative, html">
@@ -25,6 +39,8 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
+
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -34,7 +50,6 @@
 
 	<jsp:include page="header.jsp" />
 
-	
 
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section set-bg" data-setbg="img/Name-bg.jpg">
@@ -96,9 +111,8 @@
 			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0345711981!2d79.10155404996937!3d21.151022438901247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0c9597151bb%3A0x8d2707eb85172ba1!2sAgresan%20Chowk%2C%20Gandhibagh%2C%20Nagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1667230512548!5m2!1sen!2sin"
 			width="600" height="450" style="border: 0;" allowfullscreen=""
 			loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-		height="500" style="border:0;" allowfullscreen="" aria-hidden="false"
-		tabindex="0">
-		</iframe>
+
+
 		<div class="map-inside">
 			<i class="icon_pin"></i>
 			<div class="inside-widget">
@@ -118,26 +132,79 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="contact__form__title">
-						<h2>Leave Message</h2>
+						<h2>Create New</h2>
 					</div>
 				</div>
 			</div>
-			<form action="#">
+			<form action="chat?uid=<%=userId %>&uname=<%=user_name %>"
+				method="post">
 				<div class="row">
-					<div class="col-lg-6 col-md-6">
-						<input type="text" placeholder="Your name">
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<input type="text" placeholder="Your Email">
-					</div>
-					<div class="col-lg-12 text-center">
-						<textarea placeholder="Your message"></textarea>
+
+					<div style="margin-left: 30%;" class="col-lg-6 text-center">
+						<textarea placeholder="Your message" name="message" required></textarea>
 						<button type="submit" class="site-btn">SEND MESSAGE</button>
 					</div>
 				</div>
+				<input type="hidden" name="Action" value="createTicket">
 			</form>
 		</div>
 	</div>
+
+	<section class="checkout spad">
+		<div class="container">
+			<table style="text-align: center" class="table table-bordered">
+				<thead>
+					<tr>
+						<th scope="col">No.</th>
+						<th scope="col">DATE</th>
+						<th scope="col">TICKET ID</th>
+						<th scope="col">ADMIN MANAGER</th>
+						<th scope="col">MESSAGE</th>
+						<th scope="col">STATUS</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<% Contact_QueryDao cqd=new Contact_QueryDao();
+					List<chat> ticketlist = cqd.getAllTicketListById(userId);
+					for(chat t:ticketlist){
+						Date date=t.getTicket_date();
+					%>
+					<tr>
+						<td scope="row"></td>
+						<td><%=date %></td>
+						<td><%= t.getTicketId() %></td>
+						<td><%=t.getAdmin_Manager() %></td>
+						<td><a href="Chat.jsp?ticketId=<%=t.getTicketId()%>&status=<%=t.getStatus() %>"
+							type="button" style="color: white;"
+							class="btn btn-primary btn-sm">CHATS</a></td>
+
+					
+						<td>	<%if(t.getStatus().equals("Open")){%>
+						 <div class="btn-group">
+								<a style="background: #00FF00;" class="btn btn-primary">OPEN</a>
+							</div><%  } else if(t.getStatus().equals("Close")){%>
+					    <div class="btn-group">
+								<a style="background: red; color: white;" type="button"
+									class="btn btn-primary">CLOSED</a>
+
+							</div><%}else{ %>
+							
+							 <div class="btn-group">
+								<a style="background: orange; color: white;" type="button"
+									class="btn btn-primary">WAITING</a></div>
+							
+							
+							<%} %>
+							</td>
+						</tr>
+						<%  } %>
+					
+				</tbody>
+			</table>
+
+		</div>
+	</section>
 	<!-- Contact Form End -->
 
 	<jsp:include page="footer.html" />

@@ -46,6 +46,12 @@
 		<description></description>
 		<servlet-class>com.codeo.shop.controller.OrderDetailServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ChatServlet</servlet-name>
+		<display-name>ChatServlet</display-name>
+		<description></description>
+		<servlet-class>com.codeo.shop.controller.ChatServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
@@ -74,6 +80,10 @@
 	<servlet-mapping>
 		<servlet-name>OrderDetailServlet</servlet-name>
 		<url-pattern>/OrderDetailServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChatServlet</servlet-name>
+		<url-pattern>/ChatServlet</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
