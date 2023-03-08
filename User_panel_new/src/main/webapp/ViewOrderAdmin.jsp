@@ -71,7 +71,7 @@ List<Order> orderlist = mod.getAllOrderList();
 					                       			Date date=order.getDate();
 														i++; %>
 												<tr>
-													<td><%=i %></td>
+													<td><%=i %> <% if(order.getseen().equals("No")){%> <span style="color:red; font-size:80%;">(new)</span><%} %></td>
 													<td><%=order.getDate()%></td>
 													<%List<Customer> C_Address_details = mod.getAddressDetailByID(order.getAddressId());
 						if(C_Address_details.size()==0){%>

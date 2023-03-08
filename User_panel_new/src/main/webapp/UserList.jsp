@@ -4,11 +4,13 @@
 <%@page import="java.sql.*"%>
 <%@page import="com.codeo.shop.dbutil.ConnectionProvider"%>
 <%@page import="com.codeo.shop.entity.User"%>
+<%@page import="com.codeo.shop.Dao.NotificationDao"%>
 
 <!DOCTYPE html>
 <html>
 
 <head>
+<title>All Users</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -46,7 +48,7 @@
 <body data-col="2-columns" class=" 2-columns ">
 
 	<div class="wrapper nav-collapsed menu-collapsed">
-
+	<%  NotificationDao.seenUser(); %>
 		<%@include file="Asidebar.jsp"%>
 
 		<%@include file="Navbar.jsp"%>
@@ -79,7 +81,7 @@
 														<th>Action</th>
                                                      </tr>
 												</thead>
-               	<%       
+               	<%     
                           String id =request.getParameter("id");
                           User user = new User();
                           Connection con = ConnectionProvider.getconnection();

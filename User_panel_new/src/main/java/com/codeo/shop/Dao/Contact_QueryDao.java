@@ -102,6 +102,7 @@ public class Contact_QueryDao {
 				chat.setTicketId(rs.getString("TicketId"));
 				chat.setTicket_date(rs.getDate("Date"));
 				chat.setStatus(rs.getString("Status"));
+				chat.setSeen(rs.getString("Seen"));
 				list.add(chat);
 			}
 		} catch (SQLException e) {

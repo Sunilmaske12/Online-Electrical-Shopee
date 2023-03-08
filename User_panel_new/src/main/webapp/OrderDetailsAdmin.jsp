@@ -5,6 +5,7 @@
 <%@page import="com.codeo.shop.Dao.MyOrderDao"%>
 <%@page import="com.codeo.shop.entity.Order"%>
 <%@page import="com.codeo.shop.entity.Customer"%>
+<%@page import="com.codeo.shop.Dao.NotificationDao"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.Date"%>
 <!--   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
@@ -33,7 +34,15 @@
 <body data-col="2-columns" class=" 2-columns ">
 
 	<div class="wrapper nav-collapsed menu-collapsed">
-
+					
+<%	String orderId=request.getParameter("orderId");
+	String addressId=request.getParameter("addressId");
+	NotificationDao.seenOrderById(orderId);
+	MyOrderDao mod = new MyOrderDao();
+	List<Customer> addressDetail = mod.getAddressDetailByID(addressId);
+	List<Order> orderDetail = mod.getOrderDetails(orderId);
+	%>
+	
 		<%@include file="Asidebar.jsp"%>
 		<%@include file="Navbar.jsp"%>
 
@@ -45,16 +54,7 @@
 						<a class="btn btn-raised gradient-crystal-clear white"><i
 							aria-hidden="true"></i>ORDERS DETAILS</a>
 					</div>
-					
-<%
-	String orderId=request.getParameter("orderId");
-	String addressId=request.getParameter("addressId");
-	
-	MyOrderDao mod = new MyOrderDao();
-	List<Customer> addressDetail = mod.getAddressDetailByID(addressId);
-	List<Order> orderDetail = mod.getOrderDetails(orderId);
-	%>
-					<section id="shopping-cart">
+				<section id="shopping-cart">
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="card">

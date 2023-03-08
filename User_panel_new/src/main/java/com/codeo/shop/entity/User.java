@@ -9,6 +9,7 @@ public class User {
       private String user_emailid= null;
       private String user_pass=null;
 	  private String  user_type =null;
+	  private String seen;
 	
     /*
 	public User(String user_name, String user_mobno, String user_adderess, String user_emailid, String user_pass) {
@@ -50,7 +51,21 @@ public class User {
 		this.user_pass = user_pass;
 		}
 
-    public String getUser_type() {
+		
+    public User(int id, String user_name, String user_mobno, String user_adderess, String user_emailid,
+				String user_pass, String user_type, String seen) {
+			super();
+			this.id = id;
+			this.user_name = user_name;
+			this.user_mobno = user_mobno;
+			this.user_adderess = user_adderess;
+			this.user_emailid = user_emailid;
+			this.user_pass = user_pass;
+			this.user_type = user_type;
+			this.seen = seen;
+		}
+
+	public String getUser_type() {
 		return user_type;
 	}
 
@@ -105,4 +120,13 @@ public class User {
 	public void setUser_pass(String user_pass) {
 		this.user_pass = user_pass;
 	  }
+
+	public String getSeen() {
+		return seen;
+	}
+
+	public void setSeen(String seen) {
+		this.seen = seen;
+	}
+	
    }

@@ -70,7 +70,7 @@ List<chat> ticketlist = cqd.getAllTicketList();
 					                       			Date date=ticket.getTicket_date();
 														i++; %>
 												<tr>
-													<td><%=i %></td>
+													<td><%=i %> <%if(ticket.getSeen().equals("No")){ %><span style="color:red; font-size:80%;">new</span><%} %></td>
 													<td><%=date%></td>
 						
 							                     <td><%=ticket.getTicketId()%></td>

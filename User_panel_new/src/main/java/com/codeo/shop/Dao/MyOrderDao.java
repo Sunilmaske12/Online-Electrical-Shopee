@@ -63,6 +63,7 @@ public class MyOrderDao {
 				order.setStatus(rs.getString("Status"));
 				order.setTotal_Amount(rs.getInt("Total_Amount"));
 				order.setAmount(rs.getInt("Amount"));
+				order.setseen(rs.getString("Seen"));
 				list.add(order);
 			}
 		} catch (SQLException e) {

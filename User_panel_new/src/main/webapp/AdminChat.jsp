@@ -1,5 +1,4 @@
-
-
+<%@page import="com.codeo.shop.Dao.NotificationDao"%>
 <%@page import="com.codeo.shop.Dao.Contact_QueryDao"%>
 <%@page import="com.codeo.shop.entity.chat"%>
 <%@page import="java.util.List"%>
@@ -61,6 +60,8 @@
 						<%
 						
 						String ticketId=request.getParameter("ticketId");
+						NotificationDao.seenChatById(ticketId);
+						NotificationDao.seenQueryById(ticketId);
 						Contact_QueryDao cqd=new Contact_QueryDao();
 						List<chat> chatlist = cqd.getChatsById(ticketId);
 					for(chat c:chatlist){

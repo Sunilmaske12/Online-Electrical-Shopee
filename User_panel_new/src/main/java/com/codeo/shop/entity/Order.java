@@ -14,6 +14,7 @@ public class Order {
 	String productName;
 	int productPrice;
 	int productQuantity;
+	String seen;
 	
 	public int getOrderId() {
 		return orderId;
@@ -89,7 +90,12 @@ public class Order {
 		this.status = status;
 	}
 
-	
+	public String getseen() {
+		return seen;
+	}
+	public void setseen(String seen) {
+		this.seen=seen;
+	}
 	
 	
 	
@@ -98,10 +104,10 @@ public class Order {
 		return "Order [orderId=" + orderId + ", Date=" + Date + ", addressId=" + addressId + ", Amount=" + Amount
 				+ ", charges=" + charges + ", status=" + status + ", Total_Amount=" + Total_Amount + ", userId="
 				+ userId + ", productId=" + productId + ", productName=" + productName + ", productPrice="
-				+ productPrice + ", productQuantity=" + productQuantity + "]";
+				+ productPrice + ", productQuantity=" + productQuantity + ", seen=" +seen+ "]";
 	}
 	public Order(int orderId, java.sql.Date date, String addressId, int amount, int charges, String status,
-			int total_Amount, String userId, int productId, String productName, int productPrice, int productQuantity) {
+			int total_Amount, String userId, int productId, String productName, int productPrice, int productQuantity, String seen) {
 		super();
 		this.orderId = orderId;
 		Date = date;
@@ -115,6 +121,7 @@ public class Order {
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productQuantity = productQuantity;
+		this.seen = seen;
 	}
 	public Order() {
 		super();

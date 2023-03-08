@@ -15,6 +15,8 @@ public class chat {
 	Time chat_time;
 	String message;
 	String Admin_Manager;
+	String seen;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -77,15 +79,22 @@ public class chat {
 		Admin_Manager = admin_Manager;
 	}
 	
+	public String getSeen() {
+		return seen;
+	}
+	public void setSeen(String seen) {
+		this.seen = seen;
+	} 
+	
 	@Override
 	public String toString() {
 		return "chat [userId=" + userId + ", userName=" + userName + ", status=" + status + ", ticketId=" + ticketId
 				+ ", ticket_date=" + ticket_date + ", ticket_time=" + ticket_time + ", chat_date=" + chat_date
-				+ ", chat_time=" + chat_time + ", message=" + message + ", Admin_Manager=" + Admin_Manager + "]";
+				+ ", chat_time=" + chat_time + ", message=" + message + ", Admin_Manager=" + Admin_Manager + ", seen=" +seen+ "]";
 	}
 	
 	public chat(String userId, String userName, String status, String ticketId, Date ticket_date, Time ticket_time,
-			Date chat_date, Time chat_time, String message, String admin_Manager) {
+			Date chat_date, Time chat_time, String message, String admin_Manager, String seen) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -96,7 +105,8 @@ public class chat {
 		this.chat_date = chat_date;
 		this.chat_time = chat_time;
 		this.message = message;
-		Admin_Manager = admin_Manager;
+		this.Admin_Manager = admin_Manager;
+		this.seen =seen;
 	}
 	public chat() {
 		super();
