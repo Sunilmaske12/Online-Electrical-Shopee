@@ -114,7 +114,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 						</div>
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
-								<button data-bs-toggle="modal" data-bs-target="#MyProfile"><img
+								<button data-bs-toggle="modal" data-bs-target="#UserProfile"><img
 									alt="icon" src="img/hero/icon.png"> </button>>
 									
 							</div>

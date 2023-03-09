@@ -3,7 +3,7 @@
 <%@page import="com.codeo.shop.Dao.CategoryDao"%>
 <%@page import="java.util.List"%>
 <%@page import="com.codeo.shop.entity.Category"%>
-<!--  <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>  -->
+<!--  <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>   -->
 
 <html>
 <head>

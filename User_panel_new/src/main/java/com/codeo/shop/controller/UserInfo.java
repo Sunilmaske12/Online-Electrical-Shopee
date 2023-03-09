@@ -16,8 +16,8 @@ public class UserInfo extends HttpServlet {
 	int id=0;
 	String name=null;
 	String MoNO=null;
-	String Email=null;
 	String Address=null;
+	String page=null;
 	RequestDispatcher dispatcher = null;
 	
 	
@@ -25,14 +25,18 @@ public class UserInfo extends HttpServlet {
 		id=Integer.parseInt(request.getParameter("id"));
 		 name= request.getParameter("name");
 		 MoNO= request.getParameter("Mobile");
-		 Email= request.getParameter("email");
 		 Address= request.getParameter("address");
-		
+		page=request.getParameter("page");
 		 UserDaoImpl userDaoImpl = new UserDaoImpl();
-		userDaoImpl.UpdateUserInfo(id, name, MoNO, Email, Address);
+		userDaoImpl.UpdateUserInfo(id, name, MoNO, Address);
+		if(page.equals("Admin")) {
+			dispatcher = request.getRequestDispatcher("dashbord.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}
 		
-		dispatcher = request.getRequestDispatcher("dashbord.jsp");
-		dispatcher.forward(request, response);
 	
 	
 	}

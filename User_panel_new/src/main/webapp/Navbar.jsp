@@ -132,7 +132,7 @@ int admin_id = (int) session3.getAttribute("userid");
 								<div class="dropdown-divider"></div>
 								<a href="javascript:;" class="dropdown-item py-1"><i
 									class="ft-edit mr-2"></i><span data-toggle="modal"
-									data-target="#UpdateProfile">Edit Profile</span></a> <a
+									data-target="#AdminProfile">Edit Profile</span></a> <a
 									href="loginfrom.jsp;" class="dropdown-item"><i
 									class="ft-power mr-2"></i><span>Logout</span></a>
 							</div></li>

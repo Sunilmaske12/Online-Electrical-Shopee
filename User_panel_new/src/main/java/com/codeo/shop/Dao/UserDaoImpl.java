@@ -120,33 +120,7 @@ public class UserDaoImpl implements UserDAO {
 		}
 		return flag;
 	}
-	/*
-	// edit user 
-	@Override
-	public User edituser(int id) {
-		
-		User user = new User ();
-		con = ConnectionProvider.getconnection();
-		try {
-			Statement stmt = con.createStatement();
-			ResultSet resultset = stmt.executeQuery(EDIT_USER);
-			if(resultset.next())
-			{
-				user.setId(resultset.getInt("user_id"));
-				user.setUser_name(resultset.getString("user_name"));
-				user.setUser_mobno(resultset.getString("user_mobno"));
-				user.setUser_adderess(resultset.getString("user_adderess"));
-				user.setUser_emailid(resultset.getString("user_emailid"));
-				user.setUser_pass(resultset.getString("user_pass"));
-		 }
-			} catch (SQLException e) {
-			
-		     e.printStackTrace();
-		      }
-	    return user;
-	}  
-	*/
-
+	
 	@Override
 	public User loginDetails(String user_emailid, String user_pass) {
 		User user = new User ();
@@ -212,10 +186,10 @@ public class UserDaoImpl implements UserDAO {
 
 
 
-	public void UpdateUserInfo(int id, String name, String moNO, String email, String address) {
+	public void UpdateUserInfo(int id, String name, String moNO,  String address) {
 		
 		Connection con = ConnectionProvider.getconnection();
-		String update_query="update user_registration set user_name=?, user_mobno=?,user_adderess=?, user_emailid=? where  user_id=?";
+		String update_query="update user_registration set user_name=?, user_mobno=?,user_adderess=? where  user_id=?";
 		 
 		 
 		 try (PreparedStatement psmt = con.prepareStatement(update_query)) {
@@ -223,8 +197,7 @@ public class UserDaoImpl implements UserDAO {
 			 psmt.setString(1, name);
 			 psmt.setString(2, moNO);
 			 psmt.setString(3, address);
-			 psmt.setString(4, email);
-			 psmt.setInt(5, id);
+			 psmt.setInt(4, id);
 			 psmt.executeUpdate();
          }
 	catch(Exception e)
@@ -232,71 +205,33 @@ public class UserDaoImpl implements UserDAO {
 		e.printStackTrace();
 	}
 		
-		
-		
-		
 	}
+	
+	public ResultSet getUserbyId(int uid) {
+		String a[]= {"s","d"};
+		String select_user="select * from user_registration where user_id="+uid;
+		Connection con=ConnectionProvider.getconnection();
+		PreparedStatement psmt=null;
+		ResultSet rs=null;
+		try {
+		if(con!=null) {
+			psmt=con.prepareStatement(select_user);
+			if(psmt!=null) {
+				 rs=psmt.executeQuery();
+				
+			}
+			
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return rs;
+	}
+	
 	
 	}
 
 
-	/*
-	public static ResultSet validateUser(String user_emailid, String user_pass, String user_type) {
-		
-		Connection con = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		
-		con = ConnectionProvider.getconnection();
-		String sql = "select * from user_registration where user_emailid=? and user_pass=?";
-		try {
-			preparedStatement = con.prepareStatement(sql);
-			preparedStatement.setString(1, user_emailid);
-			preparedStatement.setString(2, user_pass);
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			return resultSet;
-			
-		}
-		
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-			if (preparedStatement != null) {
-			preparedStatement.close();
-			}
-			if (con != null) {
-			con.close();
-			}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-				}
-				}
-		return resultSet;
-	}
-}
-*/
-	/*
-	public boolean delete(int id) {
-		 boolean status = false;
-		con = ConnectionProvider.getconnection();
-		
-		  PreparedStatement preparedStatement;
-		try {
-			preparedStatement = con.prepareStatement(DELETE_USER);
-			preparedStatement.executeUpdate();
-			status =true;
-           
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-			  return true;
-		}   */
-	
-	//for login user and admin
-	
 	

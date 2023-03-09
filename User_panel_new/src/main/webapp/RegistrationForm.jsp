@@ -12,16 +12,19 @@
 <title>Register Form</title>
 
 <!-- Font Icon -->
-<link rel="stylesheet"
-	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 <!-- Main css -->
 <link rel="stylesheet" href="AdminPanel/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
-<style>
-
+<style type="text/css">
+	.error{
+		padding: 10px;
+		color: red;
+	}
 </style>
-
 </head>
 <body >
 
@@ -33,45 +36,48 @@
 						<div class="signup-form">
 							<h2 class="form-title">REGISTER</h2>
 
-							<form action="Registration" method="post" class="register-form"
-								id="register-form" onclick="return myfunction()">
+							<form action="Registration" method="post" onsubmit="return validRegister()" class="register-form"
+								id="register-form" >
 
-								<div class="form-group">
-									<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-									<input type="hidden" name="id" id="re_pass"/>
-								</div>
+								
 								
 								<input type="hidden" name="user_type" value="Normal User" />
 								
 								<!-- changes current -->
 								<div class="form-group">
-									<label for="name"> <i
-										class="zmdi zmdi-account material-icons-name"></i></label> <input
-										type="text" name="name" id="name" placeholder="Your Name"  required/>
-									<span id="uname"> </span>
+									
+									<label for="name"> <i 
+										class="zmdi zmdi-account material-icons-name  success"></i></label> <input
+										type="text" name="name" id="name" placeholder="Your Name" >
+									<small class="error" id="name_error"> </small>
 								</div>
 								<div class="form-group">
-									<label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
+									<label for="contact"><i style="margin-left:8px; margin-bottom: 10px;" class="zmdi zmdi-phone success"></i></label>
 									<input type="text" name="contact" id="contact"
-										placeholder="Mobile No"  required/>
+										placeholder="Mobile No"  />
+										<small class="error" id="mobile_error"></small>
 								</div>
 								<div class="form-group">
-									<label for="Address"><i class="zmdi zmdi-lock-outline"></i></label>
+									<label for="Address"><i class="zmdi zmdi-book success"></i></label>
 									<input type="text" name="Address" id="Address"
-										placeholder="Address"  required/>
+										placeholder="Address"  />
+										<small class="error" id="address_error"></small> 
 								</div>
 								<div class="form-group">
-									<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-										type="email" name="email" id="email" placeholder="Your Email"  required/>
+									<label for="email"><i class="zmdi zmdi-email success"></i></label> <input
+										type="text" name="email" id="email" placeholder="Your Email"  />
+										<small class="error" id="email_error"></small>
 								</div>
 								<div class="form-group">
-									<label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
-										type="password" name="pass" id="pass" placeholder="Password"  required/>
+									<label for="pass"><i class="zmdi zmdi-lock success"></i></label> <input
+										type="password" name="pass" id="pass" placeholder="Password"  />
+									<small class="error" id="pass_error"></small>
 								</div>
 								<div class="form-group">
-									<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+									<label for="re-pass"><i class="zmdi zmdi-lock-outline success"></i></label>
 									<input type="password" name="re_pass" id="re_pass"
-										placeholder="Confirm password"  required/>
+										placeholder="Confirm password"  />
+										<small class="error" id="re_pass_error"></small>
 								</div>
 
 								<div class="form-group">
@@ -79,10 +85,11 @@
 										class="agree-term" /> <label for="agree-term"
 										class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms
 											of service</a></label>
+
 								</div>
 								<div class="form-group form-button">
-									<input type="submit" name="signup" id="signup"
-										class="form-submit" value="Register" />
+									<a><input type="submit"  name="signup" id="signup"
+										class="form-submit" value="Register" /></a>
 								</div>
 							</form>
 						</div>
@@ -104,17 +111,9 @@
 
 	
 	<!-- JS -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="js/main.js"></script>
-
-	<script>  
-   function myfunction()
-   {
-	   var name= document.getElementById("name").value;
-	  
-	   if(name ==""){
-		   document.getElementById("uname").innerHTML="***please enter your name";
-	   }
-	  
-       </script>
-</body>
+	
+	<!-- <script src="js/main.js"></script>  -->
+	<script type="text/javascript" src="js/Validation.js"></script>
+	
+	</body>
+</html>

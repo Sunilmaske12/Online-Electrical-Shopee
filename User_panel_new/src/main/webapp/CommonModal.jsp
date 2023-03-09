@@ -2,6 +2,7 @@
 
 <%@page import="java.util.*"%>
 <%@page import="com.codeo.shop.dbutil.ConnectionProvider"%>
+<%@page import="com.codeo.shop.Dao.UserDaoImpl"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -128,7 +129,7 @@ input, button, select, optgroup, textarea {
 
 
 	<!--My Profile Modal-user -->
-	<div class="modal fade" id="MyProfile" tabindex="-1"
+	<div class="modal fade" id="UserProfile" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -144,12 +145,10 @@ input, button, select, optgroup, textarea {
 							<div class="card mb-4">
 							<%
 									int user_id = (int) session2.getAttribute("userid");
-									String select_product = "select * from user_registration where user_id=" + user_id;
-									Connection con = ConnectionProvider.getconnection();
-									Statement stmt = con.createStatement();
-									ResultSet rs = stmt.executeQuery(select_product);
-
-									while (rs.next()) {
+							UserDaoImpl udi=new UserDaoImpl();
+							ResultSet rs=udi.getUserbyId(user_id);
+							
+																		while (rs.next()) {
 										String User_MoNo = String.valueOf(rs.getString("user_mobno"));
 									%>
 							<form action="edit_user?id=<%=rs.getInt("user_id")%>" method="post">
@@ -185,8 +184,8 @@ input, button, select, optgroup, textarea {
 															class="glyphicon glyphicon-asterisk text-primary"></span>
 															Email Id
 													</strong></td>
-													<td class="text-primary">: <input type="text"
-														name="email" value=" <%=rs.getString("user_emailid")%>" /></td>
+													<td class="">: 
+													<%=rs.getString("user_emailid")%></td>
 												</tr>
 												<tr>
 													<td><strong> <span
@@ -194,7 +193,7 @@ input, button, select, optgroup, textarea {
 															Addresss
 													</strong></td>
 													<td class="text-primary">: <input type="text"
-														name="address" value="  <%=rs.getString("user_adderess")%>" /></td>
+														name="address" value="<%=rs.getString("user_adderess")%>" /></td>
 												</tr>
 											</tbody>
 										</table>
@@ -202,6 +201,7 @@ input, button, select, optgroup, textarea {
 
 
 								</div>
+								<input type="hidden" value="user" name="page"> 
 								<div class="modal-footer">
 								<button  id='closeModal' type="button" class="btn btn-danger"
 										data-bs-dismiss="modal">Close</button>
@@ -226,7 +226,7 @@ input, button, select, optgroup, textarea {
 
 
 	<!-- Profile Modal-admin -->
-	<div class="modal fade" id="UpdateProfile" tabindex="-1"
+	<div class="modal fade" id="AdminProfile" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -273,8 +273,7 @@ input, button, select, optgroup, textarea {
 															class="glyphicon glyphicon-asterisk text-primary"></span>
 															Email Id
 													</strong></td>
-													<td class="text-primary">: <input type="text"
-														name="email" value=" <%=rs.getString("user_emailid")%>" /></td>
+													<td class="text-primary">:<%=rs.getString("user_emailid")%>
 												</tr>
 												<tr>
 													<td><strong> <span
@@ -293,6 +292,7 @@ input, button, select, optgroup, textarea {
 										%>
 
 									</div>
+									<input type="hidden" value="Admin" name="page"> 
 									<div class="modal-footer">
 										<button  id='closeModal' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 										<button type="submit" class="btn btn-primary" >Update </button>

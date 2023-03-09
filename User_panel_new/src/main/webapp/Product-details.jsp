@@ -98,19 +98,7 @@
 							<img class="product__details__pic__item--large"
 								src="img/latest-product/<%=product.getProd_imageName() %>"
 								alt="">
-
 						</div>
-						<!--  <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="img/product/details/thumb-4.jpg" alt="">
-                        </div>   -->
-
 					</div>
 				</div>
 				<!--   complete here  -->
@@ -165,7 +153,7 @@
 							</li>
 						</ul>
 						<div class="tab-content">
-							<div class="tab-pane active" id="tabs-1" role="tabpanel">
+							<div style="background:white;" class="tab-pane active" id="tabs-1" role="tabpanel">
 								<div class="product__details__tab__desc">
 									<h6>Products Infomation</h6>
 									<p><%=product.getProd_description() %>
@@ -189,16 +177,15 @@
 		
 		
 	<section class="featured spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="section-title">
-						<h2>Related Product</h2>
-					</div>
-					
-				</div>
+	<div
+			style="display: flex; align-items: center; justify-content: center; background: red; height: 50px;">
+			<div
+				style="text-align: center; width: 230px; height: 49px; background: black;">
+				<h4 style="color: white; padding: 12px;">Related Products</h4>
 			</div>
-
+		</div>
+		<div class="container">
+			
 			<div class="row featured__filter">
 				<%   
                     // List<Product> list = productdao.getAllProducts();
@@ -219,11 +206,13 @@
 					<div class="featured__item m-4">
 						<div  class="featured__item__pic set-bg"
 							 style="background-image: url(&quot;img/latest-product/<%=catproduct.getProd_imageName() %>&quot;);">
+								<a href="Product-details.jsp?product=<%=product.getId()%>">
 								<img style="max-height: 200px; height:auto; " class="center" src="img/latest-product/<%=catproduct.getProd_imageName() %>">
+							    </a>
 							<ul class="featured__item__pic__hover">
-								<li><a href="#"><i class="fa fa-heart"></i></a></li>
-								<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-							</ul>
+									<li><a onclick="likeProducts(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')" ><i class="fa fa-heart"></i></a></li>
+									<li><a><i class="fa fa-retweet"></i></a></li>
+								</ul>
 						</div>
 
 						<div class="featured__item__text">

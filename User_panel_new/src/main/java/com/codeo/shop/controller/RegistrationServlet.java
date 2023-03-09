@@ -18,7 +18,7 @@ import com.codeo.shop.entity.User;
 
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- String id = null;    
+  
  String user_name= null;
  String user_mobno = null;
  String user_adderess = null;
@@ -37,7 +37,7 @@ public class RegistrationServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		 id = request.getParameter("id");
+		
 		 user_name = request.getParameter("name");
 		 user_mobno = request.getParameter("contact");
 		 user_adderess = request.getParameter("Address");
@@ -48,8 +48,7 @@ public class RegistrationServlet extends HttpServlet {
 		 System.out.println(user_name+" "+user_mobno+" "+user_type);
 		
 		 
-			if(id.isEmpty() || id==null)
-			{
+		
 				if(userDAO.insertUser(user)) {
 					
 					HttpSession httpSession = request.getSession();
@@ -64,12 +63,7 @@ public class RegistrationServlet extends HttpServlet {
 					response.sendRedirect("RegistrationForm.jsp");
 
 				}
-			}else {
-				user.setId(Integer.parseInt(request.getParameter("id")));
-				if(userDAO.update(user))
-				{
-					response.sendRedirect("UserList.jsp");
-				} } }
+			} 
 		
 
 	@Override

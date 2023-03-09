@@ -409,6 +409,3 @@ function msgErrorPopUp(){
                 }
             });
         }
-
-	
-	
