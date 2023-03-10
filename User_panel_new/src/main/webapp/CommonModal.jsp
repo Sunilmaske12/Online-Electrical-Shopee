@@ -327,7 +327,7 @@ input, button, select, optgroup, textarea {
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form class="addressForm"
+					<form class="addressForm" id="validAddress" onsubmit="return validAddress()"
 						action="SaveAddress?user_id=<%=user_id%>" method="post">
 						<input type="hidden" name="_token"
 							value="7izNrBqYjX16Icbzz1Vn8FgvFZk2Gjn6Ty3VcVjT"> <input
@@ -342,9 +342,10 @@ input, button, select, optgroup, textarea {
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Contact</label> <input type="text" name="mobile"
+									<label>Contact</label> <input type="text" name="mobile" id="mobileno"
 										class="form-control"
 										onkeypress="INGENIOUS.numericInput(event)" value="" required>
+										<small id="contact_error" style="color:red; margin-left:10px;" ></small>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -362,7 +363,7 @@ input, button, select, optgroup, textarea {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Landmark</label> <input type="text" name="landmark"
-										class="form-control" value="">
+										class="form-control" value="" required>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -384,9 +385,10 @@ input, button, select, optgroup, textarea {
 
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Pincode</label> <input type="text" name="pincode"
+									<label>Pincode</label> <input type="text" id="pincode" name="pincode"
 										class="form-control"
 										onkeypress="INGENIOUS.numericInput(event)" value="" required>
+										<small id="pin_error" style="color:red; text-align:center;" ></small>
 								</div>
 							</div>
 
@@ -440,7 +442,7 @@ input, button, select, optgroup, textarea {
 								<div class="form-group">
 									<label>Contact</label> <input type="text" name="mobile"
 										class="form-control"
-										onkeypress="INGENIOUS.numericInput(event)" value="" required>
+										 value="" required>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -482,7 +484,7 @@ input, button, select, optgroup, textarea {
 								<div class="form-group">
 									<label>Pincode</label> <input type="text" name="pincode"
 										class="form-control"
-										onkeypress="INGENIOUS.numericInput(event)" value="" required>
+										 value="" required>
 								</div>
 							</div>
 
@@ -502,5 +504,6 @@ input, button, select, optgroup, textarea {
 		</div>
 	</div>
 	<!-- Edit address during making orders modal end -->
+
 </body>
 </html>

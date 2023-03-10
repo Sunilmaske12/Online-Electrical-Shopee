@@ -24,6 +24,12 @@
 		padding: 10px;
 		color: red;
 	}
+.success{
+	margin-bottom: 25px;
+	margin-left:10px;
+	
+}
+
 </style>
 </head>
 <body >
@@ -52,7 +58,7 @@
 									<small class="error" id="name_error"> </small>
 								</div>
 								<div class="form-group">
-									<label for="contact"><i style="margin-left:8px; margin-bottom: 10px;" class="zmdi zmdi-phone success"></i></label>
+									<label for="contact"><i class="zmdi zmdi-phone success"></i></label>
 									<input type="text" name="contact" id="contact"
 										placeholder="Mobile No"  />
 										<small class="error" id="mobile_error"></small>
@@ -70,23 +76,25 @@
 								</div>
 								<div class="form-group">
 									<label for="pass"><i class="zmdi zmdi-lock success"></i></label> <input
-										type="password" name="pass" id="pass" placeholder="Password"  />
+										type="text" name="pass" id="pass" placeholder="Password"  />
 									<small class="error" id="pass_error"></small>
+									
 								</div>
+								
 								<div class="form-group">
 									<label for="re-pass"><i class="zmdi zmdi-lock-outline success"></i></label>
-									<input type="password" name="re_pass" id="re_pass"
+									<input type="text" name="re_pass" id="re_pass"
 										placeholder="Confirm password"  />
 										<small class="error" id="re_pass_error"></small>
 								</div>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<input type="checkbox" name="agree-term" id="agree-term"
 										class="agree-term" /> <label for="agree-term"
 										class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms
 											of service</a></label>
 
-								</div>
+								</div> -->
 								<div class="form-group form-button">
 									<a><input type="submit"  name="signup" id="signup"
 										class="form-submit" value="Register" /></a>

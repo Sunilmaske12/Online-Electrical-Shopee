@@ -126,29 +126,7 @@ if(user_name!=null){
 	</div>
 	<!-- Map End -->
 
-	<!-- Contact Form Begin -->
-	<div class="contact-form spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="contact__form__title">
-						<h2>Create New</h2>
-					</div>
-				</div>
-			</div>
-			<form action="chat?uid=<%=userId %>&uname=<%=user_name %>"
-				method="post">
-				<div class="row">
-
-					<div style="margin-left: 30%;" class="col-lg-6 text-center">
-						<textarea placeholder="Your message" name="message" required></textarea>
-						<button type="submit" class="site-btn">SEND MESSAGE</button>
-					</div>
-				</div>
-				<input type="hidden" name="Action" value="createTicket">
-			</form>
-		</div>
-	</div>
+	
 
 	<section class="checkout spad">
 		<div class="container">
@@ -205,6 +183,23 @@ if(user_name!=null){
 
 		</div>
 	</section>
+	<!-- Contact Form Begin -->
+	<div class="contact-form spad">
+		<div class="container">
+			
+			<form action="chat?uid=<%=userId %>&uname=<%=user_name %>"
+				method="post">
+				<div class="row">
+	
+					<div style="margin-left: 30%;" class="col-lg-6 text-center"><h2>CREATE NEW TICKET</h2>
+						<textarea placeholder="Your message" name="message" required></textarea>
+						<button type="submit" class="site-btn">SEND MESSAGE</button>
+					</div>
+				</div>
+				<input type="hidden" name="Action" value="createTicket">
+			</form>
+		</div>
+	</div>
 	<!-- Contact Form End -->
 
 	<jsp:include page="footer.html" />
@@ -217,6 +212,7 @@ if(user_name!=null){
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	
 
 
 

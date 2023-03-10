@@ -266,6 +266,7 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/CommonScript.js"></script>
+	<script type="text/javascript" src="js/Vsalidation.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
