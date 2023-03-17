@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.codeo.shop.Dao.GmailSenderDao;
 import com.codeo.shop.Dao.UserDAO;
 import com.codeo.shop.Dao.UserDaoImpl;
 import com.codeo.shop.entity.User;
@@ -52,10 +53,16 @@ public class RegistrationServlet extends HttpServlet {
 				if(userDAO.insertUser(user)) {
 					
 					HttpSession httpSession = request.getSession();
-					httpSession.setAttribute("message", "Registration Successful       ");
+					httpSession.setAttribute("message", "Registration Successful");
 					response.sendRedirect("loginfrom.jsp");
-					
-					
+					//registration mail
+					GmailSenderDao gsd=new GmailSenderDao();
+					String to = user_emailid;
+					String from = "sunilmaske2001@gmail.com";
+					String subject="hello";
+					String text="You have successfully regster in Online Electrical Shopee " ;
+					gsd.sendEmail(to, from, subject, text);
+				
 					
 					
 		              }

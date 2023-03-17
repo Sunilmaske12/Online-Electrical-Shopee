@@ -160,7 +160,7 @@
 						</tr>				
 				</tbody>
 			</table>
-			<button type="button" id="btnExport">export</button>
+			
 
 		</div>
 	</section>

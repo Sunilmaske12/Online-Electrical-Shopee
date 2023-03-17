@@ -2,7 +2,6 @@
 //=================Registration validation start===============
 function validRegister(){
 	flag=false;
-
 		var name=$("#name").val();
 		var mobile=$("#contact").val();
 		var email=$("#email").val();
@@ -61,7 +60,12 @@ function validRegister(){
 		 } else {
 			flag=true;
 		}
-		console.log(flag);
+
+	if(flag){
+		swal("Good job!", "Just wait for few seconds!", "success");	
+	}	
+			console.log(flag);
+		
 	return flag;
 }
 
@@ -172,3 +176,4 @@ function validAddress(){
 	});
 
 });
+

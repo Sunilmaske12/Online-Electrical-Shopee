@@ -393,7 +393,7 @@ function msgErrorPopUp(){
 	swal("Oops!", "Please select Your Payment Mode!", "error");
 	}
 
-
+	
 //========================Download Invoice===============
   function downloadInvoice() {
             html2canvas($('#invoiceDownload')[0], {

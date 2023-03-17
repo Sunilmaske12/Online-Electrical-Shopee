@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="AdminPanel/css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style type="text/css">
 	.error{
 		padding: 10px;
@@ -42,7 +42,7 @@
 						<div class="signup-form">
 							<h2 class="form-title">REGISTER</h2>
 
-							<form action="Registration" method="post" onsubmit="return validRegister()" class="register-form"
+							<form action="Registration" method="post" onsubmit="return validRegister()"  class="register-form"
 								id="register-form" >
 
 								
@@ -122,6 +122,7 @@
 	
 	<!-- <script src="js/main.js"></script>  -->
 	<script type="text/javascript" src="js/Validation.js"></script>
+	<script type="text/javascript" src="js/CommonScript.js"></script>
 	
 	</body>
 </html>
