@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDAO {
 					String user_adderess = resultset.getString(4);
 					String user_emailid = resultset.getString(5);
 					String user_pass = resultset.getString(6);
-					String user_type = resultset.getString(7);
+					//String user_type = resultset.getString(7);
 					users.add(new User(id, user_name , user_mobno , user_adderess, user_emailid , user_pass));
 					}
 				} catch (SQLException e) {
@@ -208,7 +208,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 	
 	public ResultSet getUserbyId(int uid) {
-		String a[]= {"s","d"};
+		//String a[]= {"s","d"};
 		String select_user="select * from user_registration where user_id="+uid;
 		Connection con=ConnectionProvider.getconnection();
 		PreparedStatement psmt=null;

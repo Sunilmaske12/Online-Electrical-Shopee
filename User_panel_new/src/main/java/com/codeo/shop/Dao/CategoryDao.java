@@ -60,7 +60,7 @@ private String add_category = "insert into add_category(catTitle,catDescriptor) 
 				psmt.setString(2, category.getCat_description());
 			}
 			
-			int result= psmt.executeUpdate();
+		 psmt.executeUpdate();
 			
 			flag = true;
 	  } catch (SQLException e) {

@@ -109,12 +109,7 @@ public class Customer_Address_Servlet extends HttpServlet {
 			} } }
 	
 	private void getSingleUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		//User useredit = new User();
-	    //useredit =userDAO.edituser(id);
-		
-	  //request.setAttribute("user", useredit);
-	  dispatcher = request.getRequestDispatcher("Edit.jsp");
+			  dispatcher = request.getRequestDispatcher("Edit.jsp");
 	  dispatcher.forward(request, response);
 	
 	}

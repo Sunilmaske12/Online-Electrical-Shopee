@@ -108,7 +108,10 @@
 						<div class="hero__categories__all">
 							<span><a style="color: white">AVAILABLE CATEGORIES </a> </span><br>
 						</div>
-						<ul>
+						<ul><li><a href="shop-grid.jsp"
+								onMouseOver="this.style.color='red'"
+								onMouseOut="this.style.color='black'"> ALL CATEGORIES
+							</a></li>
 							<%
 							for (Category c : clist) {
 							%>

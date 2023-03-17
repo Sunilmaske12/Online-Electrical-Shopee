@@ -1,7 +1,7 @@
 
 //=================Registration validation start===============
 function validRegister(){
-	flag=true;
+	flag=false;
 
 		var name=$("#name").val();
 		var mobile=$("#contact").val();
@@ -16,30 +16,40 @@ function validRegister(){
 		if(name=='' || name==undefined){
 			$("#name_error").html("***Please enter name!!")
 			flag=false;
+		} else {
+			flag=true;
 		}
 		if(mobile=='' || mobile==undefined){
 			$("#mobile_error").html("***Please enter number !!")
 			flag=false;
 		} else if(mobileEXP.test(mobile)==false  || mobile.length>10){
 			flag=false;
+		}  else {
+			flag=true;
 		}
 		if(email==''){
 			$("#email_error").html("**Please enter email!!");
 			flag=false;
 		} else if(emailEXP.test(email)==false){
 			flag=false;
+		} else {
+			flag=true;
 		}
 
 		if(Address=='' || Address==undefined){
 			$("#address_error").html("Please enter Address!")
 			flag=false;
-		} 
+		} else {
+			flag=true;
+		}
 
 		if(password=='' || password==undefined){
 			$("#pass_error").html("Please enter password!!")
 			flag=false;
 		} else if(passwordEXP.test(password)==false || password.length<8){
 			flag=false;
+		} else {
+			flag=true;
 		}
 
 
@@ -48,8 +58,10 @@ function validRegister(){
 			flag=false;
 		 } else if(password!=confirm_password){
 	 	flag=false;
-		 }
-
+		 } else {
+			flag=true;
+		}
+		console.log(flag);
 	return flag;
 }
 
@@ -67,6 +79,15 @@ function validRegister(){
 		var mobileEXP=/[0-9]{10}/;
 		var passwordEXP=/[A-Z][\w]*[@\.-]*[\w]*/;
 		
+		if(name=='' || name==undefined){
+		} else{
+    	$("#name_error").html("**Valid**");
+		}
+		
+		if(Address=='' || Address==undefined){
+		} else {
+					$("#address_error").html("**Valid**")
+		}
 		
 		if(mobile=='' || mobile==undefined){
 			

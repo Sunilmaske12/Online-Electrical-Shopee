@@ -91,7 +91,7 @@ input, button, select, optgroup, textarea {
 	if (user_name == null) {
 	%>
 	<!-- login modal if user=null -->
-	<div class="modal" tabindex="-1" id="MyProfile">
+	<div class="modal" tabindex="-1" id="UserProfile">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">

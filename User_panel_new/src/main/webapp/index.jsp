@@ -123,10 +123,11 @@ String user_email = (String) session1.getAttribute("UserEmail");
 											
 							<div class="hero__search__phone__text">
 								<h5>WELCOME</h5>
-								<h4 class=" font-weight-bold" style="color: green">
+								<h4 class=" font-weight-bold" style="color: green;">
 									<%
 									if (user_name != null) {
-									%><%=user_name.toUpperCase()%>
+										String word[]=user_name.split(" ");
+									%><%=word[0].toUpperCase()%>
 									<%
 									} else {
 									%>

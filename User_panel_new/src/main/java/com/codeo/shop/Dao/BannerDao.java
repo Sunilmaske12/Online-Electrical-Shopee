@@ -7,10 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.codeo.shop.dbutil.ConnectionProvider;
 import com.codeo.shop.entity.Banner;
-import com.codeo.shop.entity.Product;
 
 public class BannerDao {
 	
@@ -30,7 +28,7 @@ public class BannerDao {
 					psmt.setString(2, banner.getAction());
 					psmt.setString(3, banner.getBanner_image());
 				}
-				int result=psmt.executeUpdate();
+				psmt.executeUpdate();
 				flag=true;
 			}
 			
