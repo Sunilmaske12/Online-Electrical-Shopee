@@ -1,4 +1,3 @@
-
 //=================Registration validation start===============
 function validRegister(){
 	flag=false;
@@ -63,7 +62,7 @@ function validRegister(){
 
 	if(flag){
 		swal("Good job!", "Just wait for few seconds!", "success");	
-	}	
+	}	 
 			console.log(flag);
 		
 	return flag;

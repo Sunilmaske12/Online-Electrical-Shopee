@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDAO {
 	con = ConnectionProvider.getconnection();
 		PreparedStatement preparedstatement = null;
 		int result = 0;
-		if(con != null)
+		if(con != null) 
 		{
 			try {
 				preparedstatement = con.prepareStatement(INSERT_USER);

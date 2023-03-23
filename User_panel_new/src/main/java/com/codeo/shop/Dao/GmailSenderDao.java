@@ -21,7 +21,7 @@ public class GmailSenderDao {
 	public boolean sendEmail(String to, String from, String subject, String text) {
 		boolean flag=false;
 		
-		//smtp properties
+		//smtp properties 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.starttls.enable", "true");

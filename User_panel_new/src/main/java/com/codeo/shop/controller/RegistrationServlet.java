@@ -46,7 +46,7 @@ public class RegistrationServlet extends HttpServlet {
 		 user_pass = request.getParameter("pass");
 		 user_type = request.getParameter("user_type");
 		 user = new User(user_name, user_mobno, user_adderess, user_emailid,user_pass,user_type);	
-		 System.out.println(user_name+" "+user_mobno+" "+user_type);
+		 //System.out.println(user_name+" "+user_mobno+" "+user_type);
 		
 		 
 		
@@ -59,8 +59,8 @@ public class RegistrationServlet extends HttpServlet {
 					GmailSenderDao gsd=new GmailSenderDao();
 					String to = user_emailid;
 					String from = "sunilmaske2001@gmail.com";
-					String subject="hello";
-					String text="You have successfully regster in Online Electrical Shopee " ;
+					String subject=user_name;
+					String text="You have successfully register in Online Electrical Shopee " ;
 					gsd.sendEmail(to, from, subject, text);
 				
 					
