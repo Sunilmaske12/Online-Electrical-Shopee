@@ -20,8 +20,10 @@ public class CartLenght extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String s=request.getParameter("cartlegth");
+		String T_Amount=request.getParameter("TotalAmount");
 		HttpSession session=request.getSession();
 		session.setAttribute("cart",s );
+		session.setAttribute("TotalAmount",T_Amount );
 		response.sendRedirect("checkout.jsp");
 		
 	

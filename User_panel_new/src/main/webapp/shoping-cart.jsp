@@ -124,8 +124,9 @@
 							<li>TOTAL ORDER <span class="totalOrder"></span></li>
 							<li>DELIVERY CHARGE <span class="charges"></span></li>
 							<li><h3 >Total Price: <span class="totalPrice"></span></h3></li>
-
+							
 						</ul><form action="cartlength"><input type="hidden" id="cartlegth" name="cartlegth">
+						<input type="hidden" name="TotalAmount" id="totalPricePay"> 
 						<button style="width:100%;" type="submit"  class="primary-btn">PROCEED TO
 							CHECKOUT</button></form>
 					</div>
@@ -147,6 +148,7 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/Payment.js"></script>
     <script type="text/javascript" src="js/CommonScript.js"></script>
 </body>
 

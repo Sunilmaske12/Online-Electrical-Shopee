@@ -70,15 +70,7 @@
    			 <version>2.1.1</version>
 			</dependency>
 			
-			 <!-- Razerpay -->
-
 			
-			<dependency>
-				<groupId>com.razorpay</groupId>
-				<artifactId>razorpay-java</artifactId>
-				<version>1.4.3</version> 
-			</dependency>
-
  
 		<!-- https://mvnrepository.com/artifact/com.sun.activation/jakarta.activation -->
 		<dependency>
@@ -102,7 +94,13 @@
     <version>6.0.0</version>
 </dependency>
 
-		
+		<!-- https://mvnrepository.com/artifact/com.razorpay/razorpay-java -->
+<dependency>
+    <groupId>com.razorpay</groupId>
+    <artifactId>razorpay-java</artifactId>
+    <version>1.4.3</version>
+</dependency>
+
 
 	</dependencies>
 	<build>

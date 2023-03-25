@@ -117,15 +117,18 @@ function updateCart(){
 		if(totalPrice>999){
 			$(".charges").html("Rs.00.00");
 			$(".totalPrice").html(`Rs. ${totalPrice}`);
+			 $('#totalPricePay').val(`${totalPrice}`);
 		}else{
 			$(".charges").html("Rs.100");
 			$(".totalPrice").html(`Rs. ${totalPrice+ 100} `);
+			 $('#totalPricePay').val(`${totalPrice+100}`);
 		}
 		
 		$(".totalOrder").html(`Rs. ${totalPrice}`);
 		
 		 $('#totalPrice').val(`${totalPrice}`);
-			
+		 
+		
 		let checkout=`
 			
 					<table>
@@ -155,7 +158,6 @@ function updateCart(){
 		$(".check").html(checkout);
 		
 		
-	
 	
 	//=============making orders=================
 							var i=0;
@@ -409,3 +411,4 @@ function msgErrorPopUp(){
                 }
             });
         }
+

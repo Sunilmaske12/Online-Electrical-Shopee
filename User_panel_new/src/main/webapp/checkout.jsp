@@ -17,6 +17,8 @@ if (user == null) {
 }
 int userId= (int) session4.getAttribute("userid");
 String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
+
+String orderId= (String)session4.getAttribute("o_id");
 //int userId=Integer.parseInt(uId);
 %>
 
@@ -64,7 +66,7 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 
 
 </head>
-
+<input type="hidden" value="<%= orderId%>" id="orderId"> 
 <body <%if(incompleteinfo!=null){
 	if(incompleteinfo.equals("No address")){
 		%>
@@ -73,7 +75,15 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 	else{
 	%>
   onload="msgErrorPopUp()"
-<%session4.removeAttribute("incompleteinfo"); }} %> >
+<%session4.removeAttribute("incompleteinfo"); }}
+
+if(orderId!=null){%>
+  onload="onlinePayment()"
+  
+<%session4.removeAttribute("o_id"); } %>
+
+>
+
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -209,8 +219,8 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 									Total <span class="totalPrice"></span>
 								</div>
 
-								<h4 style="Background: white; text-align: center;"><label for="paymentMode">Make</label>
-									Payment</h4>
+								<h4 style="Background: white; text-align: center;"><label for="paymentMode" style="margin-top:12px;">Make 	Payment</label>
+								</h4>
 
 
 								<div class="checkout__order__total">
@@ -223,18 +233,16 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 								</div>
 								<div class="checkout__order__total">
 									<div class="radio radio-success">
-										<input type="radio" name="payment" id="paymentMode" value="net banking"
-											aria-invalid="false" /> <label for="selectAddress0"></label>
-
-										<span>NET BANKING</span>
+										
+										<a href="OnlinePayment"><button type="button"><span style="color: black;">MAKE ONLINE PAYMENT</span></button></a>
 									</div>
 								</div>
+							
 								<input type="hidden" name="user_id" value="<%=userId%>">
 								<input type="hidden" id="totalPrice" name="tprice">
-								<a ><button type="submit"  class="site-btn">PLACE ORDER</button></a>
+								<input type="hidden" id="totalPricePay"> 
+								<a ><button type="submit"  class="site-btn" style="border-radius:10px;">PLACE ORDER</button></a>
 							</div>
-
-						
 						<%
 						
 						String cartlength=(String)session.getAttribute("cart");
@@ -246,6 +254,7 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 						<input type="hidden" id="productQuantityO<%=i %>" type="checkbox"  name="productQuantityO">
 						<input type="hidden" id="productPriceO<%=i %>" type="checkbox"  name="productPriceO">
 						<%} %>
+						<input type="hidden" id="orderId"  name="productPriceO">
 					</div>
 					</div>
 				</form>
@@ -253,6 +262,8 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 		</div>
 	</section>
 	<!-- Checkout Section End -->
+
+
 
 	<jsp:include page="footer.html" />
 
@@ -265,8 +276,10 @@ String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script type="text/javascript" src="js/Payment.js"></script>
 	<script type="text/javascript" src="js/CommonScript.js"></script>
-	<script type="text/javascript" src="js/Vsalidation.js"></script>
+	<script type="text/javascript" src="js/Payment.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
