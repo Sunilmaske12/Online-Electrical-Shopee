@@ -15,10 +15,9 @@ if (user == null) {
 	response.sendRedirect("loginfrom.jsp");
 	return;
 }
-int userId= (int) session4.getAttribute("userid");
-String incompleteinfo=(String)session4.getAttribute("incompleteinfo");
+int userId = (int) session4.getAttribute("userid");
+String incompleteinfo = (String) session4.getAttribute("incompleteinfo");
 
-String orderId= (String)session4.getAttribute("o_id");
 //int userId=Integer.parseInt(uId);
 %>
 
@@ -66,23 +65,16 @@ String orderId= (String)session4.getAttribute("o_id");
 
 
 </head>
-<input type="hidden" value="<%= orderId%>" id="orderId"> 
-<body <%if(incompleteinfo!=null){
-	if(incompleteinfo.equals("No address")){
-		%>
-		  onload="addressrErrorPopUp()"
-		<%session4.removeAttribute("incompleteinfo"); }
-	else{
-	%>
-  onload="msgErrorPopUp()"
-<%session4.removeAttribute("incompleteinfo"); }}
-
-if(orderId!=null){%>
-  onload="onlinePayment()"
-  
-<%session4.removeAttribute("o_id"); } %>
-
->
+<body
+	<%if (incompleteinfo != null) {
+	if (incompleteinfo.equals("No address")) {%>
+	onload="addressrErrorPopUp()"
+	<%session4.removeAttribute("incompleteinfo");
+	} else {%>
+	onload="msgErrorPopUp()"
+	<%session4.removeAttribute("incompleteinfo");
+	}
+}%>>
 
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -90,9 +82,9 @@ if(orderId!=null){%>
 	</div>
 	<jsp:include page="header.jsp" />
 	<jsp:include page="CommonModal.jsp" />
-	
-	
-	
+
+
+
 
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section set-bg" data-setbg="img/Name-bg.jpg">
@@ -124,7 +116,7 @@ if(orderId!=null){%>
 			</div>
 			<div class="checkout__form">
 				<h4>Billing Details</h4>
-				<form method="post" action="orderPlace" id="orderPlaceAlert">
+				<form method="post" action="OnlinePayment" id="orderPlaceAlert">
 					<div class="row">
 						<div class=" col-md-6">
 
@@ -140,16 +132,17 @@ if(orderId!=null){%>
 							<div class="card mb-3">
 								<div class="card-body">
 									<h4 class="text-dark">Select Your Address</h4>
-									<%if(address.size()!=0){
-									
-									for (Customer a : address) {
+									<%
+									if (address.size() != 0) {
+
+										for (Customer a : address) {
 									%>
 									<div class="row checkout-address-row">
 										<div class="col-2 col-md-1">
 											<div class="radio radio-success">
 												<input type="radio" name="address_id"
 													value="<%=a.getC_id()%>" id="addressId"
-													aria-invalid="false"  /> 
+													aria-invalid="false" />
 											</div>
 											<span class="badge badge-primary"></span>
 										</div>
@@ -173,11 +166,11 @@ if(orderId!=null){%>
 									<hr size="8" width="100%" color="red">
 									<%
 									}
-									
-									}else{
-										%>
-										<h2 style="color:red;">PLEASE PUT YOUR ADDRESS!</h2>
-										<%
+
+									} else {
+									%>
+									<h2 style="color: red;">PLEASE PUT YOUR ADDRESS!</h2>
+									<%
 									}
 									%>
 
@@ -218,44 +211,12 @@ if(orderId!=null){%>
 								<div class="checkout__order__total">
 									Total <span class="totalPrice"></span>
 								</div>
+								<button type="submit" class="site-btn"
+									style="border-radius: 10px;">MAKE ORDER</button>
 
-								<h4 style="Background: white; text-align: center;"><label for="paymentMode" style="margin-top:12px;">Make 	Payment</label>
-								</h4>
-
-
-								<div class="checkout__order__total">
-									<div class="radio radio-success">
-										<input type="radio" name="payment" id="paymentMode" value="Cash On Delivery"
-											aria-invalid="false" /> <label for="selectAddress0"></label>
-
-										<span style="color: black;">CASH ON DELIVERY</span>
-									</div>
-								</div>
-								<div class="checkout__order__total">
-									<div class="radio radio-success">
-										
-										<a href="OnlinePayment"><button type="button"><span style="color: black;">MAKE ONLINE PAYMENT</span></button></a>
-									</div>
-								</div>
-							
-								<input type="hidden" name="user_id" value="<%=userId%>">
-								<input type="hidden" id="totalPrice" name="tprice">
-								<input type="hidden" id="totalPricePay"> 
-								<a ><button type="submit"  class="site-btn" style="border-radius:10px;">PLACE ORDER</button></a>
 							</div>
-						<%
-						
-						String cartlength=(String)session.getAttribute("cart");
-						
-						
-						for(int i=1;i<=Integer.parseInt(cartlength);  i++){ %>
-						<input type="hidden" id="productIdO<%=i %>" type="checkbox"  name="productIdO">
-						<input type="hidden" id="productNameO<%=i %>" type="checkbox"  name="productNameO">
-						<input type="hidden" id="productQuantityO<%=i %>" type="checkbox"  name="productQuantityO">
-						<input type="hidden" id="productPriceO<%=i %>" type="checkbox"  name="productPriceO">
-						<%} %>
-						<input type="hidden" id="orderId"  name="productPriceO">
-					</div>
+
+						</div>
 					</div>
 				</form>
 			</div>
@@ -276,7 +237,8 @@ if(orderId!=null){%>
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-	<script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script type="text/javascript"
+		src="https://checkout.razorpay.com/v1/checkout.js"></script>
 	<script type="text/javascript" src="js/Payment.js"></script>
 	<script type="text/javascript" src="js/CommonScript.js"></script>
 	<script type="text/javascript" src="js/Payment.js"></script>

@@ -16,8 +16,16 @@ package com.codeo.shop.controller;
 		
 		private static final long serialVersionUID = 1L;
 
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			HttpSession s=request.getSession();
+			String	C_AddressId=request.getParameter("address_id");
+			//String razopayPaymentId=request.getParameter("paymentId");
+			if(C_AddressId==null) {
+				s.setAttribute("incompleteinfo","No address");
+				response.sendRedirect("checkout.jsp");
+				return;
+			}
+			
 			String amount=(String)s.getAttribute("TotalAmount");
 		if(amount!=null) {
 			int payment=100*Integer.parseInt(amount);
@@ -32,13 +40,14 @@ package com.codeo.shop.controller;
 				Order order=client.orders.create(obj);
 				System.out.println(order);	
 				String o_id=order.get("id");
+				
 			s.setAttribute("o_id", o_id);
-								
+			s.setAttribute("addressId", C_AddressId);					
 			} catch (RazorpayException e) {
 				e.printStackTrace();
 			}
 		}
 		
-		response.sendRedirect("checkout.jsp");
+		response.sendRedirect("orderPlace.jsp");
 	}
 	}

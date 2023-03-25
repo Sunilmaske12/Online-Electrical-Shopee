@@ -22,40 +22,46 @@ public class MyOrder extends HttpServlet {
 	String Payment_Mode;
 	String U_id;
 	String T_Price;
+	String paymentId;
+	String razopayOrderId;
 	RequestDispatcher dispatcher = null;
-	   
+	 
     public MyOrder() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(); 
 		
-		C_AddressId=request.getParameter("address_id");
-		if(C_AddressId==null) {
-			session.setAttribute("incompleteinfo","No address");
-			response.sendRedirect("checkout.jsp");
-			return;
+		C_AddressId = (String)session.getAttribute("addressId");
+		paymentId=request.getParameter("paymentId");
+		System.out.println("============="+paymentId);
+		if(paymentId==null || paymentId=="") {
+			Payment_Mode="Cash On Delivery";
+		}else {
+			Payment_Mode="Online Paid";
 		}
-		Payment_Mode= request.getParameter("payment");
+		
 		if(Payment_Mode==null) {
 			session.setAttribute("incompleteinfo","No Payment");
 			response.sendRedirect("checkout.jsp");
 			return;
 		}
+		
 		U_id=request.getParameter("user_id");
 		T_Price=request.getParameter("tprice");
+		
+		 razopayOrderId=request.getParameter("razorpayOrdertId");
 		 String Pid[]=request.getParameterValues("productIdO");
 		 String Pname[]=request.getParameterValues("productNameO");
 		 String Pquantity[]=request.getParameterValues("productQuantityO");
 		 String Pprice[]=request.getParameterValues("productPriceO");
 		
 		CustomerDao cd=new CustomerDao();
-		if(cd.placeOrder(C_AddressId, U_id, T_Price, Payment_Mode)) {
+		if(cd.placeOrder(razopayOrderId, C_AddressId, U_id, T_Price, Payment_Mode)) {
 			int orderId=0;
 			try {
 				 orderId=cd.getOrderId();
@@ -66,6 +72,11 @@ public class MyOrder extends HttpServlet {
 			if(cd.orderPlace(Pid, Pname, Pquantity, Pprice, orderId)) {
 				System.out.print("detail is inserted");
 				session.setAttribute("orderSuccess"," Success");
+				razopayOrderId=null;
+				//razopayPaymentId=null;
+				session.removeAttribute("o_id");
+				session.removeAttribute("addressId");
+				session.removeAttribute("razorpayPaymentId");
 				response.sendRedirect("MyOrders.jsp");
 			
 			}

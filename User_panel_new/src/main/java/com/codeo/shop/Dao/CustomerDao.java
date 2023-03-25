@@ -104,7 +104,7 @@ public class CustomerDao {
 	}
 
 	
-	public boolean placeOrder(String C_AddressId, String u_id, String t_Price, String payment_Mode) {
+	public boolean placeOrder(String razorpayOrderId, String C_AddressId, String u_id, String t_Price, String payment_Mode) {
 		boolean flag=false;
 		int charges=0;
 		if(Integer.parseInt(t_Price)<999) {
@@ -115,7 +115,7 @@ public class CustomerDao {
 		PreparedStatement psmt=null;
 		if(con!=null) {
 		
-			String insert_order="insert into customer_order (C_Address_Id, User_Id, Amount, Shipping_Charges, Total_Amount, Payment_Mode, Status) values(?,?,?,?,?,?,?)";
+			String insert_order="insert into customer_order (C_Address_Id, User_Id, Amount, Shipping_Charges, Total_Amount, Payment_Mode, Status,RazorpayOrderId) values(?,?,?,?,?,?,?,?)";
 			
 				
 				try {
@@ -128,6 +128,7 @@ public class CustomerDao {
 						psmt.setLong(5, TotalAmount);
 						psmt.setString(6, payment_Mode);
 						psmt.setString(7, "Waiting");
+						psmt.setString(8, razorpayOrderId);
 						 psmt.executeUpdate();
 						flag=true;
 					}

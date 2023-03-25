@@ -156,8 +156,7 @@ function updateCart(){
 			checkout+=`</table>`
 		
 		$(".check").html(checkout);
-		
-		
+	
 	
 	//=============making orders=================
 							var i=0;
