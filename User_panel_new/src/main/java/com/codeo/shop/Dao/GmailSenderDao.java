@@ -28,8 +28,8 @@ public class GmailSenderDao {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "587");
 		
-		String Password="yricfzxqtdcoxige";
-		String Username="sunilmaske2001@gmail.com";
+		String Password="colhtgsnvsmaigpf";
+		String Username="onlineelectricalshopee@gmail.com";
 		//session create
 		Session session=Session.getInstance(props, new Authenticator() {
 		@Override

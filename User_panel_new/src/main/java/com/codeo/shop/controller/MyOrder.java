@@ -2,6 +2,9 @@ package com.codeo.shop.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +40,7 @@ public class MyOrder extends HttpServlet {
 		HttpSession session = request.getSession(); 
 		
 		C_AddressId = (String)session.getAttribute("addressId");
+		System.out.println("=====Address id in myorder======");
 		paymentId=request.getParameter("paymentId");
 		System.out.println("============="+paymentId);
 		if(paymentId==null || paymentId=="") {
@@ -80,6 +84,55 @@ public class MyOrder extends HttpServlet {
 				response.sendRedirect("MyOrders.jsp");
 			
 			}
+			
+			//saving daily business growth
+			int todaysDateId=0;
+			Date date=new Date();
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			String str=sdf.format(date);
+			//String str="2023-01-25";
+			try {
+				todaysDateId=cd.getTodaysDateId(str);
+				System.out.println("order id "+todaysDateId);
+				int  dailySell = cd.getDailySell(str);
+				int dailyProfit = 0;
+				int dailyOnlinePayment = 0;
+				int dailyCahOnDelivery = 0;
+				//inserting 1 st time in a day sell in 
+				if(todaysDateId!=0) {
+					 dailyProfit = (int) (dailySell*0.2);
+					 dailyOnlinePayment = cd.getDailyOnlinePayment(str);
+					 dailyCahOnDelivery = cd.getDailyCashOnDelivery(str);
+					//cd.updateDailyOnlineBusiness(str, dailySell,dailyProfit, dailyOnlinePayment, dailyCahOnDelivery);
+					dailySell= dailySell+Integer.parseInt(T_Price);
+					if(Payment_Mode.equals("Online Paid")) {
+						dailyOnlinePayment = dailyOnlinePayment+Integer.parseInt(T_Price);
+					
+					}else {
+						dailyCahOnDelivery = dailyCahOnDelivery +Integer.parseInt(T_Price);
+					}
+					cd.updateDailyCashBusiness(str, dailySell,dailyProfit, dailyOnlinePayment, dailyCahOnDelivery);
+					System.out.println("daily business data updated");
+			
+				}else {
+					 dailySell=Integer.parseInt(T_Price);
+					 dailyProfit= (int)(dailySell*0.2);
+					 if(Payment_Mode.equals("Online Paid")) {
+							dailyOnlinePayment = dailySell;
+							dailyCahOnDelivery=0;
+						}else {
+							dailyCahOnDelivery = dailySell;
+							dailyOnlinePayment =0;
+						}
+					cd.insertDailyBusiness(str, dailySell,dailyProfit, dailyOnlinePayment, dailyCahOnDelivery);
+					System.out.println("daily business data inserted");
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			} 
 	}
 	}

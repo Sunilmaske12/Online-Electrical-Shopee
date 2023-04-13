@@ -221,5 +221,88 @@ public class CustomerDao {
 		return count;
 	}
 
+	public int getTodaysDateId(String str) throws SQLException {
+		String date="'"+str+"'";
+		String select_Id="select Sr_No from dailybusiness where Date="+date;
+		psmt=con.prepareStatement(select_Id);
+		ResultSet rs=psmt.executeQuery();
+		int id=0;
+		while(rs.next()) {
+		id=rs.getInt(1);
+		System.out.println(id);
+		}
+		
+		return id;
+	}
+
+	public void insertDailyBusiness(String str, int dailySell,int dailyProfit, int dailyOnlinePayment, int dailyCahOnDelivery) throws SQLException {
+		String insert_business="insert into dailybusiness (Date, DailySell, DailyProfit, DailyOnlinePayment, DailyCashOnDelivery) values  (?,?,?,?,?)"; 
+		psmt = con.prepareStatement(insert_business);
+		if(psmt!=null) {
+			psmt.setString(1, str);
+			psmt.setLong(2, dailySell);
+			psmt.setLong(3, dailyProfit);
+			psmt.setLong(4, dailyOnlinePayment);
+			psmt.setLong(5, dailyCahOnDelivery);
+		}
+		psmt.executeUpdate();
+	}
+
+	public int getDailySell(String str) throws SQLException {
+		String date="'"+str+"'";
+String count_query= "select Sum(Total_Amount) from customer_order where Date="+date;
+		
+		psmt = con.prepareStatement(count_query);
+		ResultSet rs = psmt.executeQuery();
+		int count=0;
+		while(rs.next()) {
+			 count=rs.getInt(1);
+		}
+		return count;
+	}
+
+	public int getDailyCashOnDelivery(String str) throws SQLException {
+		String date="'"+str+"'";
+		String count_query= "select Sum(Total_Amount) from customer_order where Date="+date+" and Payment_Mode='Cash On Delivery'";
+				
+				psmt = con.prepareStatement(count_query);
+				
+				ResultSet rs = psmt.executeQuery();
+				int count=0;
+				while(rs.next()) {
+					 count=rs.getInt(1);
+					 System.out.println("inside while"+count);
+				}
+				System.out.println("outside while"+count);
+				return count;
+	}
+
+	public int getDailyOnlinePayment(String str) throws SQLException {
+		String date="'"+str+"'";
+		String count_query= "select Sum(Total_Amount) from customer_order where Date="+date+" and Payment_Mode='Online Paid'";
+		psmt = con.prepareStatement(count_query);
+			ResultSet rs = psmt.executeQuery();
+				int count=0;
+				while(rs.next()) {
+					 count=rs.getInt(1);
+					 System.out.println("inside while"+count);
+				}
+				System.out.println("outside while"+count);
+				return count;
+	}
+
+	public void updateDailyCashBusiness(String str, int dailySell, int dailyProfit, int dailyOnlinePayment,
+			int dailyCahOnDelivery) throws SQLException {
+		String date="'"+str+"'";
+		String update="update dailybusiness set DailySell=?, DailyProfit=?, DailyOnlinePayment=?, DailyCashOnDelivery=? where Date="+date;
+		psmt=con.prepareStatement(update);
+		if(psmt!=null) {
+			psmt.setLong(1, dailySell);
+			psmt.setInt(2, dailyProfit);
+			psmt.setInt(3, dailyOnlinePayment);
+			psmt.setInt(4, dailyCahOnDelivery);
+		}
+	}
+
 
 } 

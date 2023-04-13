@@ -19,6 +19,7 @@ package com.codeo.shop.controller;
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			HttpSession s=request.getSession();
 			String	C_AddressId=request.getParameter("address_id");
+			System.out.println("====Address id===="+C_AddressId);
 			//String razopayPaymentId=request.getParameter("paymentId");
 			if(C_AddressId==null) {
 				s.setAttribute("incompleteinfo","No address");

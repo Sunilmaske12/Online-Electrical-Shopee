@@ -75,8 +75,8 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 
 							<li><a href="./index.jsp">Home</a></li>
 							<li><a href="shop-grid.jsp">Shop</a></li>
-							<li><a href="blog.jsp">Blog</a></li>
-							<li><a href="./contact.jsp">Contact</a></li><%if(user_name1!=null){ %>
+							<li><a href="blog.jsp">Blog</a></li><%if(user_name1!=null){ %>
+							<li><a href="./contact.jsp">Contact</a></li>
 							<li><a href="./MyOrders.jsp">My Order</a></li><%} %>
 							
 								

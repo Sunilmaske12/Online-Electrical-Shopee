@@ -51,7 +51,7 @@ public class ForgotPassword extends HttpServlet {
 			
 			String to = emailid;
 			String from = "sunilmaske2001@gmail.com";
-			String subject="hello";
+			String subject="Dear User";
 			String text="your OTP is: " + otpvalue;
 			gsd.sendEmail(to, from, subject, text);
 			
