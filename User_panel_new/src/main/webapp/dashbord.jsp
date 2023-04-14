@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-
+<%@page import="com.codeo.shop.Dao.DailyBusiness"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import ="java.util.Date"%>
+<%@page import ="java.time.LocalDate"%>
 <%@page import="com.codeo.shop.entity.User"%>
 <%@page import="com.codeo.shop.Dao.UserDaoImpl"%>
 <%@page import="com.codeo.shop.Dao.CustomerDao"%>
@@ -51,6 +55,7 @@ int TotalEarning=(int)total_earning;
 	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 	crossorigin="anonymous"></script>
 
+										<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -146,7 +151,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><%=TotalOrderCount %></h3>
+												<h3 class="font-large-1 mb-0"><%=TotalOrderCount%></h3>
 												<span>Total Order</span>
 											</div>
 											<div class="media-right white text-right">
@@ -168,7 +173,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"> </i><%=TotalSales %></h3>
+												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"> </i><%=TotalSales%></h3>
 												<span>Total Sales</span>
 											</div>
 											<div class="media-right white text-right">
@@ -188,7 +193,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"></i><%=TotalEarning %></h3>
+												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"></i><%=TotalEarning%></h3>
 												<span>Total Earning</span>
 											</div>
 											<div class="media-right white text-right">
@@ -212,16 +217,111 @@ int TotalEarning=(int)total_earning;
 									<h4 class="card-title">PRODUCTS SALES</h4>
 								</div>
 								<div class="card-body">
-									<div class="card-block">
+									<div class="card-block" >
 										<div class="chart-info mb-3 ml-3">
 											<span
 												class="gradient-blackberry d-inline-block rounded-circle mr-1"
-												style="width: 15px; height: 15px;"></span> Sales <span
+												style="width: 15px; height: 15px;"></span> Online Paid <span
 												class="gradient-mint d-inline-block rounded-circle mr-1 ml-2"
-												style="width: 15px; height: 15px;"></span> Visits
+												style="width: 15px; height: 15px;"></span> Cash On Delivery
 										</div>
-										<div id="line-area" class="height-350 lineArea"></div>
-									</div>
+										
+	
+	
+  <canvas style="max-height:300px" id="myChart"></canvas>
+  
+  <%
+    DailyBusiness d=new DailyBusiness();
+      int[] online=d.getOnlineSell();
+      int[] cash=d.getCashSell(online.length);
+      String[] getDate=d.getDate(online.length);
+      
+      Date date=new Date();
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+    	String date1=sdf.format(date);
+    	LocalDate date2  = LocalDate.parse(date1);
+    %>
+  <script type="text/javascript">
+  var ctx=document.getElementById("myChart").getContext("2d");
+  var date=new Array();
+  var online=new Array();
+  var cash=new Array();
+  <%
+  for(int i=0; i<getDate.length; i++){
+	 %>
+	 online[<%=i%>]=<%=online[i]%>;
+
+	 <%
+		
+  }
+  for(int i=0; i<getDate.length; i++){
+		 %>
+		 cash[<%=i%>]=<%=cash[i]%>;
+
+		 <%
+			
+	  }
+
+%>
+
+<%
+for(int i=0; i<getDate.length; i++){
+	 %>
+	 date[<%=i%>]='<%=getDate[i]%>';
+
+	 <%
+	  date2 = date2.minusDays(1);
+	
+}
+%>
+   var myChart=new Chart(ctx, {
+  	type:"line",
+  	
+  	data:{
+  		labels:date,
+  		datasets:[
+  		{
+  			data:online,
+  			fill:true,	 
+  			 backgroundColor: "rgba(100,0,855, 0.5)",
+  			tension: 0.3
+  		},
+  		
+  		{
+  			data:cash,
+  			fill:true,
+ 			 backgroundColor: "rgba(87, 200, 77, 0.6)",
+  			tension: 0.3
+  		}
+
+  		]
+  	},
+  	options:{
+  		plugins:{
+  			legend:{
+  				display:false
+  			}
+  		},
+  		
+  		
+  			scales: {
+  	      x: {
+  	        grid: {
+  	          display: false
+  	        }
+  	      },
+  	    }
+  	 
+  	}
+
+
+  })
+
+  </script>
+  
+										
+										
+										
 								</div>
 							</div>
 						</div>
