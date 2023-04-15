@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -54,8 +55,8 @@ int TotalEarning=(int)total_earning;
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 	crossorigin="anonymous"></script>
-
-										<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,10 +101,12 @@ int TotalEarning=(int)total_earning;
 	href="app-assets/vendors/css/chartist.min.css">
 <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
 
-
-<style type="text/css">
-.adminprofile {
-	
+<style>
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
 }
 </style>
 
@@ -116,8 +119,6 @@ int TotalEarning=(int)total_earning;
 		<%@include file="Asidebar.jsp"%>
 
 		<%@include file="Navbar.jsp"%>
-
-
 
 
 		<div class="main-panel">
@@ -327,50 +328,84 @@ for(int i=0; i<getDate.length; i++){
 						</div>
 					</div>
 
-
+	
+<%
+long totalProductPrice = d.getTotalProductPrice();
+String miNumIn = NumberFormat.getCurrencyInstance().format(totalProductPrice);
+long totalAppliancesPrice = d.getTotalAppliancesPrice();
+long totalFansPrice = d.getTotalFansPrice();
+long totalToolsPrice = d.getTotalToolsPrice();
+double appliancesPer =(double) ((double)totalAppliancesPrice/(double)totalProductPrice)*100;
+double fansPer =(double) ((double)totalFansPrice/(double)totalProductPrice)*100;
+double toolsPer =(double) ((double)totalToolsPrice/(double)totalProductPrice)*100;
+double otherPer =100-appliancesPer-fansPer-toolsPer;
+%>
+	
 					<div class="row match-height">
 						<div class="col-xl-4 col-lg-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Statistics</h4>
+									<h4 class="card-title">Top Categories</h4>
 								</div>
 								<div class="card-body">
-
-									<p class="font-medium-2 text-muted text-center">Hobbies</p>
-									<div id="bar-chart" class="height-250 BarChartShadow BarChart">
-									</div>
-
-									<div class="card-block">
-										<div class="row">
-											<div class="col text-center">
-												<span
-													class="gradient-pomegranate d-block rounded-circle mx-auto mb-2"
-													style="width: 10px; height: 10px;"></span> <span
-													class="font-large-1 d-block mb-2">48</span> <span>Sport</span>
-											</div>
-											<div class="col text-center">
-												<span
-													class="gradient-green-tea d-block rounded-circle mx-auto mb-2"
-													style="width: 10px; height: 10px;"></span> <span
-													class="font-large-1 d-block mb-2">9</span> <span>Music</span>
-											</div>
-											<div class="col text-center">
-												<span
-													class="gradient-blackberry d-block rounded-circle mx-auto mb-2"
-													style="width: 10px; height: 10px;"></span> <span
-													class="font-large-1 d-block mb-2">26</span> <span>Travel</span>
-											</div>
-											<div class="col text-center">
-												<span
-													class="gradient-ibiza-sunset d-block rounded-circle mx-auto mb-2"
-													style="width: 10px; height: 10px;"></span> <span
-													class="font-large-1 d-block mb-2">17</span> <span>News</span>
-											</div>
-										</div>
-									</div>
+	
+									<p class="font-medium-2 text-muted text-center">Available <br>Rs. <%= totalProductPrice%></p>
+									
+									<canvas style="margin-top: 50px;"  id="myChartCate"></canvas>
+									
+									
 								</div>
 							</div>
 						</div>
+						
+
+	<script type="text/javascript">
+		var ctx = document.getElementById("myChartCate").getContext("2d");
+		let a=<%=appliancesPer%>;
+		let b=<%=fansPer%>;
+		let c=<%=toolsPer%>;
+		let d=<%=otherPer%>;
+		var myChart = new Chart(ctx, {
+			type : "bar",
+			
+			data : {
+				labels : [ "Appliances", "Fans", "Tools", "Othes" ],
+				datasets : [ {
+					data : [a,b,c,d],
+					fill : true,
+					backgroundColor : [ 'blue', '#ffb88c', "rgba(87, 200, 77, 0.6)", '#FF69B4', ],
+
+					borderRadius : 30,
+					barPercentage : 0.4,
+				}
+
+				]
+			},
+			options : {
+				plugins : {
+					legend : {
+						display : false
+					}
+				},
+
+				scales : {
+					x : {
+						grid : {
+							display : false
+						}
+					},
+					y : {
+						grid : {
+							display : false
+						}
+					},
+
+				}
+
+			}
+
+		})
+	</script>
 						<div class="col-xl-4 col-lg-12">
 							<div class="card">
 								<div class="card-header">
@@ -480,56 +515,77 @@ for(int i=0; i<getDate.length; i++){
 								</div>
 							</div>
 						</div>
+						
+			<!--    TOP CATEGORY CHART STARTED         -->		
+			
+<%
+int[] status = d.getStatus();//total-success-reject-wait
+int total=status[0];
+int success=status[1];
+int reject=status[2];
+int wait=status[3];
+%>
+
+				
 						<div class="col-xl-4 col-lg-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">Project Stats</h4>
+									<h4 class="card-title">ORDER STATUS</h4>
 								</div>
 								<div class="card-body">
 
-									<p class="font-medium-2 text-muted text-center">Project
-										Tasks</p>
-									<div id="donut-dashboard-chart" class="height-250 donut">
+									
+									<div id="" class="height-250 donut">
+									
+		<canvas style=" margin-left: 20%;margin-right: 20%;" id="myChartStatus"></canvas>
 									</div>
+										
+		<script type="text/javascript">
+		var ctx = document.getElementById("myChartStatus").getContext("2d");
+		let total=<%=total%>;
+		let success=<%=success%>;
+		let reject=<%=reject%>;
+		let wait=<%=wait%>;
+		var myChart = new Chart(ctx, {
+			type : "pie",
+			
+			data : {
+				labels: [
+				    'Approved',
+				    'Rejected',
+				    'Waiting'
+				  ],
+				  datasets: [{
+				    data: [success,reject,wait],
+				    backgroundColor: [
+				      '#32CD32',
+				    	'red',
+					      '#FFFF00',
+				    ],
+				    hoverOffset: 4,
+				  }],
+			},
+		options:{
+	  		plugins:{
+	  			legend:{
+	  				display:false
+	  			},
+	  			
+	  			
+	  		}
+		}
 
+		})
+	</script>
+		
+	
 									<div class="card-block">
-										<div class="row mb-3">
-											<div class="col">
-												<span class="mb-1 text-muted d-block">23% - Started</span>
-												<div class="progress" style="height: 5px;">
-													<div class="progress-bar bg-success" role="progressbar"
-														style="width: 23%;" aria-valuenow="23" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-											</div>
-											<div class="col">
-												<span class="mb-1 text-muted d-block">14% - In
-													Progress</span>
-												<div class="progress" style="height: 5px;">
-													<div class="progress-bar bg-amber" role="progressbar"
-														style="width: 14%;" aria-valuenow="14" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-2">
-											<div class="col">
-												<span class="mb-1 text-muted d-block">35% - Remaining</span>
-												<div class="progress" style="height: 5px;">
-													<div class="progress-bar bg-deep-purple bg-lighten-1"
-														role="progressbar" style="width: 35%;" aria-valuenow="35"
-														aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-											</div>
-											<div class="col">
-												<span class="mb-1 text-muted d-block">28% - Done</span>
-												<div class="progress" style="height: 5px;">
-													<div class="progress-bar bg-blue" role="progressbar"
-														style="width: 28%;" aria-valuenow="28" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
+									
+									<span style="  background-color: #32CD32;" class="dot"></span> Approved<br>
+									<span style="  background-color: red;" class="dot"></span> Rejected<br>
+									<span style="  background-color: #C1FE01;" class="dot"></span> Waiting
+									
+										
 									</div>
 								</div>
 							</div>
@@ -551,7 +607,7 @@ for(int i=0; i<getDate.length; i++){
 
 		</div>
 	</div>
-
+</div>
 	<!-- END Notification Sidebar-->
 	<!-- Theme customizer Starts-->
 	<div
@@ -739,15 +795,7 @@ for(int i=0; i<getDate.length; i++){
 				</div>
 			</div>
 
-			<script>
-				$(document).ready(function() {
-					$('#welcomeModal').modal('show');
-				});
-			</script>
-
-
-			<!--  modal end  -->
-
+			
 
 
 		</div>
@@ -770,6 +818,7 @@ for(int i=0; i<getDate.length; i++){
 	<script src="app-assets/vendors/js/pace/pace.min.js"
 		type="text/javascript"></script>
 
+<!--hobies-->
 	<script src="app-assets/vendors/js/chartist.min.js"
 		type="text/javascript"></script>
 
