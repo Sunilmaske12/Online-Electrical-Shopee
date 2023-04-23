@@ -365,6 +365,47 @@ public class ProductDaoImp implements ProductDao {
 		return list;
 			
 	}
+	 
+	 
+	 @Override
+		public List<Product> getProductBySearch(String ch) 
+		{
+			List<Product> list = new ArrayList<Product>();
+			Product product = null;
+	        Connection con = ConnectionProvider.getconnection();
+	        String  getproductById = "select * from product_operation where prod_name like ? or prod_price like ? or cid like ? or prod_description=?";
 
+	try {
+		PreparedStatement psmt = con.prepareStatement(getproductById);
+		psmt.setString(1, "%"+ch+"%");
+		psmt.setString(2, "%"+ch+"%");
+		psmt.setString(3, "%"+ch+"%");
+		psmt.setString(4, "%"+ch+"%");
+		
+		ResultSet resultset = psmt.executeQuery();
+		//prod_id, prod_name, prod_description, prod_price, prod_discount, prod_quantity, prod_imageName
+		while(resultset.next())
+		{
+			product = new Product();
+			product.setId(resultset.getInt("prod_id"));
+			product.setProd_name(resultset.getString("prod_name"));
+			product.setProd_description(resultset.getString("prod_description"));
+			product.setProd_price(resultset.getString("prod_price"));
+			product.setProd_discount(resultset.getString("prod_discount"));
+			product.setProd_imageName(resultset.getString("prod_imageName"));
+			product.setCid(resultset.getInt("cid"));
+		
+			list.add(product);
+			//System.out.println("executed ");
+			//System.out.println(list);
+		}
+	} 
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+		return list;
+			
+	}
+		
 	
   }

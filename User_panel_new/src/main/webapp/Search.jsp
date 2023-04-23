@@ -6,6 +6,7 @@
 <%@page import="com.codeo.shop.entity.Category"%>
 <%@page import="com.codeo.shop.Dao.CategoryDao"%>
 <%@page import="com.codeo.shop.Dao.ProductDaoImp"%>
+<%@page import="com.codeo.shop.Dao.ProductDao"%>
 <%@page import="com.codeo.shop.Dao.BannerDao"%>
 <head>
 <meta charset="UTF-8">
@@ -14,9 +15,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Online Electrical Shopee</title>
-
-
-
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -46,10 +44,6 @@
 <body>
 
 
-
-
-
-
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -61,16 +55,15 @@
 	<!-- Toast msg -->
 	<div id="toast">Error in cart</div>
 	<!-- Toast msg end -->
+
 	<div style="margin-left: 30%" class="hero__search">
-		<div class="hero__search__form">
-			<form action="Search.jsp" method="post">
-				<input type="text" id="search-box" class="form-control" name="ch"
-					placeholder="What do yo u need?"
-					onkeyup="getSuggestions(this.value)">
-				<button type="submit" class="site-btn">SEARCH</button>
-			</form>
-		</div>
-	</div>
+						<div class="hero__search__form" >
+						 <form action="Search.jsp" method="post"> 
+								<input type="text" id="search-box" class="form-control" name="ch" placeholder="What do yo u need?" onkeyup="getSuggestions(this.value)">
+								<button type="submit" class="site-btn">SEARCH</button>
+							 </form>  
+						</div>
+				</div>
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section set-bg" data-setbg="img/Name-bg.jpg">
 		<div class="container">
@@ -84,26 +77,22 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
+		
 	</section>
 	<!-- Breadcrumb Section End -->
+	
 
 	<%
+	String ch =request.getParameter("ch");
 	CategoryDao categorydao = new CategoryDao();
 	List<Category> clist = categorydao.getCategoryList();
-	ProductDaoImp productdao = new ProductDaoImp();
-
-	String cat = request.getParameter("category");
-
-	List<Product> prodlist = null;
-
-	if (cat == null || cat.trim().equals("all")) {
-		prodlist = productdao.getAllProducts();
-	} else {
-
-		int id = Integer.parseInt(cat.trim());
-		prodlist = productdao.getAllProductsById(id);
-	}
+	ProductDao productdao = new ProductDaoImp();
+	
+	//String cat = request.getParameter("category");
+	List<Product> prodlist = productdao.getProductBySearch(ch);
+	
 	%>
 
 
@@ -117,10 +106,10 @@
 						<div class="hero__categories__all">
 							<span><a style="color: white">AVAILABLE CATEGORIES </a> </span><br>
 						</div>
-						<ul>
-							<li><a href="shop-grid.jsp"
+						<ul><li><a href="shop-grid.jsp"
 								onMouseOver="this.style.color='red'"
-								onMouseOut="this.style.color='black'"> ALL CATEGORIES </a></li>
+								onMouseOut="this.style.color='black'"> ALL CATEGORIES
+							</a></li>
 							<%
 							for (Category c : clist) {
 							%>
@@ -134,10 +123,9 @@
 						</ul>
 					</div>
 				</div>
-
+				
 				<%
 				// List<Product> list = productdao.getAllProducts();
-
 				for (Product product : prodlist) {
 				%>
 				<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ">
@@ -153,9 +141,7 @@
 									src="img/latest-product/<%=product.getProd_imageName()%>">
 								</a>
 								<ul class="featured__item__pic__hover">
-									<li><a
-										onclick="likeProducts(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName()%>')"><i
-											class="fa fa-heart"></i></a></li>
+									<li><a onclick="likeProducts(<%=product.getId()%>, '<%=product.getProd_name()%>', <%=product.getPriceAfterDiscount()%>, '<%=product.getProd_imageName() %>')" ><i class="fa fa-heart"></i></a></li>
 									<li><a><i class="fa fa-retweet"></i></a></li>
 								</ul>
 							</div>
@@ -165,7 +151,7 @@
 									<a href="Product-details.jsp?product=<%=product.getId()%>"
 										style="color: black"><%=product.getProd_name()%></a>
 								</h6>
-
+								
 								<button type="button" class="btn btn-light">
 									<h5>
 										Rs.<%=product.getPriceAfterDiscount()%>/- <span
@@ -208,12 +194,6 @@
 	<br>
 	<br>
 	<br>
-
-
-
-
-
-
 
 	<jsp:include page="footer.html" />
 

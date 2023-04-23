@@ -106,12 +106,14 @@ String user_email = (String) session1.getAttribute("UserEmail");
 				</div>
 				<div class="col-lg-9">
 					<div class="hero__search">
-						<div class="hero__search__form">
-							<form action="#">
-								<input type="text" placeholder="What do yo u need?">
+						<div class="hero__search__form" >
+						 <form action="Search.jsp" method="post"> 
+								<input type="text" id="search-box" class="form-control" name="ch" placeholder="What do yo u need?" onkeyup="getSuggestions(this.value)">
 								<button type="submit" class="site-btn">SEARCH</button>
-							</form>
+							 </form>  
 						</div>
+						
+						
 						<div class="hero__search__phone">
 							<div class="hero__search__phone__icon">
 								<button data-bs-toggle="modal" data-bs-target="#UserProfile"><img
@@ -448,6 +450,7 @@ String user_email = (String) session1.getAttribute("UserEmail");
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/CommonScript.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 

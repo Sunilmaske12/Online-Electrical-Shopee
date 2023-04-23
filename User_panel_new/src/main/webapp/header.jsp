@@ -82,7 +82,10 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 								
 						</ul>
 					</nav>
+					
+					
 				</div>
+				
 				<div class="col-lg-3">
 					<div class="header__cart">
 						<ul>
@@ -101,7 +104,7 @@ String user_email1 = (String) session2.getAttribute("UserEmail");
 						</div>
 					</div>
 				</div>
-			</div>
+					</div>
 			<div class="humberger__open">
 				<i class="fa fa-bars"></i>
 			</div>

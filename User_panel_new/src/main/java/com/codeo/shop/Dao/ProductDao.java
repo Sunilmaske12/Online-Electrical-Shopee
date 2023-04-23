@@ -27,4 +27,6 @@ public interface ProductDao {
 	public List<Blog> getAllBlogs();
 	
 	public List<Blog>  getBlogsDetails(int id);
+	
+	public List<Product> getProductBySearch(String ch);
 }
