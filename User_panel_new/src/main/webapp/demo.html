@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<h2>hello</h2><div style="padding: 30px;">
+ 	<form method="POST" action="Payment">
+		<input name="amount" type="text" placeholder="enter amount" >
+		<button type="submit">submit</button>
+
+	</form> <br><br><br>
+	<button class="success"  onclick="onlinePayment()">pay</button></div>
+	<!--<input id="amount" type="text" placeholder="enter amount" >
+		<button onclick="paymentStarte()">submit</button>-->
+		<script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script type="text/javascript" src="js/Payment.js"></script>
+	 
+</body>
+</html>
