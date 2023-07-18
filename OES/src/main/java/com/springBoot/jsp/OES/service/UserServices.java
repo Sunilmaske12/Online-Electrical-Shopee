@@ -12,4 +12,8 @@ public interface UserServices {
 
 	public void deleteUserById(int id);
 
+	public int getNewUserCount();
+
+	public int getUserCount();
+
 }

@@ -30,4 +30,16 @@ public class UserServicesImpl implements UserServices {
 		userRepository.deleteById(id);		
 	}
 
+	@Override
+	public int getNewUserCount() {
+		List<User> newUser = userRepository.findByseen("No");
+		return newUser.size();
+	}
+
+	@Override
+	public int getUserCount() {
+		List<User> allUser=userRepository.findAll();
+		return allUser.size();
+	}
+
 }

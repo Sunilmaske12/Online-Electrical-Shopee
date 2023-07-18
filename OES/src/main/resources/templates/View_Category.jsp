@@ -70,14 +70,6 @@
 							class="fa fa-plus " aria-hidden="true"></i> Add Category </a>
 
 					</div>
-
-					<% 
-  String id = request.getParameter("id");
-  Connection con = null;
-  Statement statement  = null;	
-  ResultSet resultset = null;                        		  
-	%>
-
 					<section id="shopping-cart">
 						<div class="row">
 							<div class="col-sm-12">
@@ -100,30 +92,19 @@
 														<th>Action</th>
 													</tr>
 												</thead>
-												<%
-                            String select_query="select * from add_category ";
-                            con= ConnectionProvider.getconnection();
-                          statement = con.createStatement();
-                          resultset = statement.executeQuery(select_query);
-                            while(resultset.next()) {
-                            %>
-												<tr>
-													<td><%=resultset.getInt(1) %></td>
-													<td><%=resultset.getString(2) %></td>
-													<td><%=resultset.getString(3) %></td>
+												
+												<tr th:each="category,status:${allCategories }">
+													<td th:text="${status.index + 1}"></td>
+													<td th:text="${category.Cat_title }"></td>
+													<td th:text="${category.cat_description }"></td>
 
 													<td><a
-														href="DeleteCategory.jsp?id=<%=resultset.getString(1) %>"><i
-															class="ft-trash font-medium-3 red"></i>Delete</a> || <!--   <td> <a  href="EditCategory.jsp?id=<%=resultset.getString(1) %>"><i class="ft-edit orange"></i></a> </td> -->
-														<a href="Editcategory?id=<%=resultset.getString(1) %>"><i
+														th:href="@{'/deleteCategory'+${category.Id }}"><i
+															class="ft-trash font-medium-3 red"></i>Delete</a> || 
+														<a th:href="@{'/editCategory'+${category.Id }}"><i
 															class="ft-edit orange"></i>Edit</a></td>
 												<tr>
-
-													<% 
-                                }
-                            
-                                 %>
-													<td><button class="btn btn-success btn-raised">Continue</button>
+												<td><button class="btn btn-success btn-raised">Continue</button>
 													</td>
 												</tr>
 

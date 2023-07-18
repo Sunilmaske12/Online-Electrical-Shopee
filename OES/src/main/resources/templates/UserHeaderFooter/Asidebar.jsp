@@ -57,7 +57,7 @@
 						<ul class="menu-content">
 							<li><a th:href="@{/viewProduct}" class="menu-item">VIEW
 									PRODUCTS</a></li>
-							<li><a th:href="@{/viewCategory}" class="menu-item">VIEW
+							<li><a th:href="@{/viewCategoryAdmin}" class="menu-item">VIEW
 									CATEGORY</a></li>
 							<li><a th:href="@{/addProduct}" class="menu-item">ADD
 									PRODUCTS</a></li>

@@ -21,7 +21,6 @@ public class BannerHandler {
 	public String getBannerPage(Model model) {
 		List<Banner> allBanner = bannerServices.getAllBanner();
 		model.addAttribute("Banner", allBanner);
-	
 		return "Banner";
 	}
 	

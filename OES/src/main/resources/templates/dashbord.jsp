@@ -18,13 +18,6 @@ if (user2 == null) {
 	return;
 }
 
-Map<String, Long> m = UserDaoImpl.total_user();
-String UserCount = String.valueOf(m.get("Total_User"));
-
-int TotalOrderCount= CustomerDao.getTotalOrderCount();
-int TotalSales= CustomerDao.getTotalSales();
-double total_earning = TotalSales*0.2;
-int TotalEarning=(int)total_earning;
 %>
 
  -->
@@ -115,7 +108,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><%=UserCount%></h3>
+												<h3 class="font-large-1 mb-0" th:text="${userCount }"></h3>
 												<span>Total Users</span>
 											</div>
 											<div class="media-right white text-right">
@@ -135,7 +128,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><%=TotalOrderCount%></h3>
+												<h3 class="font-large-1 mb-0" th:text="${ordersCount}"></h3>
 												<span>Total Order</span>
 											</div>
 											<div class="media-right white text-right">
@@ -157,7 +150,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"> </i><%=TotalSales%></h3>
+												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"> </i><i  th:text="${totalSales }"></i></h3 >
 												<span>Total Sales</span>
 											</div>
 											<div class="media-right white text-right">
@@ -177,7 +170,7 @@ int TotalEarning=(int)total_earning;
 									<div class="card-block pt-2 pb-0">
 										<div class="media">
 											<div class="media-body white text-left">
-												<h3 class="font-large-1 mb-0"><i class="fa fa-rupee"></i><%=TotalEarning%></h3>
+												<h3 class="font-large-1 mb-0" ><i class="fa fa-rupee" th:text="${totalEarning}"></i></h3>
 												<span>Total Earning</span>
 											</div>
 											<div class="media-right white text-right">

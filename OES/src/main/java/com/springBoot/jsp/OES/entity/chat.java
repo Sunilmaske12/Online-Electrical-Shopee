@@ -8,117 +8,68 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity(name="ticket_query")
 public class chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int userId;
-	String userName; 
-	String status; 
-	String ticketId;
-	Date ticket_date;
-	Time ticket_time;
-	Date chat_date;
-	Time chat_time;
-	String message;
-	String Admin_Manager;
-	String seen;
-	
+	private int TicketId;
+	private int UserId;
+	private String UserName; 
+	private Date Date;
+	private Time Time;
+	private String Status;
+	private String Admin_Manager;
+	private String seen;
+	public int getTicketId() {
+		return TicketId;
+	}
+	public void setTicketId(int ticketId) {
+		TicketId = ticketId;
+	}
 	public int getUserId() {
-		return userId;
+		return UserId;
 	}
 	public void setUserId(int userId) {
-		this.userId = userId;
+		UserId = userId;
 	}
 	public String getUserName() {
-		return userName;
+		return UserName;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		UserName = userName;
+	}
+	public Date getDate() {
+		return Date;
+	}
+	public void setDate(Date date) {
+		Date = date;
+	}
+	public Time getTime() {
+		return Time;
+	}
+	public void setTime(Time time) {
+		Time = time;
 	}
 	public String getStatus() {
-		return status;
+		return Status;
 	}
 	public void setStatus(String status) {
-		this.status = status;
+		Status = status;
 	}
-	public String getTicketId() {
-		return ticketId;
-	}
-	public void setTicketId(String ticketId) {
-		this.ticketId = ticketId;
-	}
-	public Date getTicket_date() {
-		return ticket_date;
-	}
-	public void setTicket_date(Date ticket_date) {
-		this.ticket_date = ticket_date;
-	}
-	public Time getTicket_time() {
-		return ticket_time;
-	}
-	public void setTicket_time(Time ticket_time) {
-		this.ticket_time = ticket_time;
-	}
-	public Date getChat_date() {
-		return chat_date;
-	}
-	public void setChat_date(Date chat_date) {
-		this.chat_date = chat_date;
-	}
-	public Time getChat_time() {
-		return chat_time;
-	}
-	public void setChat_time(Time chat_time) {
-		this.chat_time = chat_time;
-	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
 	public String getAdmin_Manager() {
 		return Admin_Manager;
 	}
 	public void setAdmin_Manager(String admin_Manager) {
 		Admin_Manager = admin_Manager;
 	}
-	
 	public String getSeen() {
 		return seen;
 	}
 	public void setSeen(String seen) {
 		this.seen = seen;
-	} 
-	
-	@Override
-	public String toString() {
-		return "chat [userId=" + userId + ", userName=" + userName + ", status=" + status + ", ticketId=" + ticketId
-				+ ", ticket_date=" + ticket_date + ", ticket_time=" + ticket_time + ", chat_date=" + chat_date
-				+ ", chat_time=" + chat_time + ", message=" + message + ", Admin_Manager=" + Admin_Manager + ", seen=" +seen+ "]";
 	}
 	
-	public chat(int userId, String userName, String status, String ticketId, Date ticket_date, Time ticket_time,
-			Date chat_date, Time chat_time, String message, String admin_Manager, String seen) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.status = status;
-		this.ticketId = ticketId;
-		this.ticket_date = ticket_date;
-		this.ticket_time = ticket_time;
-		this.chat_date = chat_date;
-		this.chat_time = chat_time;
-		this.message = message;
-		this.Admin_Manager = admin_Manager;
-		this.seen =seen;
-	}
-	public chat() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	
 }

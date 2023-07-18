@@ -31,4 +31,22 @@ public class OrderServicesImpl implements OrderServices {
 		return orderDetail;
 	}
 
+	@Override
+	public int getNewOrderCount() {
+		List<Order> orderDetail=orderRepository.findByseen("No");
+		return orderDetail.size();
+	}
+
+	@Override
+	public int getOrderCount() {
+		List<Order> allOrders= orderRepository.findAll();
+		return allOrders.size();
+	}
+
+	@Override
+	public int getTotalSales() {
+		return orderRepository.findSumOfAmount();
+	}
+
+	
 }

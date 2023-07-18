@@ -17,16 +17,13 @@ int admin_id = (int) session3.getAttribute("userid");
 		<div class="container-fluid">
 			<div class="navbar-header">
 
-				<%
+			<!-- 	<%
 				if (admin_name != null) {
-				%>
+				%>   -->
 				<h3 style="color: red;" class="font-weight-bold">
 					Welcome :
 					<%=admin_name%>
 				</h3>
-				<%
-				}
-				%>
 				<button type="button" data-toggle="collapse"
 					class="navbar-toggle d-lg-none float-left">
 
@@ -56,27 +53,11 @@ int admin_id = (int) session3.getAttribute("userid");
 									src="app-assets/img/flags/de.png" class="langimg" /><span>
 										French</span></a>
 							</div></li>
-
-					<!--  	<%
-						int newUser = NotificationDao.getNewUser();
-						int newOrder = NotificationDao.getNewOrder();
-						int newQuery = NotificationDao.getNewQuery();
-						int notification = 0;
-						if (newUser != 0) {
-							notification += 1;
-						}
-						if (newOrder != 0) {
-							notification += 1;
-						}
-						if (newQuery != 0) {
-							notification += 1;
-						}
-						%>  -->
-						<li class="dropdown nav-item"><a id="dropdownBasic2" href="#"
+								<li class="dropdown nav-item"><a id="dropdownBasic2" href="#"
 							data-toggle="dropdown"
 							class="nav-link position-relative dropdown-toggle"><i
 								class="ft-bell font-medium-3 blue-grey darken-4"></i><span
-								class="notification badge badge-pill badge-danger"><%=notification%></span>
+								class="notification badge badge-pill badge-danger" th:text="${notificationCount }"></span>
 						</a>
 							<div
 								class="notification-dropdown dropdown-menu dropdown-menu-right">
@@ -85,36 +66,37 @@ int admin_id = (int) session3.getAttribute("userid");
 										class="dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4"><i
 										class="ft-bell info float-left d-block font-large-1 mt-1 mr-2"></i><span
 										class="noti-wrapper"><span
-											class="noti-title line-height-1 d-block text-bold-400 info"><%if(newOrder!=0){ %><span
-												style="color: #8B0000; font-size: 150%;"><%=newOrder%></span><%} else{%>No Any <%} %>
-												New Order Received</span><span class="noti-text"> Click Here, To See All New Orders.</span></span>
+											class="noti-title line-height-1 d-block text-bold-400 info"><span
+												th:if="${newOrdersCount!=0 }" th:text="${newOrdersCount}" style="color: #8B0000; font-size: 150%;"></span> </span>
+												<span th:unless="${newOrdersCount!=0 }" style="color: #8B0000; font-size: 150%;"> No Any New Order Received</span><span class="noti-text"> Click Here, To See All New Orders.</span></span>
 									</a>
 									<a href="UserList.jsp"
 										class="dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4"><i
 										class="ft-bell warning float-left d-block font-large-1 mt-1 mr-2"></i><span
-										class="noti-wrapper"><span
-											class="noti-title line-height-1 d-block text-bold-400 warning"><%if(newUser!=0){ %><span
-												style="color: #8B0000; font-size: 150%;"><%=newUser%></span><%} else{%>No Any <%} %>
-												New User Registered</span><span class="noti-text"> Click Here, To See All New User.</span></span></a>
+										class="noti-wrapper"><span th:if="${newUserCount!=0 }"
+											class="noti-title line-height-1 d-block text-bold-400 warning"><span
+												style="color: #8B0000; font-size: 150%;" th:text="${newUserCount }" ></span><span  class="noti-text"> Click Here, To See All New User.</span></span></span><span th:unless="${newUserCount!=0 }">No Any 
+												New User Registered</span></a>
 									<a href="support.jsp" class="dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4"><i
 										class="ft-bell danger float-left d-block font-large-1 mt-1 mr-2"></i><span
-										class="noti-wrapper"><span
-											class="noti-title line-height-1 d-block text-bold-400 danger"><%if(newQuery!=0){ %><span
-												style="color: #8B0000; font-size: 150%;"><%=newQuery%></span><%} else{%>No Any <%} %>
-												New Query Received</span><span class="noti-text"> Click Here, To See All New Query.</span></span></a> 
+										class="noti-wrapper"><span th:if="${newQueryCount!=0 }"
+											class="noti-title line-height-1 d-block text-bold-400 danger"><span th:text="${newQueryCount}"
+												style="color: #8B0000; font-size: 150%;"><%=newQuery%></span></span><span  class="noti-text"> Click Here, To See All New Query.</span></span><span th:unless="${newQueryCount!=0 }">No Any 
+												New Query Received</span></a> 
 									
 								</div>
-								<%if(notification!=0){ %><a
+								<a  th:if="${notificationCount!=0 }"
 									class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read
-									All Notifications</a><%} else{ %>
-									<a class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">No
+									All Notifications</a>
+									<a   th:unless="${notificationCount!=0 }"
+									class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">No
 									Any Notifications</a>
-									<%} %>
+									
 							</div></li>
-						<%
+					<!-- 	<%
 						if (admin_name != null) {
 						%>
-
+-->
 
 
 
@@ -135,9 +117,7 @@ int admin_id = (int) session3.getAttribute("userid");
 									href="loginfrom.jsp;" class="dropdown-item"><i
 									class="ft-power mr-2"></i><span>Logout</span></a>
 							</div></li>
-						<%
-						}
-						%>
+						
 
 					</ul>
 				</div>

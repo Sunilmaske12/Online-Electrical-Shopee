@@ -1,9 +1,9 @@
-
-<%
+<!-- <%
 HttpSession session3 = request.getSession();
 session3.removeAttribute("UserName");
 session3.removeAttribute("usertype");
-%>
+%> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,16 +95,14 @@ session3.removeAttribute("usertype");
 
 
 								<input type="hidden" name="user_type" value="Normal_User">
-								<%
+							<!-- <%
 								String errorMessage = (String) request.getAttribute("errorMessage");
 								if (errorMessage != null && !errorMessage.isEmpty()) {
-								%>
+								%>  -->
 								<p style="color: red;">
 									<%=request.getAttribute("errorMessage")%>
 								</p>
-								<%
-								}
-								%>
+								
 								<!-- 	
 					<tr> <td>User Type:</td>
 					  <td>

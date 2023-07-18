@@ -18,6 +18,7 @@
 
 
 <%@include file="component/AllCssFIles.jsp"%>
+<link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
 </head>
 
 <body data-col="2-columns" class=" 2-columns ">

@@ -11,4 +11,10 @@ public interface OrderServices {
 
 	public List<OrderDetails> getOrderDetailById(int oid);
 
+	public int getNewOrderCount();
+
+	public int getOrderCount();
+
+	public int getTotalSales();
+
 }

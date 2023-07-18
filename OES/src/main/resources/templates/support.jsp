@@ -18,14 +18,15 @@
 
 
 <%@include file="component/AllCssFIles.jsp"%>
+<link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
 </head>
 
 <body data-col="2-columns" class=" 2-columns ">
 
 	<div class="wrapper nav-collapsed menu-collapsed">
 
-		<%@include file="Asidebar.jsp"%>
-		<%@include file="Navbar.jsp"%>
+		<aside th:replace="/UserHeaderFooter/Asidebar::Asidebar"></aside> 
+	<nav th:replace="/UserHeaderFooter/Navbar::Navbar"></nav>
 
 		<div class="main-panel">
 			<div class="main-content">
@@ -37,11 +38,7 @@
 					</div>
 					
 
-<%
-Contact_QueryDao cqd=new Contact_QueryDao();
-List<chat> ticketlist = cqd.getAllTicketList();
-%>
-					<section id="shopping-cart">
+					<section id="shopping-cart" >
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="card">
@@ -57,58 +54,46 @@ List<chat> ticketlist = cqd.getAllTicketList();
 														<th>STATUS</th>
 													</tr>
 												</thead>
-												<% int i=0;
-												for(chat ticket:ticketlist){
-					                       			Date date=ticket.getTicket_date();
-														i++; %>
-												<tr>
-													<td><%=i %> <%if(ticket.getSeen().equals("No")){ %><span style="color:red; font-size:80%;">new</span><%} %></td>
-													<td><%=date%></td>
-						
-							                     <td><%=ticket.getTicketId()%></td>
-													<td><a href="AdminChat.jsp?ticketId=<%=ticket.getTicketId()%>" type="button" style="color:white; font-family:Serif; " class="btn btn-primary btn-sm">MESSAGE</a></td>
-												    <%if(ticket.getStatus().equals("Open")){%>
-												    <td><div  class="btn-group">
+												
+												<tr th:each="ticket,status:${allTickets }">
+													<td th:text="${status.index+1 }"> <span th:if="${ticket.Seen=='No'}" style="color:red; font-size:80%;">new</span></td>
+													<td th:text="${ticket.Date }"></td>
+							                   		  <td th:text="${ticket.TicketId }"></td>
+													<td><a th:href="@{'/adminChat'+${ticket.TicketId}}" type="button" style="color:white; font-family:Serif; " class="btn btn-primary btn-sm">MESSAGE</a></td>
+												     <td th:if="${ticket.Status=='Open' }">
+												     			<div  class="btn-group">
 															<a style="background: #00FF00;" type="button" class="btn btn-primary">OPEN</a>
 															<button style="background: #00FF00;" type="button"
 																class="btn btn-primary dropdown-toggle dropdown-toggle-split"
 																data-toggle="dropdown"></button>
 															<div class="dropdown-menu">
-																 <a	 class="dropdown-item"  href="Status_Servlet?Action=closeChat&T_Id=<%=ticket.getTicketId()%>">CLOSED</a>
+																 <a	 class="dropdown-item"  th:href="@{'/ticketStatusUpdate'+','+'Close'+','+${ticket.TicketId }}">CLOSED</a>
 															</div>
 														</div>
 													</td>
 													  
-												  <%  } else if(ticket.getStatus().equals("Close")){%>
-												   <td><div  class="btn-group">
+												  
+												   <td th:if="${ticket.Status=='Close'}">
+												   		<div  class="btn-group">
 															<a style="background: red; color:white; cursor:none;" type="button" class="btn btn-primary">CLOSED</a>
 															
 														</div>
 													</td>
 													   
-												  <%  }else{%>
-												   <td><div  class="btn-group">
+												
+												   <td th:unless="${ticket.Status=='Close' ||  ticket.Status=='Open'}">
+												   		<div  class="btn-group">
 															<button style="background: orange;" type="button" class="btn btn-primary">WAITING</button>
 															<button style="background: orange;" type="button"
 																class="btn btn-primary dropdown-toggle dropdown-toggle-split"
 																data-toggle="dropdown"></button>
 															<div class="dropdown-menu">
-																<a  class="dropdown-item" href="Status_Servlet?Action=openChat&T_Id=<%=ticket.getTicketId()%>">OPEN</a>
-																 <a	 class="dropdown-item"  href="Status_Servlet?Action=closeChat&T_Id=<%=ticket.getTicketId()%>">CLOSED</a>
+																<a  class="dropdown-item"  th:href="@{'/ticketStatusUpdate'+','+'Open'+','+${ticket.TicketId }}">OPEN</a>
+																 <a	 class="dropdown-item"   th:href="@{'/ticketStatusUpdate'+','+'Close'+','+${ticket.TicketId }}">CLOSED</a>
 															</div>
 														</div>
 													</td>
-													   
-												   <% } %>
-												    
-												    
-												    
-
 												</tr>
-
-												<%
-												}
-												%>
 											</table>
 										</div>
 									</div>
